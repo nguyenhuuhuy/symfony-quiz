@@ -1,0 +1,50 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h1>Quiz</h1>
+    <p>Single or multiple answers for each question. {{ pagination.getTotalItemCount }} questions available</p>
+
+    <div>Order by {{ knp_pagination_sortable(pagination, 'Id', 'qq.id') }} - {% if pagination.isSorted('qq.question') %}{% endif %}{{ knp_pagination_sortable(pagination, 'Question', 'qq.question') }}
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    
+    {% for question in qa %}
+        
+        <strong>{{ question.question }}</strong><br>
+        {% if question.questionCodePart|length > 0 %}
+        <pre>{{ question.questionCodePart|escape('html') }}</pre><br>
+        {% endif %}
+        
+        {% set answer_number = 1 %}
+        {% for answer in question.answers %}
+            
+            {% if question.numberCorrectAnswers > 1 %}
+            <div class="checkbox">
+                <label for="answer_{{ answer.id }}">
+                    <input type="checkbox" name="answer_{{ answer.id }}" id="answer_{{ answer.id }}" value="1"> {{ answer.answer }}
+                </label>
+            </div>
+            {% else %}
+           <div class="radio">
+                <label for="answer_{{ answer.id }}">
+                    <input type="radio" name="answer" id="answer_{{ answer.id }}" value=""> {{ answer.answer }}
+                </label>
+            </div>
+            {% endif %}
+            {% set answer_number = answer_number + 1 %}
+        {% endfor %}
+        <p class="text-right">Choose {{ question.numberCorrectAnswers }} answers</p>
+        <hr>
+    {% endfor %}
+
+    {# display page numbers #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+    
+</div>
+
+<hr>
+<div>2014 <a href="http://www.andreafiori.net" title="Andrea Fiori's website">Andrea Fiori</a></div>
+{% endblock %}
