@@ -34,10 +34,8 @@ A test suite is available for the QuiBundle. Run it with the following command:
 TODO
 ----------------
 
-- Add CSS and JS dir with bootstrap and jquery files
 - Add question topics
-- Store point for correct answers
-- Test behaviour without database and questions
+- Store point for correct answers?
 - Add more questions :)
 
 Resources

@@ -27,5 +27,4 @@ class QuestionsQueryGetter
         
         return $query;
     }
-    
 }
