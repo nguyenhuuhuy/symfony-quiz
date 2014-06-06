@@ -4,7 +4,7 @@ namespace Acme\QuizBundle\Tests\Model;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-/** 
+/**
  * @author Andrea Fiori
  * @since  05 June 2014
  */
@@ -186,7 +186,7 @@ class TestSuite extends WebTestCase
         $this->assertInstanceOf('\Doctrine\ORM\EntityManager', $this->getEntityManager());
         $this->assertInstanceOf('\Doctrine\ORM\EntityManager', $this->getEntityManagerMock());
     }
-    
+  
     public function testGetConnection()
     {   
         $this->assertInstanceOf('\Doctrine\DBAL\Connection', $this->getConnectionMock());

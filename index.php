@@ -2,6 +2,8 @@
 
 use Symfony\Component\HttpFoundation\Request;
 
+ob_start('compressHTMLOutput');
+
 // If you don't want to setup permissions the proper way, just uncomment the following PHP line
 // read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
 //umask(0000);
@@ -25,3 +27,14 @@ $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
+
+/* compress HTML output */
+ob_end_flush();
+function compressHTMLOutput($buffer)
+{
+    $bufferout = $buffer;
+    $bufferout = str_replace("\n", "", $bufferout);
+    $bufferout = str_replace("\t", "", $bufferout);
+    $bufferout = preg_replace('/<!--(.|\s)*?-->/', '', $bufferout);
+    return $bufferout;
+}
