@@ -1,3 +1,5 @@
+https://travis-ci.org/andreafiori/symfony2-quiz.svg?branch=master
+
 Quiz system
 ========================
 

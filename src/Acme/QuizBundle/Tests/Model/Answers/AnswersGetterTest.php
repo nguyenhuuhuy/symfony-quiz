@@ -20,7 +20,7 @@ class AnswersGetterTest extends TestSuite
         $this->answersGetter = new AnswersGetter($this->getEntityManager());
     }
 
-    public function testGetQuestions()
+    public function testSetMainQuery()
     {
         $this->assertInstanceOf('\Doctrine\ORM\QueryBuilder', $this->answersGetter->setMainQuery());
     }
