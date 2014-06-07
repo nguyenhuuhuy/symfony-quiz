@@ -23,8 +23,6 @@ class QuestionsQueryGetter
      */
     public function getQuery()
     {
-        $query = $this->entityManager->createQuery("SELECT qq FROM AcmeQuizBundle:QuizQuestions qq ");
-        
-        return $query;
+        return $this->entityManager->createQuery("SELECT qq FROM AcmeQuizBundle:QuizQuestions qq ");
     }
 }

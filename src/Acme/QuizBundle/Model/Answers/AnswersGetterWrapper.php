@@ -2,7 +2,6 @@
 
 namespace Acme\QuizBundle\Model\Answers;
 
-use Acme\QuizBundle\Model\RecordsGetterWrapperInterface;
 use Acme\QuizBundle\Model\RecordsGetterWrapperAbstract;
 use Acme\QuizBundle\Model\Answers\AnswersGetter;
 
@@ -12,7 +11,7 @@ use Acme\QuizBundle\Model\Answers\AnswersGetter;
  * @author Andrea Fiori
  * @since  06 June 2014
  */
-class AnswersGetterWrapper extends RecordsGetterWrapperAbstract implements RecordsGetterWrapperInterface
+class AnswersGetterWrapper extends RecordsGetterWrapperAbstract
 {
     private $answersGetter;
     
