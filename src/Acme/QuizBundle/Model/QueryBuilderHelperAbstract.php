@@ -25,7 +25,7 @@ abstract class QueryBuilderHelperAbstract
         
         $this->queryBuilder = $this->entityManager->createQueryBuilder();
     }
-    
+
     /**
      * @return \Doctrine\ORM\Query
      */

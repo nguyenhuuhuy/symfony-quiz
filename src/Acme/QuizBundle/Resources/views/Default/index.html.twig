@@ -15,14 +15,15 @@
         
         {% for question in qa %}
         <form action="" method="post" id="frm_question_{{ question.id }}">
-            <strong>{{ question.question }}</strong><br>
+            <p class="pull-right"><strong>{{ question.id }}</strong></p>
+            <p><strong>{{ question.question }}</strong></p>
             {% if question.questionCodePart|length > 0 %}
             <pre>{{ question.questionCodePart|escape('html') }}</pre>
             {% endif %}
-
+            
             {% set answer_number = 1 %}
             {% for answer in question.answers %}
-
+                
                 {% if question.numberCorrectAnswers > 1 %}
                 <div class="checkbox">
                     <label for="answer_{{ answer.id }}">

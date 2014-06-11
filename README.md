@@ -22,16 +22,18 @@ I've created a database called "quiz" on localhost.
 Features
 ----------------
 
-I have used Doctrine2 QueryBuilder component to interact with database and knpPaginatorBundle for pagination.
-I have created models to abstract SQL and taking away all interaction from the controller.
-The application uses the bundle on the root and the pagination bundle adds some GET parameters automatically.
-Neteans is the IDE used to edit and run tests.
-HTML output is compressed. Bootstrap 3 and JQuery functions are used on the frontend too.
+- Doctrine2 QueryBuilder
+- knpPaginatorBundle for pagination
+- HTML output compression
+- Twitter Bootstrap 3
+- JQuery
+- The web directory was deleted so the application can be deployed on a shared hosting
+- Netbeans IDE :)
 
 Testing
 ----------------
 
-A test suite is available for the QuiBundle. Run it with the following command:
+A test suite is available for the QuiBundle. Run the following command from the project root directory. Ensure you have PHPUnit installed.
     
     phpunit -c app/
 
@@ -40,4 +42,4 @@ Resources
 
 - http://zend-php.appspot.com/questions_list/1
 - http://my.safaribooksonline.com/book/certification/zend/0672327090/practice-exam-questions/app01
-- Zend PHP study guide
+- Zend PHP study guide and Zend PHP Certification Practice Test Book
