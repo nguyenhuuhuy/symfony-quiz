@@ -15,7 +15,7 @@ class AnswersGetter extends QueryBuilderHelperAbstract
         $this->setSelectQueryFields('qa.id, qa.answer, qa.correct, IDENTITY(qa.question) AS questionId');
 
         $this->getQueryBuilder()->add('select', $this->getSelectQueryFields())
-                                ->add('from', 'Acme\QuizBundle\Entity\QuizAnswers qa ')
+                                ->add('from', 'Acme\QuizBundle\Entity\Answers qa ')
                                 ->where("qa.id != '' ");
         
         return $this->getQueryBuilder();

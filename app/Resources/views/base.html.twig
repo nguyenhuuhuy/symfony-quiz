@@ -6,7 +6,11 @@
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
         <link href="{{ asset('app/Resources/css/bootstrap.min.css') }}" rel="stylesheet">
-
+        <style>
+            .normalweight {
+                font-weight: normal;
+            }
+        </style>
         <script src="{{ asset('app/Resources/js/jquery.min.js') }}"></script>
         <script src="{{ asset('app/Resources/js/bootstrap.min.js') }}"></script>
     </head>

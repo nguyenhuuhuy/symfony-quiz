@@ -5,9 +5,9 @@ namespace Acme\QuizBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * QuizTopics
+ * Topics
  */
-class QuizTopics
+class Topics
 {
     /**
      * @var string
@@ -34,7 +34,7 @@ class QuizTopics
      * Set name
      *
      * @param string $name
-     * @return QuizTopics
+     * @return Topics
      */
     public function setName($name)
     {
@@ -57,7 +57,7 @@ class QuizTopics
      * Set description
      *
      * @param string $description
-     * @return QuizTopics
+     * @return Topics
      */
     public function setDescription($description)
     {
@@ -80,7 +80,7 @@ class QuizTopics
      * Set parentId
      *
      * @param integer $parentId
-     * @return QuizTopics
+     * @return Topics
      */
     public function setParentId($parentId)
     {
