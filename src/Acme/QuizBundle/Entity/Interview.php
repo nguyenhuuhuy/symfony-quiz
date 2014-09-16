@@ -5,9 +5,9 @@ namespace Acme\QuizBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Questions
+ * Interview
  */
-class Questions
+class Interview
 {
     /**
      * @var string
@@ -17,17 +17,17 @@ class Questions
     /**
      * @var string
      */
-    private $questionCodePart;
+    private $topics;
 
     /**
      * @var string
      */
-    private $comment;
+    private $answer;
 
     /**
      * @var integer
      */
-    private $numberCorrectAnswers;
+    private $position;
 
     /**
      * @var integer
@@ -39,7 +39,7 @@ class Questions
      * Set question
      *
      * @param string $question
-     * @return Questions
+     * @return Interview
      */
     public function setQuestion($question)
     {
@@ -59,72 +59,72 @@ class Questions
     }
 
     /**
-     * Set questionCodePart
+     * Set topics
      *
-     * @param string $questionCodePart
-     * @return Questions
+     * @param string $topics
+     * @return Interview
      */
-    public function setQuestionCodePart($questionCodePart)
+    public function setTopics($topics)
     {
-        $this->questionCodePart = $questionCodePart;
+        $this->topics = $topics;
 
         return $this;
     }
 
     /**
-     * Get questionCodePart
+     * Get topics
      *
      * @return string 
      */
-    public function getQuestionCodePart()
+    public function getTopics()
     {
-        return $this->questionCodePart;
+        return $this->topics;
     }
 
     /**
-     * Set comment
+     * Set answer
      *
-     * @param string $comment
-     * @return Questions
+     * @param string $answer
+     * @return Interview
      */
-    public function setComment($comment)
+    public function setAnswer($answer)
     {
-        $this->comment = $comment;
+        $this->answer = $answer;
 
         return $this;
     }
 
     /**
-     * Get comment
+     * Get answer
      *
      * @return string 
      */
-    public function getComment()
+    public function getAnswer()
     {
-        return $this->comment;
+        return $this->answer;
     }
 
     /**
-     * Set numberCorrectAnswers
+     * Set position
      *
-     * @param integer $numberCorrectAnswers
-     * @return Questions
+     * @param integer $position
+     * @return Interview
      */
-    public function setNumberCorrectAnswers($numberCorrectAnswers)
+    public function setPosition($position)
     {
-        $this->numberCorrectAnswers = $numberCorrectAnswers;
+        $this->position = $position;
 
         return $this;
     }
 
     /**
-     * Get numberCorrectAnswers
+     * Get position
      *
      * @return integer 
      */
-    public function getNumberCorrectAnswers()
+    public function getPosition()
     {
-        return $this->numberCorrectAnswers;
+        return $this->position;
     }
 
     /**

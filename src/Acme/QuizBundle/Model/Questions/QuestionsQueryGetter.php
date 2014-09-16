@@ -19,7 +19,7 @@ class QuestionsQueryGetter
     }
     
     /**
-     * get a main query for pagination. Don't need to set a query builder for now
+     * Get a main query for pagination. Don't need to set a query builder for now
      */
     public function getQuery()
     {

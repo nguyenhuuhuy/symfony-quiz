@@ -6,6 +6,7 @@
     </id>
     <field name="question" type="text" column="question" nullable="true"/>
     <field name="questionCodePart" type="text" column="question_code_part" nullable="true"/>
-    <field name="numberCorrectAnswers" type="integer" column="number_correct_answers" nullable="true"/>
+    <field name="comment" type="text" column="comment" nullable="true"/>
+    <field name="numberCorrectAnswers" type="bigint" column="number_correct_answers" nullable="true"/>
   </entity>
 </doctrine-mapping>

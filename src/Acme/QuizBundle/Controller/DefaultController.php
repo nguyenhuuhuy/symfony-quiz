@@ -19,10 +19,9 @@ class DefaultController extends Controller
     {
         $this->em = $this->get('doctrine.orm.entity_manager');
         
-        $questionsQueryGetter =  new QuestionsQueryGetter($this->em);
-        $query = $questionsQueryGetter->getQuery();
+        $questionsQueryGetter = new QuestionsQueryGetter($this->em);
 
-        $pagination = $this->getPagination($query);
+        $pagination = $this->getPagination( $questionsQueryGetter->getQuery() );
         $answers    = $this->getAnswers($pagination);
         
         return $this->render('AcmeQuizBundle:Default:index.html.twig', array(
@@ -30,10 +29,14 @@ class DefaultController extends Controller
             'qa'         => $answers
         ));
     }
-
+    
+        /**
+         * @param string $query
+         * @return \Knp\Component\Pager\Paginator
+         */
         private function getPagination($query)
         {
-            $paginator  = $this->get('knp_paginator'); 
+            $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
                 $query,
                 $this->get('request')->query->get('page', 1), // page number,
@@ -44,9 +47,8 @@ class DefaultController extends Controller
         }
         
         /**
-         * 
          * @param type $pagination
-         * @return type
+         * @return array|false
          */
         private function getAnswers($pagination)
         {
@@ -55,9 +57,11 @@ class DefaultController extends Controller
             }
             
             $arrayAnswers = array();
+            
+            $answersGetterWrapper = new AnswersGetterWrapper( new AnswersGetter($this->em) );
+            
             foreach($pagination as $paging) {
 
-                $answersGetterWrapper = new AnswersGetterWrapper( new AnswersGetter($this->em) );
                 $answersGetterWrapper->setInput( array( "questionId" => $paging->getId() ) );
                 $answersGetterWrapper->setupQueryBuilder();
 

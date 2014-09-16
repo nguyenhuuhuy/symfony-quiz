@@ -42,7 +42,10 @@
                 {% set answer_number = answer_number + 1 %}
             {% endfor %}
             <p class="text-right">Choose {{ question.numberCorrectAnswers }} answers</p>
-            <p class="text-center"><button class="btn btn-primary" type="button" onclick="solve('frm_question_{{ question.id }}', 1)">Solve</button></p>
+            
+            <p class="text-center"><button class="btn btn-primary" type="button" onclick="{% if question.numberCorrectAnswers > 1 %}solve_checkbox('frm_question_{{ question.id }}', 'comment_{{ question.id }}'){% else %}solve_radio('frm_question_{{ question.id }}', 'comment_{{ question.id }}'){% endif %}">Solve</button></p>
+            
+            <div id="comment_{{ question.id }}"{% if question.comment %} class="alert alert-info"{% endif %} style="display: none">{{ question.comment }}</div>
             <hr>
         </form>
         {% endfor %}
@@ -66,31 +69,36 @@
 
 <script>
 
-function solve(formId, answers) {
-
-    checkCorrectAnswer( $("#"+formId+" input:checkbox") );
-    
-    checkCorrectAnswer( $("#"+formId+" input:radio") );
-    
+function solve_checkbox(formId, comment)
+{
+    checkCorrectAnswer( $("#"+formId+" input:checkbox"), comment );
 }
 
-function checkCorrectAnswer(selector) {
-    
-    /* Uncheck all answers */
-    selector.each(function( i ) {
-        this.checked = false;
-    });
-    
-    /* Check correct answers */
-    if ( selector.length > 0 ) {
+function solve_radio(formId, comment)
+{
+    checkCorrectAnswer( $("#"+formId+" input:radio"), comment );
+}
+
+    function checkCorrectAnswer(selector, comment) {
+
+        /* Uncheck all answers */
         selector.each(function( i ) {
-            if (this.getAttribute('correct') === 'correct') {
-                this.checked = true;
-            }
+            this.checked = false;
         });
+
+        /* Check correct answers */
+        if ( selector.length > 0 ) {
+            selector.each(function( i ) {
+                if (this.getAttribute('correct') === 'correct') {
+                    this.checked = true;
+                }
+            });
+        }
+        
+        /* Show answer comment */
+        $('#'+comment).show();
+  
     }
-    
-}
 
 </script>
 {% endblock %}
