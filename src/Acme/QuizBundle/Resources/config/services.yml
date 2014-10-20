@@ -1,7 +1,0 @@
-parameters:
-#    acme_quiz.example.class: Acme\QuizBundle\Example
-
-services:
-#    acme_quiz.example:
-#        class: %acme_quiz.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

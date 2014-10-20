@@ -1,0 +1,31 @@
+homepage:
+    pattern:  /
+    defaults: { _controller: AcmeReqBundle:Default:index }
+
+acme_quiz_topics:
+    pattern:  /topic/{topic}/
+    defaults: { _controller: AcmeReqBundle:Default:index }
+    requirements:
+        topic: \w+
+        _method:  GET
+        
+acme_quiz_topics_tags:
+    pattern:  /topic/{topic}/{tag}
+    defaults: { _controller: AcmeReqBundle:Default:index }
+    requirements:
+        topic: \w+
+        _method:  GET
+
+acme_interview_topic:
+    pattern:  /interview/{topic}
+    defaults: { _controller: AcmeReqBundle:Default:interview }
+    requirements:
+        topic: \w+
+        _method:  GET
+
+acme_interview:
+    pattern: /interview/
+    defaults:
+        _controller: AcmeReqBundle:Default:interview
+        route: acme_interview
+        permanent: true

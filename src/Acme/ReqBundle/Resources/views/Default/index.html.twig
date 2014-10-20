@@ -1,0 +1,50 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    
+    <ol class="breadcrumb">
+        <li class="active">Home</li>
+    </ol>
+    
+    <h1>Quiz topics</h1>
+
+    <p>Select the topic to see all questions with solutions.</p>
+    
+    {% macro recursiveCategory(data, index, parentId, level) %}
+        {% if index[parentId] is defined  %}
+            {% for id in index[parentId] %}
+                {% if parentId == 'NULL' %}
+                <h3>{{ data[id].name }}</h3>
+                {% elseif index[id] is defined %}
+                <h4>{% for spc in 0..level %}&nbsp;&nbsp;{% endfor %}{{ data[id].name }}</h4>
+                {% else %}
+                <p><strong>{% for spc in 0..level %}&nbsp;&nbsp;{% endfor %}<a href="{{ url('acme_quiz_topics', { 'topic':  data[id].name } ) }}" title="Go to {{ data[id].name }}">{{ data[id].name }}</a></strong></p>
+                {% endif %}
+                {{ _self.recursiveCategory(data, index, id, level + 1) }}
+            {% endfor %}
+        {% endif %}
+    {% endmacro %}
+    
+    <!-- Topics tree -->
+    {% if topicsRecordsIndex is defined %}
+        {{ _self.recursiveCategory(topicsRecordsTree, topicsRecordsIndex, 'NULL', 0) }}
+    {% else %}
+        <div class="alert alert-warning">
+            <h3>No topics found</h3>
+            <p>No topics were stored in our archive</p>
+        </div>
+    {% endif %}
+    
+    <!-- Tags -->
+    <h1>Tags</h1>
+
+    <p>Select a tag and view all questions avaialable</p>
+    
+    {% for tag in tagcloud %}
+        <a href="#" class="btn btn-info" title="{{ tag.name }}">{{ tag.name }}</a>
+    {% endfor %}
+    
+    {% include 'AcmeReqBundle:Default:footer.html.twig' %}
+</div>
+{% endblock %}

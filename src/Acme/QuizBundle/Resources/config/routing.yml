@@ -1,3 +1,0 @@
-acme_quiz_homepage:
-    pattern:  /
-    defaults: { _controller: AcmeQuizBundle:Default:index }

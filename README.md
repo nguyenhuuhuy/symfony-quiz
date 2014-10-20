@@ -1,10 +1,11 @@
 [![Build Status](https://travis-ci.org/andreafiori/symfony2-quiz.svg?branch=master)](https://travis-ci.org/andreafiori/symfony2-quiz)
 
-Quiz system
-========================
+Quiz and interview questions
+=====================================
 
-Quiz with questions and answer. The database contains question about PHP (Zend certification exam).
-All questions are reviewed and corrected.
+The database contains question about PHP (Zend certification exam) and other topics.
+
+The quizzes have the correct answer and you can solve all problems.
 
 Installation
 ------------------------
@@ -22,13 +23,13 @@ I've created a database called "quiz" on localhost (I use XAMPP on Windows).
 Features
 ------------------------
 
-- Doctrine2 QueryBuilder
-- knpPaginatorBundle for pagination
+- Doctrine2 ORM
+- Symfony2 with Twig and knpPaginatorBundle for pagination
 - HTML output compression
 - Twitter Bootstrap 3
 - JQuery
 - The web directory was deleted so the application can be deployed on a shared hosting
-- Netbeans IDE was used
+- Netbeans IDE was used for coding and design
 
 Testing
 ------------------------
@@ -39,6 +40,8 @@ A test suite is available for the QuiBundle. Run the following command from the 
 
 Resources
 ------------------------
+
+For Zend questions:
 
 - http://zend-php.appspot.com/questions_list/1
 - http://my.safaribooksonline.com/book/certification/zend/0672327090/practice-exam-questions/app01
