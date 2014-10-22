@@ -11,6 +11,8 @@ use Acme\ReqBundle\Model\Topics\TopicsTreeSetup;
 use Acme\ReqBundle\Model\Quiz\QuizTagsGetter;
 use Acme\ReqBundle\Model\Quiz\QuizTagsGetterWrapper;
 use Acme\ReqBundle\Model\Interview\InterviewTopicsGetter;
+use Acme\ReqBundle\Model\Interview\InterviewTagsGetter;
+use Acme\ReqBundle\Model\Interview\InterviewTagsGetterWrapper;
 
 /**    
  * @author Andrea Fiori
@@ -42,12 +44,16 @@ class DefaultController extends Controller
         $interviewTopicsGetter = new TopicsGetterWrapper( new InterviewTopicsGetter($em) );
         $interviewTopicsGetter->setupQueryBuilder();
         $interviewTopicsGetter->setInput( array() );
-
+        
+        $interviewTagsGetterWrapper = new InterviewTagsGetterWrapper( new InterviewTagsGetter($em) );
+        $interviewTagsGetterWrapper->setInput( array() );
+        $interviewTagsGetterWrapper->setupQueryBuilder();
+        
         return $this->render('AcmeReqBundle:Default:index.html.twig', array(
             'quizTopicsRecords'  => $topicsGetterWrapper->getRecords(),
             'quizTags'           => $quizTagsGetterWrapper->getRecords(),
             'interviewTopics'    => $interviewTopicsGetter->getRecords(),
-            'interviewTags'      => '',
+            'interviewTags'      => $interviewTagsGetterWrapper->getRecords(),
             'topicsTree'         => $topicsTreeSetup->getRecordsTree(),
         ));
     }

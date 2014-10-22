@@ -19,12 +19,13 @@
                 {% endfor %}
                 </ul>
                 
-                <h3>Tags</h3>
+                {% if quizTags is not empty %}
+                    <h3>Tags</h3>
 
-                {% for tag in quizTags %}
-                    <a href="#" title="{{ tag.name }}">{{ tag.name }}</a> &nbsp;
-                {% endfor %}
-
+                    {% for tag in quizTags %}
+                        <a href="#" title="{{ tag.name }}">{{ tag.name }}</a> &nbsp;
+                    {% endfor %}
+                {% endif %}
             {% else %}
                 <div class="alert alert-warning">
                     <h1>No quiz topics</h1>
@@ -43,8 +44,16 @@
             {% endfor %}
             </ul>
             
-            <h3>Tags</h3>
-            
+            {% if interviewTags is not empty %}
+                <h3>Tags</h3>
+                
+                <ul>
+                {% for tag in interviewTags %}
+                    <li><a href="#" title="">{{ tag.getTag().getName() }}</a> &nbsp;</li>
+                {% endfor %}
+                </ul>
+                
+            {% endif %}
         </div>
 
     </div>

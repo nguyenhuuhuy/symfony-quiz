@@ -38,5 +38,5 @@ acme_interview_topic:
 acme_api:
     pattern: /api/
     defaults:
-        _controller: AcmeReqBundle:Default:api
+        _controller: AcmeReqBundle:Api:index
         permanent: true

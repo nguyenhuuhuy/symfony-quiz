@@ -52,19 +52,25 @@
             {% endfor %}
             <p class="text-right">Choose {{ quest.getNumberCorrectAnswers() }} answers</p>
             
+            <!-- Solve button -->
             <p class="text-center"><button class="btn btn-primary" type="button" onclick="{% if quest.getNumberCorrectAnswers() > 1 %}solve_checkbox('frm_question_{{ quest.id }}', 'comment_{{ quest.id }}'){% else %}solve_radio('frm_question_{{ quest.id }}', 'comment_{{ quest.id }}'){% endif %}">Solve</button></p>
             
+            <!-- Comment -->
             <div id="comment_{{ quest.getId() }}"{% if quest.getComment() %} class="alert alert-info"{% endif %} style="display: none">{{ quest.getComment() | raw }}</div>
-
-            {% if question.tags is defined and app.request.get('topic') != '' %}
+            
+            <p><strong>Topic:</strong> <a href="#">{{ question.topic.name }}</a></p>
+            
+            {% if question.tags is defined %}
                 <!-- TAGS -->
+                <div>
                 {% set q_tags = question.tags %}
                 <strong>Tags:</strong> 
                 {% for tag in q_tags %}
                     {% if tag.getTag().name is defined %}
-                    <a href="{{ url('acme_quiz_tags', { 'topic': app.request.get('topic'), 'tag': tag.getTag().name } ) }}" class="btn btn-info" title="Go to question\s for '{{ tag.getTag().name }}' tag">{{ tag.getTag().name }}</a>
+                    <a href="{{ url('acme_quiz_tags', { 'topic': question.topic.name, 'tag': tag.getTag().name } ) }}" class="btn btn-info" title="Go to question\s for '{{ tag.getTag().name }}' tag">{{ tag.getTag().name }}</a>
                     {% endif %}
                 {% endfor %}
+                </div>
             {% endif %}
             
             <hr>

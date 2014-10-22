@@ -12,8 +12,8 @@ use Acme\ReqBundle\Model\Interview\InterviewGetterWrapper;
  */
 class InterviewController extends Controller
 {
-    /**     
-     * @return Response
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {

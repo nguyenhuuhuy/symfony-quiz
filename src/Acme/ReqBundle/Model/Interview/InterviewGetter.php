@@ -22,18 +22,4 @@ class InterviewGetter extends QueryBuilderHelperAbstract
         
         return $this->getQueryBuilder();
     }
-    
-    /**
-     * @param string $name
-     * @return \Doctrine\ORM\QueryBuilder
-     */
-    public function setTagName($name)
-    {
-        if ($name) {
-            $this->getQueryBuilder()->andWhere('qt.name = :name ');
-            $this->getQueryBuilder()->setParameter('name', $name);
-        }
-        
-        return $this->getQueryBuilder();
-    }
 }
