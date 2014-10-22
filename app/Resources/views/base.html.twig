@@ -1,3 +1,4 @@
+{% set currentRoute = app.request.attributes.get('_route') %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,6 +10,9 @@
         <style>
             .normalweight {
                 font-weight: normal;
+            }
+            .panel-title:hover {
+                cursor: pointer;
             }
         </style>
         <script src="{{ asset('app/Resources/js/jquery.min.js') }}"></script>
@@ -25,14 +29,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('homepage') }}">Quiz and interview questions</a>
+                <a class="navbar-brand" href="{{ url('homepage') }}" title="Quiz and interview questions">Quiz and interview questions</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="{{ url('acme_interview') }}" title="Home page">Home</a></li>
-                    <li><a href="#" title="Interview questions">Interview questions</a></li>
-                    <li><a href="#">Statistics</a></li>
-                    <li><a href="#">API</a></li>
+                    <li{% if currentRoute == 'homepage' %} class="active"{% endif %}><a href="{{ url('homepage') }}" title="Home page">Home</a></li>
+                    <li{% if currentRoute == 'acme_quiz' %} class="active"{% endif %}><a href="{{ url('acme_quiz') }}" title="Quiz">Quiz</a></li>
+                    <li{% if currentRoute == 'acme_interview' %} class="active"{% endif %}><a href="{{ url('acme_interview') }}" title="Interview questions">Interview</a></li>
+                    <li><a href="{{ url('acme_api') }}" title="APIs">API</a></li>
                 </ul>
             </div>
         </div>

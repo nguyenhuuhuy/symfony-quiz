@@ -5,12 +5,13 @@
     
     <ol class="breadcrumb">
         <li><a href="{{ url('homepage') }}" title="Back to the home page">Home</a></li>
+        <li>Quiz</li>
         <li class="active">{{ app.request.get('topic') }}</li>
     </ol>
     
     <h3>{{ app.request.get('topic') }}</h3>
     {% if qa is not empty %}
-
+        <h1>Quiz</h1>
         <p>You can have single or multiple answers.</p>
         
         <p><strong>{{ pagination.getTotalItemCount }}</strong> questions available for this topic.</p>
@@ -55,12 +56,14 @@
             
             <div id="comment_{{ quest.getId() }}"{% if quest.getComment() %} class="alert alert-info"{% endif %} style="display: none">{{ quest.getComment() | raw }}</div>
 
-            {% if question.tags is defined %}
+            {% if question.tags is defined and app.request.get('topic') != '' %}
                 <!-- TAGS -->
                 {% set q_tags = question.tags %}
                 <strong>Tags:</strong> 
                 {% for tag in q_tags %}
-                    <a href="{{ url('acme_quiz_topics_tags', { 'topic': app.request.get('topic'), 'tag': tag.getTag().name } ) }}" class="btn btn-info" title="Go to question\s for '{{ tag.getTag().name }}' tag">{{ tag.getTag().name }}</a>
+                    {% if tag.getTag().name is defined %}
+                    <a href="{{ url('acme_quiz_tags', { 'topic': app.request.get('topic'), 'tag': tag.getTag().name } ) }}" class="btn btn-info" title="Go to question\s for '{{ tag.getTag().name }}' tag">{{ tag.getTag().name }}</a>
+                    {% endif %}
                 {% endfor %}
             {% endif %}
             

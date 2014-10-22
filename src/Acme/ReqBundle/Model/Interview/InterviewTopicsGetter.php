@@ -1,21 +1,23 @@
 <?php
 
-namespace Acme\ReqBundle\Model\Topics;
+namespace Acme\ReqBundle\Model\Interview;
 
 use Acme\ReqBundle\Model\Topics\TopicsGetterAbstract;
 
 /**
  * @author Andrea Fiori
- * @since  21 October 2014
+ * @since  22 October 2014
  */
-class TopicsGetter extends TopicsGetterAbstract
+class InterviewTopicsGetter extends TopicsGetterAbstract
 {
     public function setMainQuery()
     {
         $this->setSelectQueryFields('DISTINCT(t.id) AS id, t.name, t.parentId, t.status, t.position');
 
         $this->getQueryBuilder()->add('select', $this->getSelectQueryFields())
-                                ->from('AcmeReqBundle:Topics', 't')
+                                ->from('AcmeReqBundle:InterviewRelations', 'ir')
+                                ->innerJoin('ir.topic', 't')
+                                ->innerJoin('ir.question', 'q')
                                 ->where("t.id != '' ");
         
         return $this->getQueryBuilder();

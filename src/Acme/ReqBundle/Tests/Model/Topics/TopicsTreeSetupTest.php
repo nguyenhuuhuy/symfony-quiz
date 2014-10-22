@@ -41,10 +41,12 @@ class TopicsTreeSetupTest extends TestSuite
     {
         $this->topicsTreeSetup->setRecords( array(
             1 => array(
+                'id'   => 1,
                 'name' => 'Development',
                 'parentId' => 0
             ),
             2 => array(
+                'id'   => 2,
                 'name' => 'PHP',
                 'parentId' => 1
             )

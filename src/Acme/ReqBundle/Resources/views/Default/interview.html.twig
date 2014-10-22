@@ -6,7 +6,87 @@
     <ol class="breadcrumb">
         <li><a href="{{ url('homepage') }}" title="Back to the home page">Home</a></li>
         <li class="active">Interview</li>
+        <!-- <li>Topic name</li> -->
     </ol>
+
+    {% if records is not empty %}
+        <h1>Interview questions</h1>
+        
+        <p><strong>{{ pagination.getTotalItemCount }}</strong> questions available.</p>
+        
+        <!--
+        <p>Order by {{ knp_pagination_sortable(pagination, 'Id', 'ir.id') }} - {% if pagination.isSorted('q.question') %}{% endif %}{{ knp_pagination_sortable(pagination, 'Question', 'q.question') }} </p>
+        -->
+        <button id="collapse-init" class="btn btn-primary">
+            Expand all
+        </button>
+        <div>&nbsp;</div>
+        
+        <div class="panel-group" id="accordion">
+            {% for question in records %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                     <h4 class="panel-title"
+                         data-toggle="collapse" 
+                         data-target="#collapseAnswer{{ question.getQuestion().getId() }}">
+                         &raquo; {{ question.getQuestion().getQuestion() }}
+                     </h4>
+                </div>
+                <div id="collapseAnswer{{ question.getQuestion().getId() }}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p class="pull-right"><strong>{{ question.getQuestion().getId() }}</strong></p>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <div>{{ question.getQuestion().getAnswer()|raw }}</div>
+
+                                <div>&nbsp;</div>
+
+                                <div><strong>Topic:</strong> <strong><a href="#" title="Read questions for topic {{ question.getTopic().getName() }}">{{ question.getTopic().getName() }}</a></strong></div>
+
+                                <div>&nbsp;</div>
+
+                                <div><strong>Tags:</strong> <a href="#" class="btn btn-info" title="Read questions for topic {{ question.getTopic().getName() }}">{{ question.getTopic().getName() }}</a></div>
+                            </div>
+                            
+                            <div class="col-md-2">&nbsp;</div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% endif %}
     
 </div>
+
+<script>
+$(function () {
+
+    var active = true;
+
+    $('#collapse-init').click(function () {
+        if (active) {
+            active = false;
+            $('.panel-collapse').collapse('show');
+            $('.panel-title').attr('data-toggle', '');
+            $(this).text('Expand all');
+        } else {
+            active = true;
+            $('.panel-collapse').collapse('hide');
+            $('.panel-title').attr('data-toggle', 'collapse');
+            $(this).text('Collapse all');
+        }
+    });
+    
+    $('#accordion').on('show.bs.collapse', function () {
+        if (active) $('#accordion .in').collapse('hide');
+    });
+
+});
+</script>
 {% endblock %}

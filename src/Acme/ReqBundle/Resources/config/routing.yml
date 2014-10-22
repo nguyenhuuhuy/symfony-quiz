@@ -2,23 +2,22 @@ homepage:
     pattern:  /
     defaults: { _controller: AcmeReqBundle:Default:index }
 
-acme_quiz_topics:
-    pattern:  /topic/{topic}/
-    defaults: { _controller: AcmeReqBundle:Default:index }
+acme_quiz:
+    pattern:  /quiz/topic/
+    defaults: { _controller: AcmeReqBundle:Quiz:index }
+    requirements:
+        _method:  GET
+
+acme_quiz_topic:
+    pattern:  /quiz/topic/{topic}
+    defaults: { _controller: AcmeReqBundle:Quiz:index }
     requirements:
         topic: \w+
         _method:  GET
         
-acme_quiz_topics_tags:
-    pattern:  /topic/{topic}/{tag}
-    defaults: { _controller: AcmeReqBundle:Default:index }
-    requirements:
-        topic: \w+
-        _method:  GET
-
-acme_interview_topic:
-    pattern:  /interview/{topic}
-    defaults: { _controller: AcmeReqBundle:Default:interview }
+acme_quiz_tags:
+    pattern:  /quiz/topic/{topic}/{tag}
+    defaults: { _controller: AcmeReqBundle:Quiz:index }
     requirements:
         topic: \w+
         _method:  GET
@@ -26,6 +25,18 @@ acme_interview_topic:
 acme_interview:
     pattern: /interview/
     defaults:
-        _controller: AcmeReqBundle:Default:interview
-        route: acme_interview
+        _controller: AcmeReqBundle:Interview:index
+        permanent: true
+        
+acme_interview_topic:
+    pattern:  /interview/{topic}
+    defaults: { _controller: AcmeReqBundle:Interview:index }
+    requirements:
+        topic: \w+
+        _method:  GET
+
+acme_api:
+    pattern: /api/
+    defaults:
+        _controller: AcmeReqBundle:Default:api
         permanent: true

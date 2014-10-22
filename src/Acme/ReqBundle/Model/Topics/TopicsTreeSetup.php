@@ -14,8 +14,11 @@ class TopicsTreeSetup
     private $topicsGetterWrapper;
     
     private $records;
-    private $recordsIndex = array();
-    private $recordsTree = array();
+    
+    private $recordsTree = array(
+        'items' => array(), 
+        'parents' => array()
+    );
         
     /**
      * @param TopicsGetterWrapper $topicsGetterWrapper
@@ -66,15 +69,11 @@ class TopicsTreeSetup
     public function setupRecordsTree()
     {
         $records = $this->getRecords();
+        
         if ($records) {
             foreach($records as $row) {
-                
-                $id = isset($row['id']) ? $row['id'] : '';
-                $parent_id = $row['parentId'] == 0 ? "NULL" : $row['parentId'];
-                
-                $this->recordsTree[$id] = $row;
-                
-                $this->recordsIndex[$parent_id][] = $id;
+                $this->recordsTree['items'][$row['id']] = $row;
+                $this->recordsTree['parents'][$row['parentId']][] = $row['id'];
             }
         }
         
@@ -98,14 +97,6 @@ class TopicsTreeSetup
     public function getRecords()
     {
         return $this->records;
-    }
-    
-    /**
-     * @return array|null
-     */
-    public function getRecordsIndex()
-    {
-        return $this->recordsIndex;
     }
     
     /**

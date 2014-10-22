@@ -14,9 +14,9 @@ class TopicsGetterWrapper extends RecordsGetterWrapperAbstract
     protected $objectGetter;
     
     /**
-     * @param \Acme\ReqBundle\Model\Tags\TopicsGetter $objectsGetter
+     * @param \Acme\ReqBundle\Model\Tags\TopicsGetterAbstract $objectsGetter
      */
-    public function __construct(TopicsGetter $objectsGetter)
+    public function __construct(TopicsGetterAbstract $objectsGetter)
     {
         $this->objectGetter = $objectsGetter;
     }
