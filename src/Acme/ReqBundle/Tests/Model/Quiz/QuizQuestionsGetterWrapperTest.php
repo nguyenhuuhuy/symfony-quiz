@@ -20,14 +20,7 @@ class QuizQuestionGetterWrapperTest extends TestSuite
 
         $this->objectWrapper = new QuizQuestionsGetterWrapper( new QuizQuestionsGetter( $this->getEntityManagerMock() ) );
     }
-    
-    public function testSetInput()
-    {
-        $this->objectWrapper->setInput( array("id" => 1) );
-        
-        $this->assertTrue( is_array($this->objectWrapper->getInput()) );
-    }
-    
+
     public function testSetupQueryBuilder()
     {
         $this->assertNull( $this->objectWrapper->setupQueryBuilder() );

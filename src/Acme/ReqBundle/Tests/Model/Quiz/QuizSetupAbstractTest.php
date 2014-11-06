@@ -25,4 +25,16 @@ class QuizSetupAbstractTest extends TestSuite
         
         $this->assertEquals($this->quizSetupAbstract->getTopic(), 'PHP');
     }
+    
+    public function testSetTag()
+    {
+        $this->quizSetupAbstract->setTag('Variables');
+        
+        $this->assertEquals($this->quizSetupAbstract->getTag(), 'Variables');
+    }
+    
+    public function testGetEntityManager()
+    {
+        $this->assertInstanceOf('\Doctrine\ORM\EntityManager', $this->quizSetupAbstract->getEntityManager());
+    }
 }

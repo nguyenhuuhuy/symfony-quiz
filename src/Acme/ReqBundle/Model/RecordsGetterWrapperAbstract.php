@@ -9,6 +9,8 @@ namespace Acme\ReqBundle\Model;
 abstract class RecordsGetterWrapperAbstract
 {
     protected $input;
+    
+    protected $objectGetter;
 
     /**
      * @param array $input

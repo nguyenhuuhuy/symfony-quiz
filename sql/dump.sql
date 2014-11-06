@@ -2,7 +2,7 @@
 -- Host:                         127.0.0.1
 -- Versione server:              5.5.36 - MySQL Community Server (GPL)
 -- S.O. server:                  Win32
--- HeidiSQL Versione:            8.3.0.4821
+-- HeidiSQL Versione:            8.3.0.4857
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `interview` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.interview: ~58 rows (circa)
+-- Dump dei dati della tabella quiz.interview: ~53 rows (circa)
 /*!40000 ALTER TABLE `interview` DISABLE KEYS */;
 INSERT INTO `interview` (`id`, `question`, `answer`, `position`, `topics_old`) VALUES
 	(1, 'What is PHP?', 'PHP is an open source server side scripting language used to develop dynamic websites. PHP  stands for Hypertext Preprocessor, also stood for  Personal Home Page. Now the implementations of PHP is produced by The PHP group. It was created by Rasmus lerdorf in 1995. It is a free software released under the PHP license.', 1, 'Language'),
@@ -102,10 +102,75 @@ CREATE TABLE IF NOT EXISTS `interview_relations` (
   KEY `fk_interview_question_id` (`question_id`),
   CONSTRAINT `fk_interview_question_id` FOREIGN KEY (`question_id`) REFERENCES `interview` (`id`),
   CONSTRAINT `fk_interview_topic_id` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.interview_relations: ~0 rows (circa)
+-- Dump dei dati della tabella quiz.interview_relations: ~64 rows (circa)
 /*!40000 ALTER TABLE `interview_relations` DISABLE KEYS */;
+INSERT INTO `interview_relations` (`id`, `topic_id`, `question_id`) VALUES
+	(1, 8, 1),
+	(2, 8, 2),
+	(3, 8, 3),
+	(4, 8, 4),
+	(5, 8, 5),
+	(6, 8, 6),
+	(7, 8, 7),
+	(8, 8, 8),
+	(9, 8, 9),
+	(10, 8, 10),
+	(11, 8, 11),
+	(12, 8, 12),
+	(13, 8, 13),
+	(14, 8, 14),
+	(15, 8, 15),
+	(16, 8, 16),
+	(17, 8, 17),
+	(18, 8, 18),
+	(19, 8, 19),
+	(20, 8, 20),
+	(21, 8, 21),
+	(22, 8, 22),
+	(23, 8, 23),
+	(24, 8, 24),
+	(25, 8, 25),
+	(26, 8, 26),
+	(27, 8, 27),
+	(28, 8, 28),
+	(29, 8, 29),
+	(30, 8, 30),
+	(31, 8, 31),
+	(32, 8, 32),
+	(33, 8, 33),
+	(34, 8, 34),
+	(35, 8, 35),
+	(36, 8, 36),
+	(37, 8, 37),
+	(38, 8, 38),
+	(39, 8, 39),
+	(40, 8, 40),
+	(41, 8, 41),
+	(42, 8, 42),
+	(43, 8, 43),
+	(44, 8, 44),
+	(45, 8, 45),
+	(46, 8, 46),
+	(47, 8, 47),
+	(48, 8, 48),
+	(49, 8, 49),
+	(50, 8, 50),
+	(51, 8, 51),
+	(52, 8, 52),
+	(53, 8, 53),
+	(54, 8, 54),
+	(55, 8, 55),
+	(56, 8, 56),
+	(57, 8, 57),
+	(58, 8, 58),
+	(59, 8, 59),
+	(60, 8, 60),
+	(61, 8, 61),
+	(62, 8, 62),
+	(63, 8, 63),
+	(64, 8, 64);
 /*!40000 ALTER TABLE `interview_relations` ENABLE KEYS */;
 
 
@@ -120,10 +185,12 @@ CREATE TABLE IF NOT EXISTS `interview_tags_relations` (
   KEY `tag_id` (`tag_id`),
   CONSTRAINT `interview_tags_relations_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `interview` (`id`),
   CONSTRAINT `interview_tags_relations_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `quiz_tags` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
--- Dump dei dati della tabella quiz.interview_tags_relations: ~0 rows (circa)
+-- Dump dei dati della tabella quiz.interview_tags_relations: ~1 rows (circa)
 /*!40000 ALTER TABLE `interview_tags_relations` DISABLE KEYS */;
+INSERT INTO `interview_tags_relations` (`id`, `question_id`, `tag_id`) VALUES
+	(1, 1, 1);
 /*!40000 ALTER TABLE `interview_tags_relations` ENABLE KEYS */;
 
 
@@ -139,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `quiz_answers` (
   CONSTRAINT `fk_question_id` FOREIGN KEY (`question_id`) REFERENCES `quiz_questions` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=947 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.quiz_answers: ~1.091 rows (circa)
+-- Dump dei dati della tabella quiz.quiz_answers: ~780 rows (circa)
 /*!40000 ALTER TABLE `quiz_answers` DISABLE KEYS */;
 INSERT INTO `quiz_answers` (`id`, `answer`, `correct`, `question_id`) VALUES
 	(1, '<SCRIPT LANGUAGE="php">', '1', 1),
@@ -1102,7 +1169,7 @@ CREATE TABLE IF NOT EXISTS `quiz_questions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=198 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.quiz_questions: ~176 rows (circa)
+-- Dump dei dati della tabella quiz.quiz_questions: ~221 rows (circa)
 /*!40000 ALTER TABLE `quiz_questions` DISABLE KEYS */;
 INSERT INTO `quiz_questions` (`id`, `question`, `question_code`, `comment`, `number_correct_answers`) VALUES
 	(1, 'Which of the following tags are an acceptable way to begin a PHP Code block?', NULL, NULL, 4),
@@ -1316,9 +1383,9 @@ CREATE TABLE IF NOT EXISTS `quiz_questions_relations` (
   KEY `topic_id` (`question_id`),
   CONSTRAINT `qstopicrel_topics_question_id` FOREIGN KEY (`question_id`) REFERENCES `quiz_questions` (`id`),
   CONSTRAINT `qstopicrel_topic_id` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=198 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.quiz_questions_relations: ~197 rows (circa)
+-- Dump dei dati della tabella quiz.quiz_questions_relations: ~198 rows (circa)
 /*!40000 ALTER TABLE `quiz_questions_relations` DISABLE KEYS */;
 INSERT INTO `quiz_questions_relations` (`id`, `topic_id`, `question_id`) VALUES
 	(1, 8, 1),
@@ -1517,7 +1584,8 @@ INSERT INTO `quiz_questions_relations` (`id`, `topic_id`, `question_id`) VALUES
 	(194, 8, 194),
 	(195, 8, 195),
 	(196, 8, 196),
-	(197, 8, 197);
+	(197, 8, 197),
+	(198, 3, 1);
 /*!40000 ALTER TABLE `quiz_questions_relations` ENABLE KEYS */;
 
 
@@ -1664,9 +1732,9 @@ CREATE TABLE IF NOT EXISTS `topics` (
   `position` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.topics: ~12 rows (circa)
+-- Dump dei dati della tabella quiz.topics: ~14 rows (circa)
 /*!40000 ALTER TABLE `topics` DISABLE KEYS */;
 INSERT INTO `topics` (`id`, `name`, `parent_id`, `status`, `position`) VALUES
 	(1, 'Development', 0, NULL, 1),
@@ -1679,8 +1747,10 @@ INSERT INTO `topics` (`id`, `name`, `parent_id`, `status`, `position`) VALUES
 	(8, 'PHP', 1, NULL, 8),
 	(9, 'MongoDB', 6, NULL, 9),
 	(10, 'Concepts', 0, NULL, 3),
-	(11, 'Design_Patterns', 10, NULL, 3),
-	(12, 'Methodologies', 0, NULL, 3);
+	(11, 'Design Patterns', 10, NULL, 3),
+	(12, 'Methodologies', 0, NULL, 3),
+	(13, 'Network protocols', 0, NULL, 3),
+	(14, 'HTTP', 13, NULL, 3);
 /*!40000 ALTER TABLE `topics` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

@@ -9,7 +9,7 @@ use Acme\ReqBundle\Model\Quiz\QuizTagsGetter;
  * @author Andrea Fiori
  * @since  08 October 2014
  */
-class TagsGetterTest extends TestSuite
+class QuizTagsGetterTest extends TestSuite
 {
     private $objectGetter;
     

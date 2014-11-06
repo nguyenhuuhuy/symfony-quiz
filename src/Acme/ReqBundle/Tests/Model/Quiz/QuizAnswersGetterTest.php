@@ -12,7 +12,7 @@ use Acme\ReqBundle\Model\Quiz\QuizAnswersGetter;
 class QuizAnswersGetterTest extends TestSuite
 {
     private $objectGetter;
-    
+ 
     protected function setUp()
     {
         parent::setUp();
