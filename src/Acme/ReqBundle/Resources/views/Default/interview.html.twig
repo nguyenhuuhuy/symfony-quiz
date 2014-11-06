@@ -6,7 +6,6 @@
     <ol class="breadcrumb">
         <li><a href="{{ url('homepage') }}" title="Back to the home page">Home</a></li>
         <li class="active">Interview</li>
-        <!-- <li>Topic name</li> -->
     </ol>
 
     {% if records is not empty %}
@@ -17,6 +16,7 @@
         <!--
         <p>Order by {{ knp_pagination_sortable(pagination, 'Id', 'ir.id') }} - {% if pagination.isSorted('q.question') %}{% endif %}{{ knp_pagination_sortable(pagination, 'Question', 'q.question') }} </p>
         -->
+        
         <button id="collapse-init" class="btn btn-primary">
             Expand all
         </button>
@@ -62,6 +62,7 @@
         </div>
     {% endif %}
     
+    {% include 'AcmeReqBundle:Default:footer.html.twig' %}
 </div>
 
 <script>

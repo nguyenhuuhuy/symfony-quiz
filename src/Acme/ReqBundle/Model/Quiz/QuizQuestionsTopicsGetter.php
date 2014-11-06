@@ -5,6 +5,8 @@ namespace Acme\ReqBundle\Model\Quiz;
 use Acme\ReqBundle\Model\Topics\TopicsGetterAbstract;
 
 /**
+ * Query builder object to get only topics with questions
+ * 
  * @author Andrea Fiori
  * @since  21 October 2014
  */

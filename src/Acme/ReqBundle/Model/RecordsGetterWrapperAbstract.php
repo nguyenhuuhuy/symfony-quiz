@@ -23,7 +23,7 @@ abstract class RecordsGetterWrapperAbstract
     /**
      * 
      * @param string $key
-     * @param 0 or 1 or array
+     * @param 0|1|array
      * @return types
      */
     public function getInput($key = null, $noArray = null)

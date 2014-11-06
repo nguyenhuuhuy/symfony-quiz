@@ -138,7 +138,6 @@ class EntitySerializer
         return $this->_serializeEntity($entity);
     }
 
-
     /**
      * Convert an entity to a JSON object
      * 

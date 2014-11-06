@@ -12,18 +12,18 @@
 
             {% if quizTopicsRecords is not empty %}
                 <h1>Quiz topics</h1>
-            
-                <ul>
+                
+                <div>
                 {% for records in quizTopicsRecords %}
-                    <li><a href="{{ path('acme_interview', {'topic': records.name}) }}" title="">{{ records.name }}</a></li>
+                    <a href="{{ path('acme_quiz_topic', {'topic': records.name|slugify }) }}" class="btn btn-default" title="">{{ records.name }}</a>
                 {% endfor %}
-                </ul>
+                </div>
                 
                 {% if quizTags is not empty %}
                     <h3>Tags</h3>
 
                     {% for tag in quizTags %}
-                        <a href="#" title="{{ tag.name }}">{{ tag.name }}</a> &nbsp;
+                        <a href="{{ path('acme_quiz_tags', {'tag': tag.name|slugify }) }}" class="btn btn-default" title="{{ tag.name }}">{{ tag.name }}</a> 
                     {% endfor %}
                 {% endif %}
             {% else %}
@@ -38,26 +38,26 @@
             
             <h1>Interview questions topics</h1>
             
-            <ul>
+            <div>
             {% for topic in interviewTopics %}
-                <li><a href="#" title="">{{ topic.name }}</a></li>
+                <a href="{{ path('acme_interview', {'topic': topic.name|slugify }) }}" class="btn btn-default" title="{{ topic.name }} Question">{{ topic.name }}</a>
             {% endfor %}
-            </ul>
+            </div>
             
             {% if interviewTags is not empty %}
                 <h3>Tags</h3>
                 
-                <ul>
+                <div>
                 {% for tag in interviewTags %}
-                    <li><a href="#" title="">{{ tag.getTag().getName() }}</a> &nbsp;</li>
+                    <a href="{{ url('acme_interview_tags', { 'tag': tag.getTag().getName()|slugify }) }}" class="btn btn-default" title="Interview questions for tag {{ tag.getTag().getName() }}">{{ tag.getTag().getName() }}</a> 
                 {% endfor %}
-                </ul>
+                </div>
                 
             {% endif %}
         </div>
 
     </div>
-            
+
     <hr>
 
     {% macro recursiveTree(parentId, treeData) %}
@@ -73,7 +73,7 @@
     {% endmacro %}
 
     <div>
-        <h2 class="text-center">Topics tree</h2>
+        <h2>All topics</h2>
 
         {{ _self.recursiveTree(0, topicsTree) }}
     </div>

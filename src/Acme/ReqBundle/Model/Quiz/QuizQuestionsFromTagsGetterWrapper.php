@@ -6,17 +6,17 @@ use Acme\ReqBundle\Model\RecordsGetterWrapperAbstract;
 
 /**
  * @author Andrea Fiori
- * @since  06 June 2014
+ * @since  04 November 2014
  */
-class QuizQuestionsGetterWrapper extends RecordsGetterWrapperAbstract
+class QuizQuestionsFromTagsGetterWrapper extends RecordsGetterWrapperAbstract
 {
-    /** @var QuizQuestionsGetter **/
+    /** @var QuizQuestionsFromTagsGetter **/
     protected $objectGetter;
     
     /**
-     * @param QuizQuestionsGetter $objectGetter
+     * @param QuizQuestionsFromTagsGetter $objectGetter
      */
-    public function __construct(QuizQuestionsGetter $objectGetter)
+    public function __construct(QuizQuestionsFromTagsGetter $objectGetter)
     {
         $this->objectGetter = $objectGetter;
     }
@@ -25,8 +25,7 @@ class QuizQuestionsGetterWrapper extends RecordsGetterWrapperAbstract
     {
         $this->objectGetter->setSelectQueryFields( $this->getInput('fields', 1) );
         $this->objectGetter->setMainQuery();
-        $this->objectGetter->setQuestionId($this->getInput('questionId', 1));
-        $this->objectGetter->setTopicName($this->getInput('topicName', 1));
+        $this->objectGetter->setTagName( $this->getInput('tagName', 1) );
         $this->objectGetter->setOrderBy( $this->getInput('orderBy', 1) );
         $this->objectGetter->setLimit( $this->getInput('limit', 1) );
         $this->objectGetter->setGroupBy( $this->getInput('groupBy', 1) );

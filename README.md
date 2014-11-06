@@ -8,31 +8,40 @@ The database contains question about PHP (Zend certification exam) and other top
 The quizzes have the correct answer and you can solve all problems.
 
 Installation
-------------------------
+--------------------------------
 
 Install and use composer:
 
     composer self-update
     composer install --optimize-autoloader
-    composer update --optimize-autoloader (this command is optional)
+    composer update --optimize-autoloader (optional)
 
 The MySQL dump with database and data is on the sql directory. 
 Connection parameters are on the app/config/config.yml file.
-I've created a database called "quiz" on localhost (I use XAMPP on Windows).
+I've created a database called "quiz" on localhost.
+
+Database
+--------------------------------
+
+The tables has InnoDb tables with relationships. There's an intermediary table
+for quiz questions, topics and one for questions and tags.
+This adds some complexity but I've tried to keep all as simple as I can.
 
 Testing
-------------------------
+--------------------------------
 
-A test suite is available for the QuiBundle. Run the following command from the project root directory. Ensure you have PHPUnit installed.
+To run the tests, execute the following command from the project root directory. 
+Ensure you have PHPUnit installed.
     
     phpunit -c app/
 
-
-Features
-------------------------
+Frontend and Backend features
+--------------------------------
 
 - Doctrine2 ORM
 - Symfony2 with Twig and knpPaginatorBundle for pagination
+- Twig Macro for printing topics recursively
+- Twig custom class and functions to slugify string\s
 - HTML output compression
 - Twitter Bootstrap 3
 - JQuery
@@ -40,18 +49,8 @@ Features
 - Netbeans IDE was used for coding and design
 
 Zend questions resources
---------------------------
+--------------------------------
 
 - http://zend-php.appspot.com/questions_list/1
 - http://my.safaribooksonline.com/book/certification/zend/0672327090/practice-exam-questions/app01
 - Zend PHP study guide and Zend PHP Certification Practice Test Book
-
-TODO
-------------
-
-- Tags selection for interviews and quizzes
-- Populate db with more questions and quiz!
-- RESTful web service
-- Unit tests code coverage
-- Select quiz by tag
-- Select interview by tag

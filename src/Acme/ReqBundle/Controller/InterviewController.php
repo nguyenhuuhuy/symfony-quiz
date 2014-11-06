@@ -38,5 +38,5 @@ class InterviewController extends Controller
             'pagination' => $pagination,
             'records'    => $records
         ));
-    }    
+    }
 }

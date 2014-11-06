@@ -14,7 +14,7 @@ use Acme\ReqBundle\Model\Interview\InterviewTopicsGetter;
 use Acme\ReqBundle\Model\Interview\InterviewTagsGetter;
 use Acme\ReqBundle\Model\Interview\InterviewTagsGetterWrapper;
 
-/**    
+/**
  * @author Andrea Fiori
  * @since  04 June 2014
  */
