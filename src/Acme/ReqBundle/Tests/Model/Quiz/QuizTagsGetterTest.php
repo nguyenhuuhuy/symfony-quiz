@@ -20,16 +20,18 @@ class QuizTagsGetterTest extends TestSuite
         $this->objectGetter = new QuizTagsGetter($this->getEntityManagerMock());
     }
     
-    public function testSetMainQuery()
-    {
-        $this->assertInstanceOf('\Doctrine\ORM\QueryBuilder', $this->objectGetter->setMainQuery());
-    }
-    
     public function testSetQuestionId()
     {
         $this->objectGetter->setTagId(12);
 
         $this->assertNotEmpty($this->objectGetter->getQueryBuilder()->getParameter('tagId'));
+    }
+    
+    public function testSetTagId()
+    {
+        $this->objectGetter->setTagId(12);
+        
+        $this->assertNotEmpty( $this->objectGetter->getQueryBuilder()->getParameter('tagId') );
     }
     
     public function testSetTagName()

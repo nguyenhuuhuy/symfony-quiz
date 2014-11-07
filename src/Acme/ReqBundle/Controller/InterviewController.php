@@ -12,6 +12,8 @@ use Acme\ReqBundle\Model\Interview\InterviewGetterWrapper;
  */
 class InterviewController extends Controller
 {
+    const perPage = 15;
+    
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -26,7 +28,7 @@ class InterviewController extends Controller
         $pagination = $this->get('knp_paginator')->paginate(
             $interviewGetterWrapper->getObjectGetter()->getQuery(),
             $this->get('request')->query->get('page', 1),
-            15
+            self::perPage
         );
         
         $records = array();

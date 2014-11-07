@@ -46,6 +46,8 @@ class QuizSetupQuestionGetterWrapper extends QuizSetupAbstract
     
     public function setupObjectWrapperQueryBuilder()
     {
+        $this->assertObjectWrapper();
+        $this->assertObjectWrapperInput();
         $this->getObjectWrapper()->setupQueryBuilder();
     }
 
@@ -58,8 +60,6 @@ class QuizSetupQuestionGetterWrapper extends QuizSetupAbstract
         
         private function assertObjectWrapperInput()
         {
-            $this->assertObjectWrapper();
-            
             if (!$this->getObjectWrapper()->getInput()) {
                 $this->setupObjectWrapperInput();
             }

@@ -11,19 +11,29 @@ use Acme\ReqBundle\Model\Quiz\QuizSetupQuestionGetterWrapper;
  */
 class QuizSetupQuestionGetterWrapperTest extends TestSuite
 {
-    private $quizSetup;
+    private $objectToTest;
     
     protected function setUp()
     {
         parent::setUp();
         
-        $this->quizSetup = new QuizSetupQuestionGetterWrapper($this->getEntityManagerMock());
+        $this->objectToTest = new QuizSetupQuestionGetterWrapper($this->getEntityManagerMock());
     }
     
     public function testSetObjectWrapper()
     {
-        $this->quizSetup->setupObjectWrapper();
+        $this->objectToTest->setupObjectWrapper();
         
-        $this->assertInstanceOf('\Acme\ReqBundle\Model\RecordsGetterWrapperAbstract', $this->quizSetup->getObjectWrapper());
+        $this->assertInstanceOf('\Acme\ReqBundle\Model\RecordsGetterWrapperAbstract', $this->objectToTest->getObjectWrapper());
+    }
+    
+    public function testSetupObjectWrapperInput()
+    {
+        $this->objectToTest->setupObjectWrapperInput();
+        
+        $input = $this->objectToTest->getObjectWrapper()->getInput();
+        
+        $this->assertArrayHasKey('orderBy', $input);
+        $this->assertArrayHasKey('groupBy', $input);
     }
 }
