@@ -10,6 +10,7 @@ use Acme\ReqBundle\Model\RecordsGetterWrapperAbstract;
  */
 class QuizSetupQuestionGetterWrapper extends QuizSetupAbstract
 {
+    /** @var RecordsGetterWrapperAbstract $objectWrapper **/
     private $objectWrapper;
     
     public function setupObjectWrapper()
@@ -30,6 +31,8 @@ class QuizSetupQuestionGetterWrapper extends QuizSetupAbstract
      */
     public function setupObjectWrapperInput($input = array())
     {
+        $this->assertObjectWrapper();
+        
         if (!empty($input)) {
             $this->getObjectWrapper()->setInput($input);
         } elseif ($this->getTag()) {
@@ -50,7 +53,9 @@ class QuizSetupQuestionGetterWrapper extends QuizSetupAbstract
         $this->assertObjectWrapperInput();
         $this->getObjectWrapper()->setupQueryBuilder();
     }
-
+        /**
+         * Ensure a wrapper object is set
+         */
         private function assertObjectWrapper()
         {
             if (!$this->getObjectWrapper()) {
@@ -58,6 +63,9 @@ class QuizSetupQuestionGetterWrapper extends QuizSetupAbstract
             }
         }
         
+        /**
+         * Ensure the wrapper object input is set
+         */
         private function assertObjectWrapperInput()
         {
             if (!$this->getObjectWrapper()->getInput()) {
@@ -67,10 +75,13 @@ class QuizSetupQuestionGetterWrapper extends QuizSetupAbstract
     
     /**
      * @param RecordsGetterWrapperAbstract $objectWrapper
+     * @return RecordsGetterWrapperAbstract $objectWrapper
      */
     public function setObjectWrapper(RecordsGetterWrapperAbstract $objectWrapper)
     {
         $this->objectWrapper = $objectWrapper;
+        
+        return $this->objectWrapper;
     }
     
     /**

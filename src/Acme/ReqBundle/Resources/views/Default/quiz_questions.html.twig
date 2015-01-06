@@ -74,7 +74,7 @@
 
             <p><strong>Topics:</strong> {% for topic in question.topics %}<a href="{{ path('acme_quiz_topic', {'topic': topic|slugify }) }}" class="btn btn-default" title="View quiz for {{ topic }} topic">{{ topic }}</a> {% endfor %}</p>
             
-            {% if question.tags is defined %}
+            {% if question.tags is not empty %}
                 <div>
                 <strong>Tags:</strong>
                 {% for tag in question.tags %}

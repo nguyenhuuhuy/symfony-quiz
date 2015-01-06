@@ -59,7 +59,7 @@ class QuizQuestionsRelations
      * @param \Acme\ReqBundle\Entity\Topics $topic
      * @return QuizQuestionsRelations
      */
-    public function setTopic(\Acme\ReqBundle\Entity\Topics $topic = null)
+    public function setTopic(Topics $topic = null)
     {
         $this->topic = $topic;
 
@@ -82,7 +82,7 @@ class QuizQuestionsRelations
      * @param \Acme\ReqBundle\Entity\QuizQuestions $question
      * @return QuizQuestionsRelations
      */
-    public function setQuestion(\Acme\ReqBundle\Entity\QuizQuestions $question = null)
+    public function setQuestion(QuizQuestions $question = null)
     {
         $this->question = $question;
 

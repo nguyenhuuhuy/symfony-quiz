@@ -19,7 +19,14 @@ class QuizControllerTest extends WebTestCase
         $this->client = static::createClient();
     }
     
-    public function testIndex()
+    protected function tearDown()
+    {
+        parent::tearDown();
+        
+        unset($this->client);
+    }
+
+        public function testIndex()
     {
         $crawler = $this->client->request('GET', '/');
 

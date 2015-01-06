@@ -59,7 +59,7 @@ class QuizTagsRelations
      * @param \Acme\ReqBundle\Entity\QuizTags $tag
      * @return QuizTagsRelations
      */
-    public function setTag(\Acme\ReqBundle\Entity\QuizTags $tag = null)
+    public function setTag(QuizTags $tag = null)
     {
         $this->tag = $tag;
 
@@ -82,7 +82,7 @@ class QuizTagsRelations
      * @param \Acme\ReqBundle\Entity\QuizQuestions $question
      * @return QuizTagsRelations
      */
-    public function setQuestion(\Acme\ReqBundle\Entity\QuizQuestions $question = null)
+    public function setQuestion(QuizQuestions $question = null)
     {
         $this->question = $question;
 

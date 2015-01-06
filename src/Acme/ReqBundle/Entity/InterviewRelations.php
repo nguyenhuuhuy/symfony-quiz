@@ -59,7 +59,7 @@ class InterviewRelations
      * @param \Acme\ReqBundle\Entity\Topics $topic
      * @return InterviewRelations
      */
-    public function setTopic(\Acme\ReqBundle\Entity\Topics $topic = null)
+    public function setTopic(Topics $topic = null)
     {
         $this->topic = $topic;
 
@@ -82,7 +82,7 @@ class InterviewRelations
      * @param \Acme\ReqBundle\Entity\Interview $question
      * @return InterviewRelations
      */
-    public function setQuestion(\Acme\ReqBundle\Entity\Interview $question = null)
+    public function setQuestion(Interview $question = null)
     {
         $this->question = $question;
 

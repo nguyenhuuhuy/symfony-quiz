@@ -45,12 +45,12 @@ assetic:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   pdo_mysql
-        host:     localhost
+        driver:   "%database_driver%"
+        host:     "%database_host%"
         port:     "%database_port%"
-        dbname:   quiz
-        user:     root
-        password: null
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
         charset:  UTF8
         mapping_types:
             enum: string
@@ -78,7 +78,7 @@ knp_paginator:
     template:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig
-   
+
 sensio_framework_extra:
     view:    { annotations: false }
     router:  { annotations: true }
