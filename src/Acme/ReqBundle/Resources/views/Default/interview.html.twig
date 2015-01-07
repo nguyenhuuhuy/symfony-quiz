@@ -3,6 +3,8 @@
 {% block body %}
 <div class="container">
     
+    <!-- knp_menu_render('AcmeReqBundle:Builder:mainMenu') -->
+    
     <ol class="breadcrumb">
         <li><a href="{{ url('homepage') }}" title="Back to the home page">Home</a></li>
         <li class="active">Interview</li>
@@ -13,9 +15,7 @@
         
         <p><strong>{{ pagination.getTotalItemCount }}</strong> questions available.</p>
         
-        <!--
         <p>Order by {{ knp_pagination_sortable(pagination, 'Id', 'ir.id') }} - {% if pagination.isSorted('q.question') %}{% endif %}{{ knp_pagination_sortable(pagination, 'Question', 'q.question') }} </p>
-        -->
         
         <button id="collapse-init" class="btn btn-primary">
             Expand all

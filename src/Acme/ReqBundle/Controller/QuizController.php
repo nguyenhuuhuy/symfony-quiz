@@ -46,7 +46,7 @@ class QuizController extends Controller
         );
  
         $entitySerializer = new EntitySerializer($em);
-  
+
         $recordsArray = array();
         foreach($pagination as $paging) {
             $quizPaginationRecordHelper = new QuizPaginationRecordHelper($paging);

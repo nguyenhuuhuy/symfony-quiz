@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: services.yml }
 
 framework:
     #esi:             ~
@@ -54,7 +55,7 @@ doctrine:
         charset:  UTF8
         mapping_types:
             enum: string
-        
+
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
@@ -83,6 +84,13 @@ sensio_framework_extra:
     view:    { annotations: false }
     router:  { annotations: true }
 
+# Knp Menu configuration
+knp_menu:
+    twig:
+        template: knp_menu.html.twig
+    templating: false
+    default_renderer: twig
+
 # FOSRESTBundle
 fos_rest:
     format_listener:
@@ -92,4 +100,3 @@ fos_rest:
         view_response_listener: true
         formats:
             json: true
-

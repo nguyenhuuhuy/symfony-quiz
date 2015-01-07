@@ -1,8 +1,0 @@
-parameters:
-#    acme_quiz.example.class: Acme\ReqBundle\Example
-
-services:
-    acme.twig.acme_extension:
-            class: Acme\ReqBundle\Twig\SlugifierExtension
-            tags:
-                - { name: twig.extension }

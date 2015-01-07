@@ -5,7 +5,7 @@ namespace Acme\ReqBundle\Twig;
 use Twig_Extension;
 use Acme\ReqBundle\Model\Slugifier;
 
-/**    
+/**
  * @author Andrea Fiori
  * @since  23 October 2014
  */

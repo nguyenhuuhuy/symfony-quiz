@@ -1,0 +1,7 @@
+parameters:
+
+services:
+    acme.twig.acme_extension:
+            class: Acme\ReqBundle\Twig\SlugifierExtension
+            tags:
+                - { name: twig.extension }
