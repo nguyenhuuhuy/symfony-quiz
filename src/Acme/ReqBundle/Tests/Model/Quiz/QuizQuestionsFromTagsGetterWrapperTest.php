@@ -3,8 +3,8 @@
 namespace Acme\ReqBundle\Tests\Model\Quiz;
 
 use Acme\ReqBundle\Tests\Model\TestSuite;
-use Acme\ReqBundle\Model\Quiz\QuizQuestionsFromTagsGetter;
-use Acme\ReqBundle\Model\Quiz\QuizQuestionsFromTagsGetterWrapper;
+use Acme\ModelBundle\Model\Quiz\QuizQuestionsFromTagsGetter;
+use Acme\ModelBundle\Model\Quiz\QuizQuestionsFromTagsGetterWrapper;
 
 /**
  * @author Andrea Fiori

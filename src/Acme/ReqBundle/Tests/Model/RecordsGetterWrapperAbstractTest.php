@@ -16,7 +16,7 @@ class RecordsGetterWrapperAbstractTest extends TestSuite
     {
         parent::setUp();
         
-        $this->recordsGetterWrapperAbstract = $this->getMockForAbstractClass('\Acme\ReqBundle\Model\RecordsGetterWrapperAbstract');
+        $this->recordsGetterWrapperAbstract = $this->getMockForAbstractClass('\Acme\ModelBundle\Model\RecordsGetterWrapperAbstract');
     }
     
     public function testSetInput()

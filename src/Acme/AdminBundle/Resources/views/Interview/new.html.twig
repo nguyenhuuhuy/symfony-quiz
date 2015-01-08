@@ -1,0 +1,19 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block section %}
+
+<ul class="breadcrumb">
+    <li><a href="#" title="Home page">Home</a> <span class="divider"></span></li>
+    <li><a href="{{ path('acme_admin_interview_index') }}" title="Interview questions list">Interview questions</a></li>
+    <li class="active">New question</li>
+</ul>
+
+<h1>New question</h1>
+
+{{ form(form) }}
+<br>
+<a href="{{ path('acme_admin_interview_index') }}" class="btn btn-primary">
+    Back to the list
+</a>
+
+{% endblock %}

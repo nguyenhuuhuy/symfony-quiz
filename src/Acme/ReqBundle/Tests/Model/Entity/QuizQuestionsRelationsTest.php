@@ -25,12 +25,11 @@ class QuizQuestionsRelationsFunctionalTest extends KernelTestCase
 
     public function testGetClassName()
     {
-        $id = $this->em
-            ->getRepository('AcmeReqBundle:QuizQuestionsRelations')
-            ->getClassName()
+        $id = $this->em->getRepository('ModelBundle:QuizQuestionsRelations')
+                       ->getClassName()
         ;
 
-        $this->assertEquals('Acme\ReqBundle\Entity\QuizQuestionsRelations', $id);
+        $this->assertEquals('Acme\ModelBundle\Entity\QuizQuestionsRelations', $id);
     }
 
     /**

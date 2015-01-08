@@ -16,7 +16,7 @@ class QueryBuilderHelperAbstractTest extends TestSuite
     {
         parent::setUp();
         
-        $this->queryBuilderHelperAbstract = $this->getMockForAbstractClass('Acme\ReqBundle\Model\QueryBuilderHelperAbstract', array($this->getEntityManagerMock()));
+        $this->queryBuilderHelperAbstract = $this->getMockForAbstractClass('Acme\ModelBundle\Model\QueryBuilderHelperAbstract', array($this->getEntityManagerMock()));
     }
     
     public function testGetQuery()

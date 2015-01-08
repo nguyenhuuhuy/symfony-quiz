@@ -1,0 +1,23 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block section %}
+    
+<ul class="breadcrumb">
+    <li><a href="#" title="Back to the home page">Home</a> <span class="divider"></span></li>
+    <li><a href="{{ path('acme_admin_quiz_quizquestions_index') }}" title="Quiz questions">Quiz questions</a></li>
+    <li class="active">{{ entity.question }}</li>
+</ul>
+    
+<h1>{{ entity.question }}</h1>
+
+{{ form(edit_form) }}
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('acme_admin_quiz_quizquestions_index') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

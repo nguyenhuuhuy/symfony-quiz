@@ -3,8 +3,8 @@
 namespace Acme\ReqBundle\Tests\Model\Interview;
 
 use Acme\ReqBundle\Tests\Model\TestSuite;
-use Acme\ReqBundle\Model\Interview\InterviewGetter;
-use Acme\ReqBundle\Model\Interview\InterviewGetterWrapper;
+use Acme\ModelBundle\Model\Interview\InterviewGetter;
+use Acme\ModelBundle\Model\Interview\InterviewGetterWrapper;
 
 /**
  * @author Andrea Fiori

@@ -16,7 +16,7 @@ class QuizSetupAbstractTest extends TestSuite
     {
         parent::setUp();
         
-        $this->quizSetupAbstract = $this->getMockForAbstractClass('\Acme\ReqBundle\Model\Quiz\QuizSetupAbstract', array( $this->getEntityManagerMock() ));
+        $this->quizSetupAbstract = $this->getMockForAbstractClass('\Acme\ModelBundle\Model\Quiz\QuizSetupAbstract', array( $this->getEntityManagerMock() ));
     }
     
     public function testSetTopic()

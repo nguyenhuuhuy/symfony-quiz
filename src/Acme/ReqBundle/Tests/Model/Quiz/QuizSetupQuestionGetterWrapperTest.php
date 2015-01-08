@@ -3,7 +3,7 @@
 namespace Acme\ReqBundle\Tests\Model\Quiz;
 
 use Acme\ReqBundle\Tests\Model\TestSuite;
-use Acme\ReqBundle\Model\Quiz\QuizSetupQuestionGetterWrapper;
+use Acme\ModelBundle\Model\Quiz\QuizSetupQuestionGetterWrapper;
 
 /**
  * @author Andrea Fiori
@@ -24,7 +24,7 @@ class QuizSetupQuestionGetterWrapperTest extends TestSuite
     {
         $this->objectToTest->setupObjectWrapper();
         
-        $this->assertInstanceOf('\Acme\ReqBundle\Model\RecordsGetterWrapperAbstract', $this->objectToTest->getObjectWrapper());
+        $this->assertInstanceOf('\Acme\ModelBundle\Model\RecordsGetterWrapperAbstract', $this->objectToTest->getObjectWrapper());
     }
     
     public function testSetupObjectWrapperInput()

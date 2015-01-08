@@ -1,0 +1,80 @@
+{% extends "::base_empty.html.twig" %}
+
+{% block stylesheets %}
+    <link href="{{ asset('app/Resources/css/bootstrap.min.css') }}" rel="stylesheet">
+    <style>
+    body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #eee;
+    }
+    .form-signin {
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+    }
+    .form-signin .form-signin-heading,
+    .form-signin .checkbox {
+        margin-bottom: 10px;
+    }
+    .form-signin .checkbox {
+        font-weight: normal;
+    }
+    .form-signin .form-control {
+        position: relative;
+        font-size: 16px;
+        height: auto;
+        padding: 10px;
+        -webkit-box-sizing: border-box;
+               -moz-box-sizing: border-box;
+                        box-sizing: border-box;
+    }
+    .form-signin .form-control:focus {
+        z-index: 2;
+    }
+    .form-signin input[type="text"] {
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    </style>
+{% endblock %}
+
+{% block title %}Quiz and question interviews - Admin area{% endblock %}
+
+{% block body %}
+    {% if error %}
+        <div>{{ error.message }}</div>
+    {% endif %}
+
+<div class="container">
+<form action="{{ path('acme_admin_security_logincheck') }}" method="post" id="frm_login" class="form-signin" role="form">
+<div>
+    <h2 class="form-signin-heading">Admin area</h2>
+    
+    <label for="username">Username:</label>
+    <input type="text" id="username" autofocus="autofocus" name="_username" 
+           value="{{ last_username }}" title="Insert username" required="required"
+           class="form-control" placeholder="Username...">
+    
+    <div>&nbsp;</div>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" value="" name="_password" title="Insert your password" class="form-control" placeholder="Password...">
+    
+    <button class="btn btn-lg btn-primary btn-block" type="submit" title="Click to login">Login</button>
+  
+    <a href="#" class="btn btn-lg btn-default btn-block" title="Back to the website">
+        Back to the website
+    </a>
+
+</div>
+</form>
+</div>
+        
+{% endblock %}

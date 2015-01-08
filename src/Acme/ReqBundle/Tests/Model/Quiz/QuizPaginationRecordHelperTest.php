@@ -3,13 +3,13 @@
 namespace Acme\ReqBundle\Tests\Model\Quiz;
 
 use Acme\ReqBundle\Tests\Model\TestSuite;
-use Acme\ReqBundle\Model\Quiz\QuizPaginationRecordHelper;
-use Acme\ReqBundle\Model\Quiz\QuizAnswersGetter;
-use Acme\ReqBundle\Model\Quiz\QuizAnswersGetterWrapper;
-use Acme\ReqBundle\Model\Quiz\QuizQuestionsGetter;
-use Acme\ReqBundle\Model\Quiz\QuizQuestionsGetterWrapper;
-use Acme\ReqBundle\Model\Quiz\QuizTagsGetter;
-use Acme\ReqBundle\Model\Quiz\QuizTagsGetterWrapper;
+use Acme\ModelBundle\Model\Quiz\QuizPaginationRecordHelper;
+use Acme\ModelBundle\Model\Quiz\QuizAnswersGetter;
+use Acme\ModelBundle\Model\Quiz\QuizAnswersGetterWrapper;
+use Acme\ModelBundle\Model\Quiz\QuizQuestionsGetter;
+use Acme\ModelBundle\Model\Quiz\QuizQuestionsGetterWrapper;
+use Acme\ModelBundle\Model\Quiz\QuizTagsGetter;
+use Acme\ModelBundle\Model\Quiz\QuizTagsGetterWrapper;
 
 /**
  * @author Andrea Fiori
@@ -28,9 +28,9 @@ class QuizPaginationRecordHelperTest extends TestSuite
 
     public function testGetPagingRecord()
     {
-        $this->assertInstanceOf('Acme\ReqBundle\Entity\QuizQuestionsRelations', $this->objectToTest->getPagingRecord());
-        $this->assertInstanceOf('Acme\ReqBundle\Entity\QuizQuestions', $this->objectToTest->getPagingRecord()->getQuestion());
-        $this->assertInstanceOf('Acme\ReqBundle\Entity\Topics', $this->objectToTest->getPagingRecord()->getTopic());
+        $this->assertInstanceOf('Acme\ModelBundle\Entity\QuizQuestionsRelations', $this->objectToTest->getPagingRecord());
+        $this->assertInstanceOf('Acme\ModelBundle\Entity\QuizQuestions', $this->objectToTest->getPagingRecord()->getQuestion());
+        $this->assertInstanceOf('Acme\ModelBundle\Entity\Topics', $this->objectToTest->getPagingRecord()->getTopic());
     }
     
     public function testSetupQuestion()
@@ -104,7 +104,7 @@ class QuizPaginationRecordHelperTest extends TestSuite
          */
         private function getQuizQuestionsRelationsMock()
         {
-            $mockOjbect = $this->getMock('\Acme\ReqBundle\Entity\QuizQuestionsRelations');
+            $mockOjbect = $this->getMock('\Acme\ModelBundle\Entity\QuizQuestionsRelations');
             
             $mockOjbect->expects($this->any())
                        ->method('getQuestion')
@@ -119,7 +119,7 @@ class QuizPaginationRecordHelperTest extends TestSuite
         
         private function getQuizQuestionMock()
         {
-            $mockOjbect = $this->getMock('\Acme\ReqBundle\Entity\QuizQuestions');
+            $mockOjbect = $this->getMock('\Acme\ModelBundle\Entity\QuizQuestions');
             
             $mockOjbect->expects($this->any())
                              ->method('getId')
@@ -133,7 +133,7 @@ class QuizPaginationRecordHelperTest extends TestSuite
         
         private function getTopicsMock()
         {
-            $mockOjbect = $this->getMock('\Acme\ReqBundle\Entity\Topics');
+            $mockOjbect = $this->getMock('\Acme\ModelBundle\Entity\Topics');
             
             $mockOjbect->expects($this->any())
                        ->method('getId')

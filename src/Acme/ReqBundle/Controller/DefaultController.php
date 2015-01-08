@@ -4,15 +4,15 @@ namespace Acme\ReqBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Acme\ReqBundle\Model\Quiz\QuizQuestionsTopicsGetter;
-use Acme\ReqBundle\Model\Topics\TopicsGetter;
-use Acme\ReqBundle\Model\Topics\TopicsGetterWrapper;
-use Acme\ReqBundle\Model\Topics\TopicsTreeSetup;
-use Acme\ReqBundle\Model\Quiz\QuizTagsGetter;
-use Acme\ReqBundle\Model\Quiz\QuizTagsGetterWrapper;
-use Acme\ReqBundle\Model\Interview\InterviewTopicsGetter;
-use Acme\ReqBundle\Model\Interview\InterviewTagsGetter;
-use Acme\ReqBundle\Model\Interview\InterviewTagsGetterWrapper;
+use Acme\ModelBundle\Model\Quiz\QuizQuestionsTopicsGetter;
+use Acme\ModelBundle\Model\Topics\TopicsGetter;
+use Acme\ModelBundle\Model\Topics\TopicsGetterWrapper;
+use Acme\ModelBundle\Model\Topics\TopicsTreeSetup;
+use Acme\ModelBundle\Model\Quiz\QuizTagsGetter;
+use Acme\ModelBundle\Model\Quiz\QuizTagsGetterWrapper;
+use Acme\ModelBundle\Model\Interview\InterviewTopicsGetter;
+use Acme\ModelBundle\Model\Interview\InterviewTagsGetter;
+use Acme\ModelBundle\Model\Interview\InterviewTagsGetterWrapper;
 
 /**
  * @author Andrea Fiori
@@ -35,7 +35,7 @@ class DefaultController extends Controller
         $quizTagsGetterWrapper = new QuizTagsGetterWrapper( new QuizTagsGetter($em) );
         $quizTagsGetterWrapper->setInput( array('fields' => 'DISTINCT(qt.id) AS id, qt.name') );
         $quizTagsGetterWrapper->setupQueryBuilder();
-        
+
         $topicsTreeSetup = new TopicsTreeSetup();
         $topicsTreeSetup->setTopicsGetterWrapper(new TopicsGetterWrapper( new TopicsGetter($em)));
         $topicsTreeSetup->setupTopicsFromDb( array() );
@@ -48,7 +48,7 @@ class DefaultController extends Controller
         $interviewTagsGetterWrapper = new InterviewTagsGetterWrapper( new InterviewTagsGetter($em) );
         $interviewTagsGetterWrapper->setInput( array() );
         $interviewTagsGetterWrapper->setupQueryBuilder();
-        
+
         return $this->render('AcmeReqBundle:Default:index.html.twig', array(
             'quizTopicsRecords'  => $topicsGetterWrapper->getRecords(),
             'quizTags'           => $quizTagsGetterWrapper->getRecords(),

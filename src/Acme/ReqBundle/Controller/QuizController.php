@@ -4,15 +4,15 @@ namespace Acme\ReqBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Acme\ReqBundle\Model\Quiz\QuizQuestionsGetter;
-use Acme\ReqBundle\Model\Quiz\QuizQuestionsGetterWrapper;
-use Acme\ReqBundle\Model\Quiz\QuizAnswersGetterWrapper;
-use Acme\ReqBundle\Model\Quiz\QuizAnswersGetter;
-use Acme\ReqBundle\Model\Quiz\QuizTagsGetter;
-use Acme\ReqBundle\Model\Quiz\QuizTagsGetterWrapper;
-use Acme\ReqBundle\Model\Quiz\QuizSetupQuestionGetterWrapper;
-use Acme\ReqBundle\Model\EntitySerializer;
-use Acme\ReqBundle\Model\Quiz\QuizPaginationRecordHelper;
+use Acme\ModelBundle\Model\Quiz\QuizQuestionsGetter;
+use Acme\ModelBundle\Model\Quiz\QuizQuestionsGetterWrapper;
+use Acme\ModelBundle\Model\Quiz\QuizAnswersGetterWrapper;
+use Acme\ModelBundle\Model\Quiz\QuizAnswersGetter;
+use Acme\ModelBundle\Model\Quiz\QuizTagsGetter;
+use Acme\ModelBundle\Model\Quiz\QuizTagsGetterWrapper;
+use Acme\ModelBundle\Model\Quiz\QuizSetupQuestionGetterWrapper;
+use Acme\ModelBundle\Model\EntitySerializer;
+use Acme\ModelBundle\Model\Quiz\QuizPaginationRecordHelper;
 
 /**
  * @author Andrea Fiori
@@ -28,19 +28,19 @@ class QuizController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $em = $this->get('doctrine.orm.entity_manager');
+        $em = $this->getDoctrine()->getManager();
         $topic    = $request->get('topic');
         $tag      = $request->get('tag');
         
-        $quizSetupQuestionGetterWrapper= new QuizSetupQuestionGetterWrapper($em);
-        $quizSetupQuestionGetterWrapper->setTopic($topic);
-        $quizSetupQuestionGetterWrapper->setTag($tag);
-        $quizSetupQuestionGetterWrapper->setupObjectWrapper();
-        $quizSetupQuestionGetterWrapper->setupObjectWrapperInput();
-        $quizSetupQuestionGetterWrapper->setupObjectWrapperQueryBuilder();
+        $wrapper = new QuizSetupQuestionGetterWrapper($em);
+        $wrapper->setTopic($topic);
+        $wrapper->setTag($tag);
+        $wrapper->setupObjectWrapper();
+        $wrapper->setupObjectWrapperInput();
+        $wrapper->setupObjectWrapperQueryBuilder();
 
         $pagination = $this->get('knp_paginator')->paginate(
-            $quizSetupQuestionGetterWrapper->getObjectWrapper()->getObjectGetter()->getQuery(),
+            $wrapper->getObjectWrapper()->getObjectGetter()->getQuery(),
             $this->get('request')->query->get('page', 1),
             self::perPage
         );

@@ -3,8 +3,8 @@
 namespace Acme\ReqBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Acme\ReqBundle\Model\Interview\InterviewGetter;
-use Acme\ReqBundle\Model\Interview\InterviewGetterWrapper;
+use Acme\ModelBundle\Model\Interview\InterviewGetter;
+use Acme\ModelBundle\Model\Interview\InterviewGetterWrapper;
 
 /**   
  * @author Andrea Fiori
@@ -21,12 +21,12 @@ class InterviewController extends Controller
     {
         $em = $this->get('doctrine.orm.entity_manager');
         
-        $interviewGetterWrapper = new InterviewGetterWrapper( new InterviewGetter($em) );
-        $interviewGetterWrapper->setInput( array() );
-        $interviewGetterWrapper->setupQueryBuilder();
+        $wrapper = new InterviewGetterWrapper( new InterviewGetter($em) );
+        $wrapper->setInput( array() );
+        $wrapper->setupQueryBuilder();
         
         $pagination = $this->get('knp_paginator')->paginate(
-            $interviewGetterWrapper->getObjectGetter()->getQuery(),
+            $wrapper->getObjectGetter()->getQuery(),
             $this->get('request')->query->get('page', 1),
             self::perPage
         );

@@ -3,7 +3,7 @@
 namespace Acme\ReqBundle\Twig;
 
 use Twig_Extension;
-use Acme\ReqBundle\Model\Slugifier;
+use Acme\ModelBundle\Model\Slugifier;
 
 /**
  * @author Andrea Fiori

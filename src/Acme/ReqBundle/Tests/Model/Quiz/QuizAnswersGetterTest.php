@@ -3,7 +3,7 @@
 namespace Acme\ReqBundle\Tests\Model\Quiz;
 
 use Acme\ReqBundle\Tests\Model\TestSuite;
-use Acme\ReqBundle\Model\Quiz\QuizAnswersGetter;
+use Acme\ModelBundle\Model\Quiz\QuizAnswersGetter;
 
 /**
  * @author Andrea Fiori

@@ -4,8 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Quiz system{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+        {% block stylesheets %}
         <link href="{{ asset('app/Resources/css/bootstrap.min.css') }}" rel="stylesheet">
         <style>
             .normalweight {
@@ -15,11 +15,16 @@
                 cursor: pointer;
             }
         </style>
+        {% endblock %}
+        
+        {% block javascripts_head %}
         <script src="{{ asset('app/Resources/js/jquery.min.js') }}"></script>
         <script src="{{ asset('app/Resources/js/bootstrap.min.js') }}"></script>
+        {% endblock %}
     </head>
     <body>
 
+    {% block navbar %}
     <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -41,6 +46,7 @@
             </div>
         </div>
     </div>
+    {% endblock %}
 
     {% block body %}{% endblock %}
     {% block javascripts %}{% endblock %}

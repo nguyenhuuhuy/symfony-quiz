@@ -1,0 +1,45 @@
+<?php
+
+namespace Acme\ModelBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * InterviewRelations
+ *
+ * @ORM\Table(name="interview_relations", indexes={@ORM\Index(name="fk_interview_topic_id", columns={"topic_id"}), @ORM\Index(name="fk_interview_question_id", columns={"question_id"})})
+ * @ORM\Entity
+ */
+class InterviewRelations
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Acme\ModelBundle\Entity\Topics
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\ModelBundle\Entity\Topics")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="topic_id", referencedColumnName="id")
+     * })
+     */
+    private $topic;
+
+    /**
+     * @var \Acme\ModelBundle\Entity\Interview
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\ModelBundle\Entity\Interview")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="question_id", referencedColumnName="id")
+     * })
+     */
+    private $question;
+
+
+}

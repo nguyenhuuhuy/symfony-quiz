@@ -1,0 +1,15 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block section %}
+<h1>QuizQuestions creation</h1>
+
+{{ form(form) }}
+
+<ul class="record_actions">
+<li>
+    <a href="{{ path('acme_admin_quiz_quizquestions_index') }}">
+        Back to the list
+    </a>
+</li>
+</ul>
+{% endblock %}

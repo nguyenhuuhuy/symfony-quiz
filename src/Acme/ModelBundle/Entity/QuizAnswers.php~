@@ -1,0 +1,49 @@
+<?php
+
+namespace Acme\ModelBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * QuizAnswers
+ *
+ * @ORM\Table(name="quiz_answers", indexes={@ORM\Index(name="question_id", columns={"question_id"})})
+ * @ORM\Entity
+ */
+class QuizAnswers
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="answer", type="text", length=65535, nullable=true)
+     */
+    private $answer;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="correct", type="string", nullable=true)
+     */
+    private $correct;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Acme\ModelBundle\Entity\QuizQuestions
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\ModelBundle\Entity\QuizQuestions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="question_id", referencedColumnName="id")
+     * })
+     */
+    private $question;
+
+
+}

@@ -3,8 +3,8 @@
 namespace Acme\ReqBundle\Tests\Model\Topics;
 
 use Acme\ReqBundle\Tests\Model\TestSuite;
-use Acme\ReqBundle\Model\Topics\TopicsGetter;
-use Acme\ReqBundle\Model\Topics\TopicsGetterWrapper;
+use Acme\ModelBundle\Model\Topics\TopicsGetter;
+use Acme\ModelBundle\Model\Topics\TopicsGetterWrapper;
 
 /**
  * @author Andrea Fiori
