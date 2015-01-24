@@ -49,7 +49,7 @@ class DefaultController extends Controller
         $interviewTagsGetterWrapper->setInput( array() );
         $interviewTagsGetterWrapper->setupQueryBuilder();
 
-        return $this->render('AcmeReqBundle:Default:index.html.twig', array(
+        return $this->render('::default/index.html.twig', array(
             'quizTopicsRecords'  => $topicsGetterWrapper->getRecords(),
             'quizTags'           => $quizTagsGetterWrapper->getRecords(),
             'interviewTopics'    => $interviewTopicsGetter->getRecords(),

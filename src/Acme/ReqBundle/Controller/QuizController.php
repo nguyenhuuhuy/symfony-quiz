@@ -60,7 +60,7 @@ class QuizController extends Controller
             $recordsArray[] = $quizPaginationRecordHelper->getRecord();
         }
 
-        return $this->render('AcmeReqBundle:Default:quiz_questions.html.twig', array(
+        return $this->render('::default/quiz_questions.html.twig', array(
             'pagination' => $pagination,
             'qa'         => $recordsArray
         ));

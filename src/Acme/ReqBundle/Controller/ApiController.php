@@ -15,7 +15,7 @@ class ApiController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AcmeReqBundle:Default:api.html.twig', array(
+        return $this->render('::default/api.html.twig', array(
             
         ));
     }

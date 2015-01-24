@@ -25,11 +25,13 @@ security:
             form_login:
                 login_path: acme_admin_security_login
                 check_path: acme_admin_security_logincheck
-                # default_target_path: /admin
+                always_use_default_target_path: true
+                default_target_path: /admin/quiz
+                failure_path: /admin/login
             logout:
                 path:   acme_admin_security_logout
-                target: /admin/quiz
+                target: /admin/login
 
     access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/,      roles: ROLE_ADMIN }

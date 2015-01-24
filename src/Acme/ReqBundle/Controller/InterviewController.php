@@ -36,7 +36,7 @@ class InterviewController extends Controller
             $records[] = $paging;
         }
         
-        return $this->render('AcmeReqBundle:Default:interview.html.twig', array(
+        return $this->render('::default/interview.html.twig', array(
             'pagination' => $pagination,
             'records'    => $records
         ));

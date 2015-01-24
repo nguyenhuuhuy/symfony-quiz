@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * Class SecurityController
+ * 
+ * @Route("/admin")
  */
 class SecurityController extends Controller
 {
