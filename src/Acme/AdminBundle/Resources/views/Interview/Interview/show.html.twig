@@ -1,0 +1,50 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block section %}
+
+    <ul class="breadcrumb">
+        <li><a href="#" title="Home page">Home</a> <span class="divider"></span></li>
+        <li><a href="{{ path('acme_admin_interview_interview_index') }}" title="Interview questions list">Interview questions</a></li>
+        <li class="active">{{ entity.question }}</li>
+    </ul>
+    
+    <h1>Interview questions</h1>
+    
+    <br>
+    
+    <div>
+        <a href="{{ path('acme_admin_interview_interview_index') }}" title="Back to the list" class="btn btn-default">
+            Back to the list
+        </a>
+
+        <a href="{{ path('acme_admin_interview_interview_edit', { 'id': entity.id }) }}" title="Edit" class="btn btn-primary">
+            Edit
+        </a>
+    </div>
+    
+    <br>
+    
+    <table class="table table-condensed">
+        <tbody>
+            <tr>
+                <th>Question</th>
+                <td>{{ entity.question }}</td>
+            </tr>
+            <tr>
+                <th>Answer</th>
+                <td>{{ entity.answer }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ entity.position }}</td>
+            </tr>
+            <tr>
+                <th>Topics (Old)</th>
+                <td>{{ entity.topicsOld }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    {{ form(delete_form) }}
+                
+{% endblock %}

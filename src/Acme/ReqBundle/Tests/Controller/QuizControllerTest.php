@@ -22,11 +22,11 @@ class QuizControllerTest extends WebTestCase
     protected function tearDown()
     {
         parent::tearDown();
-        
+
         unset($this->client);
     }
 
-        public function testIndex()
+    public function testQuizIndex()
     {
         $crawler = $this->client->request('GET', '/');
 

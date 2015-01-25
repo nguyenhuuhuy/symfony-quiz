@@ -1,0 +1,46 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block section %}
+
+    <ul class="breadcrumb">
+        <li><a href="#" title="Home page">Home</a> <span class="divider"></span></li>
+        <li><a href="#" title="Home page">Quiz</a> <span class="divider"></span></li>
+        <li class="active">Topics</li>
+    </ul>
+    
+    {% if entities is not empty %}
+
+        <h1>Quiz Questions Relations</h1>
+
+        <a href="{{ path('admin_quizquestionsrelations_new') }}" class="btn btn-primary">
+            New relation
+        </a>
+
+        <table width="100%" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Topic</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td>{{ entity.question.question | truncate(80) }}</td>
+                    <td>{{ entity.topic.name }}</td>
+                    <td><a href="{{ path('admin_quizquestionsrelations_show', { 'id': entity.id }) }}">Show</a></td>
+                    <td><a href="{{ path('admin_quizquestionsrelations_edit', { 'id': entity.id }) }}">Edit</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <br>
+        <div class="alert alert-warning">
+            <h3>No interview questions found</h3>
+            <p>No interview questions are stored in our archive</p>
+        </div>
+    {% endif %}
+{% endblock %}

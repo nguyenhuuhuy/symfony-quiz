@@ -1,0 +1,43 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block section %}
+
+    <ul class="breadcrumb">
+        <li><a href="#" title="Home page">Home</a> <span class="divider"></span></li>
+        <li class="active">Topics</li>
+    </ul>
+    
+    <a href="#" title="" class="btn btn-primary">
+        Create a new topic
+    </a>
+    
+    <h1>Topics</h1>
+    
+    <p><strong>{{ pagination.getTotalItemCount }}</strong> topics.</p>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('admin_topics_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+                <td>{{ entity.parentId }}</td>
+                <td>{{ entity.status }}</td>
+                <td><a href="{{ path('admin_topics_show', { 'id': entity.id }) }}">Show</a></td>
+                <td><a href="{{ path('admin_topics_edit', { 'id': entity.id }) }}">Edit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+{% endblock %}

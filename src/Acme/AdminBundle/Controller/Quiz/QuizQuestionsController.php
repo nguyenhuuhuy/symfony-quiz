@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Acme\ModelBundle\Entity\QuizQuestions;
 use Acme\AdminBundle\Form\QuizQuestionsType;
+use Acme\ModelBundle\Model\Quiz\QuizQuestionsGetter;
+use Acme\ModelBundle\Model\Quiz\QuizQuestionsGetterWrapper;
 
 /**
  * QuizQuestions controller.
@@ -26,12 +28,24 @@ class QuizQuestionsController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $wrapper = new QuizQuestionsGetterWrapper( new QuizQuestionsGetter($this->getDoctrine()->getManager()) );
+        $wrapper->setInput(array('orderBy' => 'qq.id DESC'));
+        $wrapper->setupQueryBuilder();
 
-        $entities = $em->getRepository('ModelBundle:QuizQuestions')->findAll();
-
+        $pagination = $this->get('knp_paginator')->paginate(
+            $wrapper->getObjectGetter()->getQuery(),
+            $this->get('request')->query->get('page', 1),
+            8
+        );
+        
+        $records = array();
+        foreach($pagination as $paging) {
+            $records[] = $paging;
+        }
+        
         return array(
-            'entities' => $entities,
+            'pagination' => $pagination,
+            'entities'   => $records
         );
     }
     

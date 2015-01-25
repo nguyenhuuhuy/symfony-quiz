@@ -1,0 +1,14 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block section %}
+    
+    <h1>QuizQuestionsRelations edit</h1>
+    
+    <a href="{{ path('admin_quizquestionsrelations') }}" title="">
+        Back to the list
+    </a>
+            
+    {{ form(edit_form) }}
+
+    {{ form(delete_form) }}
+{% endblock %}

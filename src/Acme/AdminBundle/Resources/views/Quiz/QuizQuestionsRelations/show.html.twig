@@ -1,0 +1,26 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block section %}
+    
+    <h1>Quiz Questions Relations</h1>
+
+    <a href="{{ path('admin_quizquestionsrelations') }}">
+        Back to the list
+    </a>
+        
+    <a href="{{ path('admin_quizquestionsrelations_edit', { 'id': entity.id }) }}">
+        Edit
+    </a>
+    
+    {{ form(delete_form) }}
+    
+    <table class="table table-condensed">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

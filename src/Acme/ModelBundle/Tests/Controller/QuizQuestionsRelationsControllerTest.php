@@ -4,7 +4,7 @@ namespace Acme\ModelBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class QuizQuestionsControllerTest //extends WebTestCase
+class QuizQuestionsRelationsControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class QuizQuestionsControllerTest //extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/admin/quiz/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /admin/quiz/");
+        $crawler = $client->request('GET', '/admin/quizquestionsrelations/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /admin/quizquestionsrelations/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'acme_modelbundle_quizquestions[field_name]'  => 'Test',
+            'acme_modelbundle_quizquestionsrelations[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class QuizQuestionsControllerTest //extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'acme_modelbundle_quizquestions[field_name]'  => 'Foo',
+            'acme_modelbundle_quizquestionsrelations[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

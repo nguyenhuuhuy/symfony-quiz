@@ -1,36 +1,36 @@
 <?php
 
-namespace Acme\AdminBundle\Controller;
+namespace Acme\AdminBundle\Controller\Topics;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Acme\ModelBundle\Entity\Interview;
-use Acme\AdminBundle\Form\InterviewType;
-use Acme\ModelBundle\Model\Interview\InterviewGetter;
-use Acme\ModelBundle\Model\Interview\InterviewGetterWrapper;
+use Acme\ModelBundle\Entity\Topics;
+use Acme\AdminBundle\Form\TopicsType;
+use Acme\ModelBundle\Model\Topics\TopicsGetter;
+use Acme\ModelBundle\Model\Topics\TopicsGetterWrapper;
 
 /**
- * Interview controller.
+ * Topics controller.
  *
- * @Route("/admin/interview")
+ * @Route("/admin/topics")
  */
-class InterviewController extends Controller
+class TopicsController extends Controller
 {
 
     /**
-     * Lists all Interview entities.
+     * Lists all Topics entities.
      *
-     * @Route("/")
+     * @Route("/", name="admin_topics")
      * @Method("GET")
      * @Template()
      */
     public function indexAction()
     {
-        $wrapper = new InterviewGetterWrapper( new InterviewGetter($this->getDoctrine()->getManager()) );
-        $wrapper->setInput(array('orderBy' => 'ir.id DESC'));
+        $wrapper = new TopicsGetterWrapper( new TopicsGetter($this->getDoctrine()->getManager()) );
+        $wrapper->setInput(array('orderBy' => 't.id DESC'));
         $wrapper->setupQueryBuilder();
 
         $pagination = $this->get('knp_paginator')->paginate(
@@ -50,15 +50,15 @@ class InterviewController extends Controller
         );
     }
     /**
-     * Creates a new Interview entity.
+     * Creates a new Topics entity.
      *
-     * @Route("/")
+     * @Route("/", name="admin_topics_create")
      * @Method("POST")
-     * @Template("ModelBundle:Interview:new.html.twig")
+     * @Template("ModelBundle:Topics:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Interview();
+        $entity = new Topics();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -67,7 +67,7 @@ class InterviewController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('acme_admin_interview_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('admin_topics_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -77,34 +77,34 @@ class InterviewController extends Controller
     }
 
     /**
-     * Creates a form to create a Interview entity.
+     * Creates a form to create a Topics entity.
      *
-     * @param Interview $entity The entity
+     * @param Topics $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Interview $entity)
+    private function createCreateForm(Topics $entity)
     {
-        $form = $this->createForm(new InterviewType(), $entity, array(
-            'action' => $this->generateUrl('acme_admin_interview_create'),
+        $form = $this->createForm(new TopicsType(), $entity, array(
+            'action' => $this->generateUrl('admin_topics_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('attr' => array('class'=>'btn btn-primary'), 'label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
 
     /**
-     * Displays a form to create a new Interview entity.
+     * Displays a form to create a new Topics entity.
      *
-     * @Route("/new")
+     * @Route("/new", name="admin_topics_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Interview();
+        $entity = new Topics();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -114,9 +114,9 @@ class InterviewController extends Controller
     }
 
     /**
-     * Finds and displays a Interview entity.
+     * Finds and displays a Topics entity.
      *
-     * @Route("/{id}")
+     * @Route("/{id}", name="admin_topics_show")
      * @Method("GET")
      * @Template()
      */
@@ -124,10 +124,10 @@ class InterviewController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ModelBundle:Interview')->find($id);
+        $entity = $em->getRepository('ModelBundle:Topics')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Interview entity.');
+            throw $this->createNotFoundException('Unable to find Topics entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -139,9 +139,9 @@ class InterviewController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Interview entity.
+     * Displays a form to edit an existing Topics entity.
      *
-     * @Route("/{id}/edit")
+     * @Route("/{id}/edit", name="admin_topics_edit")
      * @Method("GET")
      * @Template()
      */
@@ -149,10 +149,10 @@ class InterviewController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ModelBundle:Interview')->find($id);
+        $entity = $em->getRepository('ModelBundle:Topics')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Interview entity.');
+            throw $this->createNotFoundException('Unable to find Topics entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -166,16 +166,16 @@ class InterviewController extends Controller
     }
 
     /**
-    * Creates a form to edit a Interview entity.
+    * Creates a form to edit a Topics entity.
     *
-    * @param Interview $entity The entity
+    * @param Topics $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Interview $entity)
+    private function createEditForm(Topics $entity)
     {
-        $form = $this->createForm(new InterviewType(), $entity, array(
-            'action' => $this->generateUrl('acme_admin_interview_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new TopicsType(), $entity, array(
+            'action' => $this->generateUrl('admin_topics_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -184,20 +184,20 @@ class InterviewController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Interview entity.
+     * Edits an existing Topics entity.
      *
-     * @Route("/{id}")
+     * @Route("/{id}", name="admin_topics_update")
      * @Method("PUT")
-     * @Template("ModelBundle:Interview:edit.html.twig")
+     * @Template("ModelBundle:Topics:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ModelBundle:Interview')->find($id);
+        $entity = $em->getRepository('ModelBundle:Topics')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Interview entity.');
+            throw $this->createNotFoundException('Unable to find Topics entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -207,7 +207,7 @@ class InterviewController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('acme_admin_interview_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_topics_edit', array('id' => $id)));
         }
 
         return array(
@@ -217,9 +217,9 @@ class InterviewController extends Controller
         );
     }
     /**
-     * Deletes a Interview entity.
+     * Deletes a Topics entity.
      *
-     * @Route("/{id}")
+     * @Route("/{id}", name="admin_topics_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -229,33 +229,33 @@ class InterviewController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('ModelBundle:Interview')->find($id);
+            $entity = $em->getRepository('ModelBundle:Topics')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Interview entity.');
+                throw $this->createNotFoundException('Unable to find Topics entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('acme_admin_interview_index'));
+        return $this->redirect($this->generateUrl('admin_topics'));
     }
 
-        /**
-         * Creates a form to delete a Interview entity by id.
-         *
-         * @param mixed $id The entity id
-         *
-         * @return \Symfony\Component\Form\Form The form
-         */
-        private function createDeleteForm($id)
-        {
-            return $this->createFormBuilder()
-                        ->setAction($this->generateUrl('acme_admin_interview_delete', array('id' => $id)))
-                        ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'Delete'))
-                        ->getForm()
-            ;
-        }
+    /**
+     * Creates a form to delete a Topics entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('admin_topics_delete', array('id' => $id)))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->getForm()
+        ;
+    }
 }

@@ -152,4 +152,9 @@ class QuizQuestions
     {
         return $this->id;
     }
+    
+    public function __toString()
+    {
+        return $this->question;
+    }
 }

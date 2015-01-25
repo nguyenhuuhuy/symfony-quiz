@@ -2,43 +2,58 @@
 
 {% block section %}
 
-<ul class="breadcrumb">
-    <li><a href="#" title="Home page">Home</a> <span class="divider"></span></li>
-    <li class="active">Quiz questions</li>
-</ul>
-
-<h1>Quiz questions list</h1>
-
-<div class="table-responsive">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Question</th>
-                <th>Comment</th>
-                <th>Number of correct answers</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td>{{ entity.question }}</td>
-                <td>{{ entity.questionCode }}</td>
-                <td>{{ entity.numberCorrectAnswers }}</td>
-                <td><a href="{{ path('acme_admin_quiz_quizquestions_show', { 'id': entity.id }) }}">show</a></td>
-                <td><a href="{{ path('acme_admin_quiz_quizquestions_edit', { 'id': entity.id }) }}">edit</a></td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('acme_admin_quiz_quizquestions_new') }}">
-                Create a new entry
-            </a>
-        </li>
+    <ul class="breadcrumb">
+        <li><a href="#" title="Home page">Home</a> <span class="divider"></span></li>
+        <li class="active">Quiz questions</li>
     </ul>
-</div>
+
+    <a href="{{ path('acme_admin_quiz_quizquestions_new') }}" class="btn btn-primary">
+        New question
+    </a>
+        
+    {% if entities is not empty %}
+        
+        <h1>Quiz questions list</h1>
+        
+        <a href="{{ path('admin_quizquestionsrelations') }}" class="btn btn-default">
+            Question relations
+        </a>
+
+        <br><br>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Comment</th>
+                        <th>Number of correct answers</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td>{{ entity.question.question }}</td>
+                        <td>{{ entity.question.questionCode }}</td>
+                        <td>{{ entity.question.numberCorrectAnswers }}</td>
+                        <td><a href="{{ path('acme_admin_quiz_quizquestions_show', { 'id': entity.id }) }}">show</a></td>
+                        <td><a href="{{ path('acme_admin_quiz_quizquestions_edit', { 'id': entity.id }) }}">edit</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% else %}
+        <br>
+        <div class="alert alert-warning">
+            <h3>No quiz questions found</h3>
+            <p>No quiz questions are stored in our archive</p>
+        </div>
+    {% endif %}
 {% endblock %}

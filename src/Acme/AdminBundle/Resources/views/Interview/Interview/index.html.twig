@@ -1,0 +1,58 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block section %}
+
+    <ul class="breadcrumb">
+        <li><a href="#" title="Home page">Home</a> <span class="divider"></span></li>
+        <li class="active">Interview questions</li>
+    </ul>
+
+    <div><a href="{{ path('acme_admin_interview_interview_new') }}" class="btn btn-primary" title="">Create a new entry</a></div>
+
+    {% if entities is not empty %}
+        <h1>Interview questions</h1>
+
+        <p><strong>{{ pagination.getTotalItemCount }}</strong> interview questions.</p>
+
+        <br>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Answer</th>
+                        <th>Topic</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('acme_admin_interview_interview_show', { 'id': entity.question.id }) }}">{{ entity.question.question }}</a></td>
+                        <td>{{ entity.question.answer | truncate(150) }}</td>
+                        <td>{{ entity.question.topicsOld }}</td>
+                        <td>
+                        <a href="{{ path('acme_admin_interview_interview_show', { 'id': entity.question.id }) }}">show</a>
+                        </td>
+                        <td>
+                        <a href="{{ path('acme_admin_interview_interview_edit', { 'id': entity.question.id }) }}" title="Edit interview question">edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+    {% else %}
+        <br>
+        <div class="alert alert-warning">
+            <h3>No interview questions found</h3>
+            <p>No interview questions are stored in our archive</p>
+        </div>
+    {% endif %}
+{% endblock %}
