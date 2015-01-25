@@ -1,0 +1,32 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block section %}
+    
+    <h1>Quiz Tags list</h1>
+    
+    <a href="{{ path('admin_quiz_tags_new') }}" class="btn btn-primary">
+        Create a new entry
+    </a>
+                
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Tag</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>   
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="#">{{ entity.question.question }}</a></td>
+                <td><a href="#">{{ entity.tag.name }}</a></td>
+                <td><a href="{{ path('admin_quiz_tags_show', { 'id': entity.id }) }}">show</a></td>
+                <td><a href="{{ path('admin_quiz_tags_edit', { 'id': entity.id }) }}">edit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

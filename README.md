@@ -16,12 +16,12 @@ Install and use composer:
     composer install --optimize-autoloader
     composer update --optimize-autoloader (optional)
 
+Database
+--------------------------------
+
 The MySQL dump with database and data is on the sql directory. 
 Connection parameters are on the app/config/config.yml file.
 I've created a database called "quiz" on localhost.
-
-Database
---------------------------------
 
 The tables has InnoDb tables with relationships. There's an intermediary table
 for quiz questions, topics and one for questions and tags.
@@ -47,6 +47,13 @@ Frontend and Backend features
 - JQuery
 - The web directory was deleted so the application can be deployed on a shared hosting
 - Netbeans IDE was used for coding and design
+
+TODO
+--------------------------------
+
+- Always add new records to the database!
+- Complete the Admin area
+- Functional testing
 
 Zend questions resources
 --------------------------------

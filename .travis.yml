@@ -7,11 +7,8 @@ php:
   #- hhvm
 
 before_install:
-  #- /home/travis/.phpenv/versions/5.3/bin/composer self-update
-  #- /home/travis/.phpenv/versions/5.4/bin/composer self-update
-  #- /home/travis/.phpenv/versions/5.5/bin/composer self-update
   - composer self-update
-  - composer update --optimize-autoloader
+  - composer update
 
 before_script:
   - cp app/config/parameters.yml.travis app/config/parameters.yml

@@ -6,10 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-/**
- * Topics Form
- */
-class TopicsType extends AbstractType
+class QuizTagsType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -20,8 +17,6 @@ class TopicsType extends AbstractType
         $builder
             ->add('name')
             ->add('parentId')
-            ->add('status')
-            ->add('position')
         ;
     }
     
@@ -31,7 +26,7 @@ class TopicsType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Acme\ModelBundle\Entity\Topics'
+            'data_class' => 'Acme\ModelBundle\Entity\QuizTags'
         ));
     }
 
@@ -40,6 +35,6 @@ class TopicsType extends AbstractType
      */
     public function getName()
     {
-        return 'acme_modelbundle_topics';
+        return 'acme_modelbundle_quiztags';
     }
 }

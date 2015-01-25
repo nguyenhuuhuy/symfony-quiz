@@ -1,15 +1,12 @@
 <?php
 
-namespace Acme\AdminBundle\Form;
+namespace Acme\ModelBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-/**
- * Topics Form
- */
-class TopicsType extends AbstractType
+class QuizTagsRelationsType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -18,10 +15,8 @@ class TopicsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('parentId')
-            ->add('status')
-            ->add('position')
+            ->add('tag')
+            ->add('question')
         ;
     }
     
@@ -31,7 +26,7 @@ class TopicsType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Acme\ModelBundle\Entity\Topics'
+            'data_class' => 'Acme\ModelBundle\Entity\QuizTagsRelations'
         ));
     }
 
@@ -40,6 +35,6 @@ class TopicsType extends AbstractType
      */
     public function getName()
     {
-        return 'acme_modelbundle_topics';
+        return 'acme_modelbundle_quiztagsrelations';
     }
 }

@@ -1,0 +1,15 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block section %}
+    <h1>QuizTags creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('quiz_tags_management') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

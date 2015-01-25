@@ -6,7 +6,8 @@
         <title>{% block title %}Quiz system{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
         {% block stylesheets %}
-        <link href="{{ asset('app/Resources/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('app/Resources/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('app/Resources/assets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
         <style>
             .normalweight {
                 font-weight: normal;
@@ -41,7 +42,6 @@
                     <li{% if currentRoute == 'homepage' %} class="active"{% endif %}><a href="{{ url('homepage') }}" title="Home page">Home</a></li>
                     <li{% if currentRoute == 'acme_quiz' %} class="active"{% endif %}><a href="{{ url('acme_quiz') }}" title="Quiz">Quiz</a></li>
                     <li{% if currentRoute == 'acme_interview' %} class="active"{% endif %}><a href="{{ url('acme_interview') }}" title="Interview questions">Interview questions</a></li>
-                    <!-- <li><a href="{{ url('acme_api') }}" title="API">API</a></li> -->
                 </ul>
             </div>
         </div>
