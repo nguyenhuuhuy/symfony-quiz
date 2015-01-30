@@ -56,10 +56,10 @@ class QuizQuestionsRelations
     /**
      * Set topic
      *
-     * @param Topics $topic
+     * @param \Acme\ModelBundle\Entity\Topics $topic
      * @return QuizQuestionsRelations
      */
-    public function setTopic(Topics $topic = null)
+    public function setTopic(\Acme\ModelBundle\Entity\Topics $topic = null)
     {
         $this->topic = $topic;
 
@@ -79,7 +79,7 @@ class QuizQuestionsRelations
     /**
      * Set question
      *
-     * @param QuizQuestions $question
+     * @param \Acme\ModelBundle\Entity\QuizQuestions $question
      * @return QuizQuestionsRelations
      */
     public function setQuestion(\Acme\ModelBundle\Entity\QuizQuestions $question = null)
@@ -92,7 +92,7 @@ class QuizQuestionsRelations
     /**
      * Get question
      *
-     * @return QuizQuestions 
+     * @return \Acme\ModelBundle\Entity\QuizQuestions 
      */
     public function getQuestion()
     {

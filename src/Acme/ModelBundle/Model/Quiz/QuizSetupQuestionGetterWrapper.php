@@ -5,12 +5,16 @@ namespace Acme\ModelBundle\Model\Quiz;
 use Acme\ModelBundle\Model\RecordsGetterWrapperAbstract;
 
 /**
+ * Class QuizSetupQuestionGetterWrapper
+ *
  * @author Andrea Fiori
  * @since  04 November 2014
  */
 class QuizSetupQuestionGetterWrapper extends QuizSetupAbstract
 {
-    /** @var RecordsGetterWrapperAbstract $objectWrapper **/
+    /**
+     * @var RecordsGetterWrapperAbstract $objectWrapper
+     */
     private $objectWrapper;
     
     public function setupObjectWrapper()

@@ -42,4 +42,60 @@ class QuizTagsRelations
     private $question;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set tag
+     *
+     * @param \Acme\ModelBundle\Entity\QuizTags $tag
+     * @return QuizTagsRelations
+     */
+    public function setTag(\Acme\ModelBundle\Entity\QuizTags $tag = null)
+    {
+        $this->tag = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Get tag
+     *
+     * @return \Acme\ModelBundle\Entity\QuizTags 
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * Set question
+     *
+     * @param \Acme\ModelBundle\Entity\QuizQuestions $question
+     * @return QuizTagsRelations
+     */
+    public function setQuestion(\Acme\ModelBundle\Entity\QuizQuestions $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \Acme\ModelBundle\Entity\QuizQuestions 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
 }

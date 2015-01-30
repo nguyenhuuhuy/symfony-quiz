@@ -42,4 +42,60 @@ class QuizQuestionsRelations
     private $question;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set topic
+     *
+     * @param \Acme\ModelBundle\Entity\Topics $topic
+     * @return QuizQuestionsRelations
+     */
+    public function setTopic(\Acme\ModelBundle\Entity\Topics $topic = null)
+    {
+        $this->topic = $topic;
+
+        return $this;
+    }
+
+    /**
+     * Get topic
+     *
+     * @return \Acme\ModelBundle\Entity\Topics 
+     */
+    public function getTopic()
+    {
+        return $this->topic;
+    }
+
+    /**
+     * Set question
+     *
+     * @param \Acme\ModelBundle\Entity\QuizQuestions $question
+     * @return QuizQuestionsRelations
+     */
+    public function setQuestion(\Acme\ModelBundle\Entity\QuizQuestions $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \Acme\ModelBundle\Entity\QuizQuestions 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
 }

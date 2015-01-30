@@ -15,12 +15,15 @@
             .panel-title:hover {
                 cursor: pointer;
             }
+            .gridcellpadding {
+                padding: 0.5em;
+            }
         </style>
         {% endblock %}
         
         {% block javascripts_head %}
-        <script src="{{ asset('app/Resources/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('app/Resources/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('app/Resources/assets/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('app/Resources/assets/bootstrap/js/bootstrap.min.js') }}"></script>
         {% endblock %}
     </head>
     <body>
@@ -39,9 +42,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li{% if currentRoute == 'homepage' %} class="active"{% endif %}><a href="{{ url('homepage') }}" title="Home page">Home</a></li>
-                    <li{% if currentRoute == 'acme_quiz' %} class="active"{% endif %}><a href="{{ url('acme_quiz') }}" title="Quiz">Quiz</a></li>
-                    <li{% if currentRoute == 'acme_interview' %} class="active"{% endif %}><a href="{{ url('acme_interview') }}" title="Interview questions">Interview questions</a></li>
+                    <li{% if currentRoute == 'homepage' %} class="active"{% endif %}><a href="{{ url('homepage') }}" title="Home page"><i class="fa fa-home"></i> Home</a></li>
+                    <li{% if currentRoute == 'acme_quiz' %} class="active"{% endif %}><a href="{{ url('acme_quiz') }}" title="Quiz"><i class="fa fa-pencil-square-o"></i> Quiz</a></li>
+                    <li{% if currentRoute == 'acme_interview' %} class="active"{% endif %}><a href="{{ url('acme_interview') }}" title="Interview questions"><i class="fa fa-microphone"></i> Interview questions</a></li>
                 </ul>
             </div>
         </div>

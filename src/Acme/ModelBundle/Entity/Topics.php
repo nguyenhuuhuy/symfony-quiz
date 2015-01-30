@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Topics
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=50, nullable=true)
@@ -40,16 +49,35 @@ class Topics
      */
     private $position;
 
+
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="bigint")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @var string
      */
-    private $id;
+    private $slug;
 
+    /**
+     * Set id
+     *
+     * @param $id
+     *
+     * @return int
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
 
+        return $this->id;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set name
@@ -144,17 +172,25 @@ class Topics
     }
 
     /**
-     * Get id
+     * Set slug
      *
-     * @return integer 
+     * @param string $slug
+     * @return Topics
      */
-    public function getId()
+    public function setSlug($slug)
     {
-        return $this->id;
+        $this->slug = $slug;
+
+        return $this;
     }
-    
-    public function __toString()
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
     {
-        return $this->name;
+        return $this->slug;
     }
 }

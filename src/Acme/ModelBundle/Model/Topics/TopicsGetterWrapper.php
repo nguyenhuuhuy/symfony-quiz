@@ -5,12 +5,16 @@ namespace Acme\ModelBundle\Model\Topics;
 use Acme\ModelBundle\Model\RecordsGetterWrapperAbstract;
 
 /**
+ * Class TopicsGetterWrapper
+ *
  * @author Andrea Fiori
  * @since  06 October 2014
  */
 class TopicsGetterWrapper extends RecordsGetterWrapperAbstract
 {
-    /** @var \Acme\ModelBundle\Model\Tags\TopicsGetter */
+    /**
+     * @var TopicsGetterAbstract
+     */
     protected $objectGetter;
     
     /**

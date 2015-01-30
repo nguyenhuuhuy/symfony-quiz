@@ -7,8 +7,8 @@
         <li class="active">Topics</li>
     </ul>
     
-    <a href="#" title="" class="btn btn-primary">
-        Create a new topic
+    <a href="{{ path('admin_topics_new') }}" title="New topic" class="btn btn-primary">
+        New topic
     </a>
     
     <h1>Topics</h1>
@@ -27,10 +27,8 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('admin_topics_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
-                <td>{{ entity.parentId }}</td>
-                <td>{{ entity.status }}</td>
-                <td><a href="{{ path('admin_topics_show', { 'id': entity.id }) }}">Show</a></td>
-                <td><a href="{{ path('admin_topics_edit', { 'id': entity.id }) }}">Edit</a></td>
+                <td><a href="{{ path('admin_topics_show', { 'id': entity.id }) }}"><i class="fa fa-table"></i></a></td>
+                <td><a href="{{ path('admin_topics_edit', { 'id': entity.id }) }}"><i class="fa fa-pencil"></i></a></a></td>
             </tr>
         {% endfor %}
         </tbody>

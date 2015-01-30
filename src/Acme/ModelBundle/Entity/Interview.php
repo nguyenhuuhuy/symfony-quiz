@@ -34,6 +34,13 @@ class Interview
     private $position;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="important", type="integer", nullable=true)
+     */
+    private $important;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="topics_old", type="string", length=150, nullable=true)
@@ -49,7 +56,29 @@ class Interview
      */
     private $id;
 
+    /**
+     * Set id
+     *
+     * @param $id
+     *
+     * @return int
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
 
+        return $this->id;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set question
@@ -121,6 +150,29 @@ class Interview
     }
 
     /**
+     * Set important
+     *
+     * @param integer $important
+     * @return Interview
+     */
+    public function setImportant($important)
+    {
+        $this->important = $important;
+
+        return $this;
+    }
+
+    /**
+     * Get important
+     *
+     * @return integer 
+     */
+    public function getImportant()
+    {
+        return $this->important;
+    }
+
+    /**
      * Set topicsOld
      *
      * @param string $topicsOld
@@ -141,15 +193,5 @@ class Interview
     public function getTopicsOld()
     {
         return $this->topicsOld;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 }

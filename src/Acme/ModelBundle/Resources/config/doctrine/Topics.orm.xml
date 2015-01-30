@@ -7,9 +7,10 @@
     <id name="id" type="bigint" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="name" length="50" nullable="true"/>
+    <field name="name" type="string" column="name" length="100" nullable="true"/>
     <field name="parentId" type="bigint" column="parent_id" nullable="true"/>
     <field name="status" type="string" column="status" length="50" nullable="true"/>
     <field name="position" type="bigint" column="position" nullable="true"/>
+    <field name="slug" type="string" column="slug" length="100" nullable="true"/>
   </entity>
 </doctrine-mapping>

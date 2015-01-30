@@ -10,7 +10,10 @@ use Acme\ModelBundle\Model\Interview\InterviewTagsGetter;
  * @since  05 June 2014
  */
 class InterviewTagsGetterTest extends TestSuite
-{    
+{
+    /**
+     * @var InterviewTagsGetter
+     */
     private $objectGetter;
     
     protected function setUp()
@@ -23,5 +26,12 @@ class InterviewTagsGetterTest extends TestSuite
     public function testSetMainQuery()
     {
         $this->assertInstanceOf('\Doctrine\ORM\QueryBuilder', $this->objectGetter->setMainQuery());
+    }
+
+    public function testSetQuestionId()
+    {
+        $this->objectGetter->setQuestionId(11);
+
+        $this->assertNotEmpty( $this->objectGetter->getQueryBuilder()->getParameter('questionId') );
     }
 }

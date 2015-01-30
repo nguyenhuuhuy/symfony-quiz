@@ -17,7 +17,6 @@ use Acme\AdminBundle\Form\QuizQuestionsRelationsType;
  */
 class QuizQuestionsRelationsController extends Controller
 {
-
     /**
      * Lists all QuizQuestionsRelations entities.
      *
@@ -35,6 +34,7 @@ class QuizQuestionsRelationsController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new QuizQuestionsRelations entity.
      *

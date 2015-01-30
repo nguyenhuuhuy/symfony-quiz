@@ -5,6 +5,8 @@ namespace Acme\ModelBundle\Model\Topics;
 use Acme\ModelBundle\Model\Topics\TopicsGetterAbstract;
 
 /**
+ * Class TopicsGetter
+ *
  * @author Andrea Fiori
  * @since  21 October 2014
  */

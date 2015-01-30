@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\ReqBundle\Menu;
+namespace Acme\AdminBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
@@ -24,8 +24,6 @@ class Builder extends ContainerAware
 
         $menu->addChild('Home', array('route' => 'homepage'))
              ->setLinkAttribute('title', 'Back to the home page');
-
-        $menu->addChild('Home', array('route' => 'homepage'));
 
         return $menu;
     }

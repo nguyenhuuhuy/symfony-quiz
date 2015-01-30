@@ -34,27 +34,20 @@ acme_interview:
     defaults:
         _controller: AcmeReqBundle:Interview:index
         permanent: true
-        
-acme_interview_topic:
-    pattern:  /interview/{topic}
-    defaults: { _controller: AcmeReqBundle:Interview:index }
     requirements:
-        topic: "[a-zA-Z0-9-_/]+"
-        _method: GET
+            _method: GET
 
-acme_interview_topic_tags:
-    pattern:  /interview/topic/{topic}/{tag}
-    defaults: { _controller: AcmeReqBundle:Interview:index }
+acme_interview_topic:
+    pattern:  /interview/topic/{topic}
+    defaults: { _controller: AcmeReqBundle:Interview:list }
     requirements:
         topic: "[a-zA-Z0-9-_/]+"
-        tag: "[a-zA-Z0-9-_/]+"
         _method: GET
 
 acme_interview_tags:
     pattern:  /interview/tags/{tag}
-    defaults: { _controller: AcmeReqBundle:Interview:index }
+    defaults: { _controller: AcmeReqBundle:Interview:list }
     requirements:
-        topic: "[a-zA-Z0-9-_/]+"
         tag: "[a-zA-Z0-9-_/]+"
         _method: GET
 

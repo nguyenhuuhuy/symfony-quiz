@@ -4,9 +4,10 @@
     <id name="id" type="bigint" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="question" type="string" column="question" length="150" nullable="true"/>
+    <field name="question" type="text" column="question" length="65535" nullable="true"/>
     <field name="answer" type="text" column="answer" length="65535" nullable="true"/>
     <field name="position" type="bigint" column="position" nullable="true"/>
+    <field name="important" type="integer" column="important" nullable="true"/>
     <field name="topicsOld" type="string" column="topics_old" length="150" nullable="true"/>
   </entity>
 </doctrine-mapping>

@@ -106,10 +106,10 @@ class QuizAnswers
     /**
      * Set question
      *
-     * @param QuizQuestions $question
+     * @param \Acme\ModelBundle\Entity\QuizQuestions $question
      * @return QuizAnswers
      */
-    public function setQuestion(QuizQuestions $question = null)
+    public function setQuestion(\Acme\ModelBundle\Entity\QuizQuestions $question = null)
     {
         $this->question = $question;
 
@@ -119,7 +119,7 @@ class QuizAnswers
     /**
      * Get question
      *
-     * @return QuizQuestions 
+     * @return \Acme\ModelBundle\Entity\QuizQuestions 
      */
     public function getQuestion()
     {

@@ -56,10 +56,10 @@ class QuizTagsRelations
     /**
      * Set tag
      *
-     * @param QuizTags $tag
+     * @param \Acme\ModelBundle\Entity\QuizTags $tag
      * @return QuizTagsRelations
      */
-    public function setTag(QuizTags $tag = null)
+    public function setTag(\Acme\ModelBundle\Entity\QuizTags $tag = null)
     {
         $this->tag = $tag;
 
@@ -69,7 +69,7 @@ class QuizTagsRelations
     /**
      * Get tag
      *
-     * @return QuizTags 
+     * @return \Acme\ModelBundle\Entity\QuizTags 
      */
     public function getTag()
     {
@@ -79,10 +79,10 @@ class QuizTagsRelations
     /**
      * Set question
      *
-     * @param QuizQuestions $question
+     * @param \Acme\ModelBundle\Entity\QuizQuestions $question
      * @return QuizTagsRelations
      */
-    public function setQuestion(QuizQuestions $question = null)
+    public function setQuestion(\Acme\ModelBundle\Entity\QuizQuestions $question = null)
     {
         $this->question = $question;
 
@@ -92,7 +92,7 @@ class QuizTagsRelations
     /**
      * Get question
      *
-     * @return QuizQuestions 
+     * @return \Acme\ModelBundle\Entity\QuizQuestions 
      */
     public function getQuestion()
     {

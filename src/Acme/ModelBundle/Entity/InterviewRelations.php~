@@ -42,4 +42,60 @@ class InterviewRelations
     private $question;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set topic
+     *
+     * @param \Acme\ModelBundle\Entity\Topics $topic
+     * @return InterviewRelations
+     */
+    public function setTopic(\Acme\ModelBundle\Entity\Topics $topic = null)
+    {
+        $this->topic = $topic;
+
+        return $this;
+    }
+
+    /**
+     * Get topic
+     *
+     * @return \Acme\ModelBundle\Entity\Topics 
+     */
+    public function getTopic()
+    {
+        return $this->topic;
+    }
+
+    /**
+     * Set question
+     *
+     * @param \Acme\ModelBundle\Entity\Interview $question
+     * @return InterviewRelations
+     */
+    public function setQuestion(\Acme\ModelBundle\Entity\Interview $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \Acme\ModelBundle\Entity\Interview 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
 }

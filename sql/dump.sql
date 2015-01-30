@@ -2,11 +2,11 @@
 -- Host:                         127.0.0.1
 -- Versione server:              5.5.36 - MySQL Community Server (GPL)
 -- S.O. server:                  Win32
--- HeidiSQL Versione:            8.3.0.4857
+-- HeidiSQL Versione:            9.1.0.4899
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
@@ -14,80 +14,96 @@
 DROP TABLE IF EXISTS `interview`;
 CREATE TABLE IF NOT EXISTS `interview` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `question` varchar(150) DEFAULT NULL,
+  `question` text,
   `answer` text,
   `position` bigint(20) DEFAULT '0',
+  `important` int(2) DEFAULT '0',
   `topics_old` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.interview: ~53 rows (circa)
+-- Dump dei dati della tabella quiz.interview: ~80 rows (circa)
+DELETE FROM `interview`;
 /*!40000 ALTER TABLE `interview` DISABLE KEYS */;
-INSERT INTO `interview` (`id`, `question`, `answer`, `position`, `topics_old`) VALUES
-	(1, 'What is PHP?', 'PHP is an open source server side scripting language used to develop dynamic websites. PHP  stands for Hypertext Preprocessor, also stood for  Personal Home Page. Now the implementations of PHP is produced by The PHP group. It was created by Rasmus lerdorf in 1995. It is a free software released under the PHP license.', 1, 'Language'),
-	(2, 'Who is the father of PHP?', 'Rasmus Lerdorf known as the father of PHP. Php was created by Rasmus Lerdorf In 1995', 2, 'Language'),
-	(3, 'Which is the latest version of PHP?', 'The latest stable version of PHP is 5.5.14 released at 27 June 2014', 3, 'PHP Version'),
-	(4, 'What is the difference between session and cookies?', 'There are some difference between session and cookies thath are as following:\r\n\r\n			<ol>\r\n				<li>Session are temporary and Cookies are parmanent</li>\r\n				<li>Session data is store on server while Cookies are store on user\'s computer</li>\r\n				<li>Cookies contents can be easily modify but to modify Session contents is very hard</li>\r\n				<li>Cookies could be save for future reference but Session couldn\'t when user close the browser Session data also lost</li>\r\n			</ol>', 3, 'Session and Cookies'),
-	(5, 'What is the current version of Apache?', 'The latest stable version of  Apache is 2.4.9, released  on 17th  March 2014.', 5, 'Syntax'),
-	(6, 'What is difference between unset and unlink?', 'Unset is used to delete(destroy) a variable whereas unlink used to delete a file.', 4, 'Syntax'),
-	(7, 'How we declare cookies and how we expire it?', '<p><strong>setcookie()</strong> function is used to set cookies in php.</p>\r\n<p>To declare Cookies syntax will be:</p>\r\n<i>setcookie(name, value, expire, path, domain);</i>\r\n<p>name    : Name of the cookie</p>\r\n<p>value     : Value of the cookie</p>\r\n<p>expire   : The time for cookie to expire</p>\r\n<p>path      : path to save the cookie where we want to save the cookie information</p>\r\n<p>domain  : domain name on which we want to save the cookie</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>e.g:</strong> <i>setcookie("username","harry",time()+60*60*60*24);</i></p>\r\n<p>In the above example the cookie name is username having value harry and set for one day.</p>\r\n<p>To expire cookies we have set the time of cookie in past</p>\r\n<p>To expire Cookies syntax will be: setcookie(name,value,time-3600);</p>', 4, 'Session and Cookies'),
-	(8, 'What is the difference between array_merge and array_combine?', '<p><strong>array_merge</strong> merges the elements of one or more than one array such that the value of one array appended at the end of first array. If the arrays have same strings  key  then the later value overrides the previous value for that key.</p>\r\n<pre>\r\n<?php\r\n$array1 = array("course1" => "java","course2" => "sql");\r\n$array2 = array(("course1" => "php","course3" => "html");\r\n$result = array_merge($array1, $array2);\r\nprint_r($result);\r\n?>\r\nOUTPUT :  \r\narray\r\n(\r\n[course1] => php\r\n[course2] => sql\r\n[course3] => html\r\n)\r\n</pre>\r\n\r\n<p>Array_combine creates a new array by using the key of one array as keys and using the value of other array as values.</p>\r\n\r\n<pre>\r\n<?php\r\n$array1    = array("course1","course2");\r\n$array2    = array(("php","html");\r\n$new_array = array_combine($array1, $array2);\r\nprint_r($new_array);\r\n?>\r\nOUTPUT :\r\narray\r\n(\r\n[course1]  => php\r\n[course2]    => html\r\n)\r\n</pre>', 8, 'Array'),
-	(9, 'What is use of var_dump?', 'var_dump() function is used to display structured information(type and value) about one or more variable.\r\nsyntax:- var_dump(variable1,variable2,.....variablen);\r\ne.g   \r\n<pre><?php\r\n          $a=3.1;\r\n          $b=true;\r\n          var_dump($a,$b);\r\n         ?>\r\noutput   :  float(3.1)\r\n              bool(true)\r\n</pre>', 9, 'Syntax'),
-	(10, 'What is str_replace()?', '<p>This function replace some characters with some other characters in a string , this function is case sensitive.</p>\r\n<p>syntax:- str_replace(find,replace,string);</p>\r\n<p>&nbsp;</p>\r\n<p>find:-required,specifies the value to find.</p>\r\n<p>replace:-required,specifies the value to replace the value in find.</p>\r\n<p>string:-required,specifies the string to searched.</p>\r\n<p>&nbsp;</p>\r\n<p>for examlpe:</p>\r\n<pre>\r\n<?php\r\necho str_replace("world","india","hello world");\r\n?>\r\n</pre>\r\n<p>output: -  hello india</p>', 10, 'Strings'),
-	(11, 'What are the differences between require and include, include_once and require_once?', '<p>The <strong>include()</strong> statement includes and evaluates the specified <span class="skimlinks-unlinked">file.The</span> documentation below also applies to <strong>require()</strong>. The two constructs are identical in every way except how they handle<br>\r\nfailure. <strong>include()</strong> produces a Warning while <strong>require()</strong> results in a Fatal Error. In other words, use<br>\r\n<strong>require()</strong> if you want a missing file to halt processing of the page.  <strong>include()</strong> does not behave this way, the script will continue regardless. The <strong>include_once() </strong>statement includes and evaluates the<br>\r\nspecified file during the execution of the script. This is a behavior similar to the <strong>include() </strong>statement, with the only difference being that if the code from a file has already been included, it will not be<br>\r\nincluded again. As the name suggests, it will be included just once.<strong>include_once() </strong>should be used in cases where the same file might be included and evaluated more than once during a particular execution of a script, and you want to be sure that it is included exactly once to avoid problems with function redefinitions, variable value reassignments, etc. <strong>require_once() </strong>should be used in cases where the same file might be included and evaluated more than once during a particular execution of a script, and you want to be sure that it is included exactly once to avoid problems with function<br>\r\nredefinitions, variable value reassignments, etc.</p>', 11, 'Syntax'),
-	(12, 'What is final class?', '<p>final class is a class that can not be inherited.Its protect the methods of class to be overriden by the child classes.</p>\r\n<strong>e.g.</strong>\r\n<pre>final class baseclass\r\n            {\r\n                public function mymethod()  {\r\n                          echo  "baseclass method";\r\n                            }\r\n\r\n            }\r\n\r\n            class derivedclass extends baseclass\r\n             {\r\n                        public function mymethod() {\r\n                                 echo   "derivedclass method";\r\n\r\n                              }\r\n\r\n               }\r\n\r\n          $c= new derivedclass();\r\n          $c->mymethod();\r\n</pre>\r\n<p>In the above example base class is declared as final and hence can not be inherited. Derived class tries to extends baseclass then compile error will be generated</p>', 12, 'OOP'),
-	(13, 'What is difference between abstract class and interface classes?', '<strong>Interface:</strong> An interface does not contain any code,it contain only declaration of    methods,properties,events. Interfaces allow us to code which specifies which methods a class must have implement . Interfaces defines with the word interface . All methods in interfaces must be public\r\n           <strong>e.g :</strong><pre>interface myItem\r\n                    {\r\n\r\n                        void Id();\r\n                       string description();\r\n                        string Runtest(int testnumber);\r\n\r\n                    }\r\n</pre>\r\n\r\n<p><strong>Abstract class :</strong> Abstract classes are look like interfaces. Abstract classes may contain code although it may also have abstract method that do not have code. Abstract classes defines only signature of the method ,not implementation.  \r\nThe child class which inherit the abstarct class must define all the abstarct methods of its parent class .</p>\r\n\r\n         <strong>e.g :</strong><pre>abstract class myItem\r\n                    {\r\n\r\n                        abstract protected function getitem();\r\n                        abstract protected function setitem();\r\n\r\n                    }</pre>', 13, 'OOP'),
-	(14, 'What is difference between echo() and print()?', '<p><strong>echo()</strong> and <strong>print()</strong> function both are used to show the output on the visitors screen but in echo we can take  one or more parameters.</p>\r\n\r\n<p><strong>print()</strong> has a return value of true or false whereas echo has a void return type.</p>\r\n\r\n <p><strong>echo()</strong> is slightly faster than print.</p>', 14, 'Syntax'),
-	(15, 'What is the difference between PHP4 and PHP5?', 'There are some difference between PHP4 and PHP5 that are as following:\r\n<ol>\r\n      <li>In PHP5 abstract classes are used but not used in PHP4</li>\r\n      <li>In PHP5 interfaces are used but not used in PHP4</li>\r\n      <li>In PHP5 visibility are used but not used in PHP4</li>\r\n      <li>In PHP5 magic methods are used but not uesd in PHP4</li>\r\n      <li>In PHP5 typehinting are used but not used in PHP4</li>\r\n      <li>In PHP5 cloning are used but not used in PHP4</li>\r\n      <li>In PHP5 construtor are written as __construct keyword but in PHP4 are written as class name </li>\r\n</ol>', 15, 'PHP Version'),
-	(16, 'Why do we use ob_start()?', '<strong>Ob_start used</strong> to active the output buffering.When output buffering is on all output of the page sent at one time to the browser ,otherwise sometimes we face headers already sent type errors.', 16, 'Cache'),
-	(17, 'What is a .htacces file?', '<p>.htaccess is a configuration file running on Apache server.These .htaccess file used to change the functionality and features of apache web  server.</p>\r\n\r\n<p><strong> e.g</strong>   .htaccess file used for url rewrite .</p>\r\n<p>.htaccess file used to make the site password protected.</p>\r\n<p>.htaccess file can restrict  some ip addresses, so that on restricted ip adresses  site will not open.</p>', 17, 'Htaccess'),
-	(18, 'Is PHP an interpreted language or compiler language?', 'PHP is an interpreted language.', 18, 'Language'),
-	(19, 'What is the difference between compiler language and interpreted language?', '<p><strong>Interpreted language</strong> executes line by line  , if there is some error on a line it stops the execution of script.</p>\r\n\r\n<p><strong>Compiler language</strong> can execute the whole script at a time and gives all the errors at a time. It does not stops the execution of script ,if there is some error on some line.</p>', 19, 'Language'),
-	(20, 'What are web services in PHP?', 'Web services converts our applicaton into a web-application, which can publish its functions and messages to the internet users. The main web services platform is XML and HTTP. Web services can be published, found and used through web', 20, 'Web services'),
-	(21, 'What is static methods and properties in PHP?', 'A <strong>static</strong> method is accessible without needing instantiation of  a class. It means there is no need to make an  object to call the static methods .Static  methods and properties can be directly call from its class name with (::)  a scope resolution operator. They cannot be call from the object of its class. We need static methods to overcome   long overhead of instantiation of classes .\r\n<strong>e.g:</strong>\r\n<pre>\r\n<?php\r\nClass foo\r\n{\r\n      public static  $variable_name = \'it is a static variable\';\r\n} \r\n\r\necho foo :: $variable_name;      // Output:  it is a static varaible\r\n\r\n?>\r\n</pre>', 21, 'OOP'),
-	(22, 'What are magic methods in PHP?', '<p><strong>Magic methods</strong> are very easy to identify, that every magical method name is started with double underscore( __)sign. We can not declare any user-defined functions with __ sign.<br>\r\n<br>\r\nSome magic methods are <strong>:</strong></p>\r\n<p><br>\r\n__construct() , __destruct()&nbsp; ,&nbsp;&nbsp;&nbsp; __call()&nbsp;&nbsp; ,&nbsp; __callStatic()&nbsp; ,&nbsp; __get(),&nbsp; __set()&nbsp;&nbsp;&nbsp;&nbsp; , __isset()&nbsp;&nbsp;&nbsp;&nbsp; ,__unset()</p>\r\n<p>,&nbsp; __sleep()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,&nbsp; __wakeup(),&nbsp;&nbsp; __toString()&nbsp; , __invoke()&nbsp;&nbsp;&nbsp; , __set_state() ,&nbsp; __clone().</p>', 22, 'OOP'),
-	(23, 'What is the difference between GET and POST methods?', '<p><strong>GET Method:</strong></p>\r\n<ol>\r\n<li>All the name value pairs are submitted as a query string in URL</li>\r\n<li>It\'s not secured</li>\r\n<li>Length of the string is restricted about 256</li>\r\n<li>If method is not mentioned in the Form tag, this is the default method used</li>\r\n<li>Data is always submitted in the form of text</li>\r\n<li>It has some limit like only 2Kb data able to send for request</li>\r\n</ol>\r\n<p>GET requests a representation of the specified resource. Note that GET should not be used for operations that cause side-effects, such as using it for taking actions in web applications. One reason for this is that GET may be used arbitrarily by robots or crawlers, which should not need to consider the side effects that a request should cause.</p>\r\n \r\n<p><strong>POST Method:</strong></p>\r\n<ol>\r\n<li>All the name value pairs are submitted in the Message Body of the request.</li>\r\n<li>Length of the string (amount of data submitted) is not restricted.</li>\r\n<li>Post Method is secured because Name-Value pairs cannot be seen in location bar of the web browser.</li>\r\n<li> If post method is used and if the page is refreshed it would prompt before the request is resubmitted.</li>\r\n<li>If the service associated with the processing of a form has side effects (for example, modification of a database or subscription to a service), the method should be POST.</li>\r\n<lI>Unlimited data can we send</li>\r\n</ol>\r\n\r\n<p>POST submits data to be processed (e.g., from an HTML form) to the identified resource. The data is included in the body of the request. This may result in the creation of a new resource or the updates of existing resources or both.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>So essentially GET is used to retrieve remote data, and POST is used to insert/update remote data.</strong></p>\r\n\r\n<p>Another answer for about the main difference is: <strong>GET</strong> when you want to retrieve data (GET DATA). <strong>POST</strong> when you want to send data (POST DATA).</p>\r\n\r\n<p>Use GET for safe actions and POST for unsafe actions.</p>', 23, 'HTTP'),
-	(24, 'What are access control modifiers in php?', 'Keywords <strong>public, protected and private</strong> are the three types of access control modifiers in php. With the help of these keywords we can manage the accessing  of a method or property of a class  in php.', 24, 'OOP'),
-	(25, 'What is difference between public, private and protected in php?', '<p><strong>Public:</strong></p>\r\n<p>The items which are declared public can be access from everywhere ie access from inside the class ,access in inherited class and   access from outside the class.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Protected:</strong></p>\r\n<p>The items which are declared protected can be access inside the class that defines the item  and can acess in its child classes  (ie access in its inherited class) .</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Private:</strong></p>\r\n<p>The items which are declared private can only be access inside its class that defines the item.</p>', 24, 'OOP'),
-	(26, 'How can we get all the properties of browser in PHP?', 'We can get the browser properties in PHP by:\r\n<pre>\r\n<?php\r\n$_SERVER [\'HTTP_USER_AGENT\'];\r\n?>\r\n</pre>', 23, 'HTTP'),
-	(27, 'How to get difference between two dates?', '<pre>\r\n$firstdate           = "2010-10-07";\r\n$seconddate      = "2014-03-10";\r\n\r\n$differnce          = abs(strtotime($date2) - strtotime($date1));\r\n\r\n$years              =   floor($differnce / (365*60*60*24));\r\n$months           =   floor(($differnce - $years * 365*60*60*24) / (30*60*60*24));\r\n$days               =   floor(($differnce- $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));\r\n\r\nprintf("%d years, %d months, %d daysn", $years, $months, $days);\r\n</pre>', 24, 'DateTime'),
-	(28, 'What is the difference between $name and $$name?', '$name is variable where as $$name is reference variable like $name=sonia and $$name=singh so $sonia value is singh', 11, 'Syntax'),
-	(29, 'What Is a Session?', '<p>A session is a logical object created by the PHP engine to allow you to preserve data across subsequent HTTP requests. Sessions are commonly used to store temporary data to allow multiple PHP pages to offer a complete functional transaction for the same visitor.</p>\r\n<p><a href="http://en.wikipedia.org/wiki/HTTP_cookie" target="_blank" title="">http://en.wikipedia.org/wiki/HTTP_cookie</a></p>', 1, 'Session and Cookies'),
-	(30, 'How can we register the variables into a session?', '<p>&lt;?php<br />\r\n	session_register($ur_session_var);<br />\r\n	?&gt;<br />\r\n	&nbsp;</p>\r\n<p>', 5, 'Session and Cookies'),
-	(31, 'How many ways we can pass the variable through the navigation between the pages?', '<ul>\r\n<li>Register the variable into the session</li>\r\n<li>Pass the variable as a cookie</li>\r\n<li>Pass the variable as part of the URL</li>\r\n</ul>', 6, 'Session and Cookies'),
-	(32, 'What is the functionality of the function strstr and stristr?', '<p><strong>strstr()</strong> returns part of a given string from the first occurrence of a given substring to the end of the string.<br />\r\nFor example:strstr(&quot;user@example.com&quot;,&quot;@&quot;) will return &quot;@example.com&quot;.<br />\r\n<strong>stristr()</strong> is idential to strstr() except that it is case insensitive.</p>', 7, 'Strings'),
-	(33, 'What is Constructors and Destructors?', '<p><strong>CONSTRUCTOR:</strong> PHP allows developers to declare constructor methods for classes. Classes which have a constructor method call this method on each newly-created object, so it is suitable for any initialization that the object may need before it is used.<br />\r\n<p><strong>DESTRUCTORS:</strong> PHP 5 introduces a destructor concept similar to that of other object-oriented languages, such as C++. The destructor method will be called as soon as all references to a particular object are removed or when the object is explicitly destroyed or in any order in shutdown sequence.</p>', 24, 'OOP'),
-	(34, 'What is use of header() function in php?', '<p>The header() function sends a raw HTTP header to a client.We can use header()<br />\r\n	function for redirection of pages. It is important to notice that header() must<br />\r\n	be called before any actual output is seen.</p>', 23, 'HTTP'),
-	(35, 'List out the predefined classes in PHP?', '<ul>\r\n<li>Directory</li>\r\n<li>stdClass</li>\r\n<li>__PHP_Incomplete_Class</li>\r\n<li>exception</li>\r\n<li>php_user_filter</li>\r\n</ul>', 24, 'OOP'),
-	(36, 'What type of inheritance that PHP supports?', 'In PHP an extended class is always dependent on a single base class,that is, multiple inheritance is not supported. Classes are extended using the keyword &#39;extends&#39;.', 24, 'OOP'),
-	(37, 'What is the difference between explode and split?', 'Split function splits string into array by regular expression. Explode splits a string into array by string.<br />\r\nFor Example:explode(&quot; and&quot;, &quot;India and Pakistan and Srilanka&quot;);<br />\r\n&nbsp;split(&quot; :&quot;, &quot;India : Pakistan : Srilanka&quot;);<br />\r\nBoth of these functions will return an array that contains India, Pakistan, and Srilanka.', 7, 'Strings'),
-	(38, 'What&rsquo;s the special meaning of __sleep and __wakeup?', '__sleep returns the array of all the variables than need to be saved, while __wakeup retrieves them.', 24, 'OOP'),
-	(39, 'What are the Formatting and Printing Strings available in PHP?', '<p><strong>printf()</strong>-&nbsp;&nbsp; &nbsp;Displays a formatted string<br />\r\n<strong>sprintf()</strong>-Saves a formatted string in a variable<br />\r\n<strong>fprintf()</strong>&nbsp;&nbsp; &nbsp;-Prints a formatted string to a file<br />\r\n<strong>number_format()</strong>-Formats numbers as strings</p>', 7, 'Strings'),
-	(40, 'What are the different tables types present in MySQL?', '<p></em>Total 5 types of tables we can create<br>\r\n1. MyISAM<br>\r\n2. Heap<br>\r\n3. Merge<br>\r\n4. INNO DB<br>\r\n5. ISAM<br>\r\nMyISAM is the default storage engine as of MySQL 3.23 and as a result if we do not specify the table name explicitly it will be assigned to the default engine.</p>', 7, 'MySQL'),
-	(41, 'How can I execute a PHP script using command line?', 'As of version 4.3.0, PHP supports a new SAPI type (Server Application Programming Interface) named CLI which means Command Line Interface. Just run the PHP CLI (Command Line Interface) program and provide the PHP script file name as the command line argument. For example, “php myScript.php”, assuming “php” is the command to invoke the CLI program.\r\nBe aware that if your PHP script was written for the Web CGI interface, it may not execute properly in command line environment.', 3, 'PHP Version'),
-	(42, 'How can we encrypt the username and password using PHP?', '<p>The functions in this section perform encryption and decryption, and compression and uncompression:</p>\r\n<table border="0">\r\n<tbody>\r\n<tr>\r\n<td><strong>Encryption</strong></td>\r\n<td><strong>Decryption</strong></td>\r\n</tr>\r\n<tr>\r\n<td>AES_ENCRYPT()</td>\r\n<td>AES_DECRYPT()</td>\r\n</tr>\r\n<tr>\r\n<td>ENCODE()</td>\r\n<td>DECODE()</td>\r\n</tr>\r\n<tr>\r\n<td>DES_ENCRYPT()</td>\r\n<td>DES_DECRYPT()</td>\r\n</tr>\r\n<tr>\r\n<td>ENCRYPT()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>MD5()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>OLD_PASSWORD()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>PASSWORD()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>SHA() or SHA1()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>Not available</td>\r\n<td>UNCOMPRESSED_LENGTH()</td>\r\n</tr>\r\n</tbody>\r\n</table>', 7, 'MySQL'),
-	(43, 'What are the features and advantages of object-oriented programming?', 'One of the main advantages of OO programming is its ease of modification; objects can easily be modified and added to a system there by reducing maintenance costs. OO programming is also considered to be better at modeling the real world than is procedural programming. It allows for more complicated and flexible interactions. OO systems are also easier for non-technical personnel to understand and easier for them to participate in the maintenance and enhancement of a system because it appeals to natural human cognition patterns. For some systems, an OO approach can speed development time since many objects are standard across systems and can be reused. Components that manage dates, shipping, shopping carts, etc. can be purchased and easily modified for a specific system.', 24, 'OOP'),
-	(44, 'What are the differences between procedure-oriented languages and object-oriented languages?', 'Traditional programming has the following characteristics:Functions are written sequentially, so that a change in programming can affect any code that follows it. If a function is used multiple times in a system (i.e., a piece of code that manages the date), it is often simply cut and pasted into each program (i.e., a change log, order function, fulfillment system, etc). If a date change is needed (i.e., Y2K when the code needed to be changed to handle four numerical digits instead of two), all these pieces of code must be found, modified, and tested. Code (sequences of computer instructions) and data (information on which the instructions operates on) are kept separate. Multiple sets of code can access and modify one set of data. One set of code may rely on data in multiple places. Multiple sets of code and data are required to work together. Changes made to any of the code sets and data sets can cause problems through out the system.Object-Oriented programming takes a radically different approach:Code and data are merged into one indivisible item – an object (the term “component” has also been used to describe an object.) An object is an abstraction of a set of real-world things (for example, an object may be created around “date”) The object would contain all information and\r\nfunctionality for that thing (A date object it may contain labels like January, February, Tuesday, Wednesday.\r\nIt may contain functionality that manages leap years, determines if it is a business day or a holiday, etc., See Fig. 1). Ideally, information about a particular thing should reside in only one place in a system.The information within an object is encapsulated (or hidden) from the rest of the system. A system is composed of multiple objects (i.e., date function, reports, order processing, etc., See Fig 2). When one object needs information from another object, a request is sent asking for specific information. (for example, a report object may need to know what today’s date is and will send a request to the date object) These requests are called messages and each object has an interface that manages messages. OO programming languages include features such as “class”, “instance”, “inheritance”, and “polymorphism” that increase the power and\r\nflexibility of an object.', 24, 'OOP'),
-	(45, 'What are the differences between public, private, protected,static, transient, final and volatile?', '<p><strong>Public</strong>: Public declared items can be accessed everywhere.<br>\r\n<strong>Protected</strong>: Protected limits access to inherited and parent classes (and to the class that defines the item).<br>\r\n<strong>Private</strong>: Private limits visibility only to the class that defines the item.<br>\r\n<strong>Static</strong>: A static variable exists only in a local function scope, but it does not lose its value when program execution leaves this scope.<br>\r\n<strong>Final</strong>: Final keyword prevents child classes from overriding a method by prefixing the definition with final. If the class itself is being defined final then it cannot be extended.<br>\r\n<strong>Transient</strong>: A transient variable is a variable that may not be serialized.<br>\r\n<strong>Volatile</strong>: a variable that might be concurrently modified by multiple threads should be declared volatile. Variables declared to be volatile will not be optimized by the compiler because their value can change at any time.</p>', 24, 'OOP'),
-	(46, 'What are the different types of errors in PHP?', '<p>Three are three types of errors:</p>\r\n<ul>\r\n	<li>Notices: These are trivial, non-critical errors that PHP encounters while executing a script - for example, accessing a variable that has not yet been defined. By default, such errors are not displayed to the user at all – although, as you will see, you can change this default behavior.</li>\r\n	<li>Warnings: These are more serious errors – for example, attempting to include() a file which does not exist. By default, these errors are displayed to the user, but they do not result in script termination.</li>\r\n	<li>Fatal errors: These are critical errors – for example, instantiating an object of a non-existent class, or calling a non-existent function. These errors cause the immediate termination of the script, and PHP’s default behavior is to display them to the user when they take place.</li>\r\n</ul>', 7, 'Errors'),
-	(47, 'What are the difference between abstract class and interface?', '<p><em>Abstract class</em>: abstract classes are the class where one or moremethods are abstract but not necessarily all method has to be abstract.</p>', 24, 'OOP'),
-	(48, 'What are the advantages of stored procedures, triggers, indexes?', '<p><strong>Answer</strong><em> : </em>A stored procedure is a set of SQL commands that can be compiled and stored in the server. Once this has been done, clients don’t need tokeep re-issuing the entire query but can refer to the stored <span class="skimlinks-unlinked">procedure.This</span> provides better overall performance because the query has to beparsed only once, and less information needs to be sent between theserver and the client. You can also raise the conceptual level by havinglibraries of functions in the server. However, stored procedures ofcourse do increase the load on the database server <a id="KonaLink5" class="kLink" href="http://www.shashionline.in/2008/08/02/php-interview-question/#" target="_top" sl-processed="1"></a>system, as more of the work is done on the server side and less on the client (application)side.Triggers will also be implemented. A trigger is effectively a type of stored procedure, one that is invoked when a particular event <span class="skimlinks-unlinked">occurs.For</span> example, you can install a stored procedure that is triggered each time a record is deleted from a transaction table and that stored procedure automatically deletes the corresponding customer from a customer table when all his transactions are deleted.Indexes are used to find rows with specific column values quickly.Without an index, MySQL must begin with the first row and then read through the entire table to find the relevant rows. The larger the table, the more this costs. If the table has an index for the columns in question, MySQL can quickly determine the position to seek to in the middle of the data file without having to look at all the data. If a table has 1,000 rows, this is at least 100 times faster than reading sequentially. If you need to access most of the rows, it is faster to read sequentially, because this minimizes disk seeks.</p>', 7, 'MySQL'),
-	(49, 'What is the maximum length of a table name, database name and field name in MySQL?', '<p>The following table describes the maximum length for each type of identifier.</p>\r\n<table border="0">\r\n<tbody>\r\n<tr>\r\n<td>Identifier</td>\r\n<td>Maximum Length(bytes)</td>\r\n</tr>\r\n<tr>\r\n<td>Database</td>\r\n<td>64</td>\r\n</tr>\r\n<tr>\r\n<td>Table</td>\r\n<td>64</td>\r\n</tr>\r\n<tr>\r\n<td>Column</td>\r\n<td>64</td>\r\n</tr>\r\n<tr>\r\n<td>Index</td>\r\n<td>64</td>\r\n</tr>\r\n<tr>\r\n<td>Alias</td>\r\n<td>255</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>There are some restrictions on the characters that may appear in identifiers.</p>', 7, 'MySQL'),
-	(50, 'What is class?', 'Class is a collection of variables and method.', 24, 'OOP'),
-	(51, 'What is data encapsulation and how to achieve it PHP?', 'Data encapsulation is hiding the member variables and method from the access of others.In PHP data encapsulation is implementated with concept called Class. Class is the collection of variable and method whoes access to other classes is defined in the class  itself.', 24, 'OOP'),
-	(52, 'What is the difference between errors and exceptions?', 'An error is a fatal to the programs’s ability to do its job. Where as an exception is a stituation which is uncommon but recoverable.', 7, 'Errors'),
-	(53, 'What is HTTP?', 'The Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems.[1] HTTP is the foundation of data communication for the World Wide Web.', 23, 'HTTP'),
-	(54, 'Which is the most appropriate function to remove first element in an array?', '<p><strong>array_shift()</strong> is the function used to remove the first element of an array in PHP. Comes in handy when you need to use the first item in an array.</p>\r\n', 8, 'Array'),
-	(55, 'chr() works with which encoding?', 'chr() Returns a one-character string containing the character specified by ascii.', 7, 'Strings'),
-	(56, 'Is it possible to use feof () with a file opened by fsockopen()?', 'Yes: <a href="" target="_blank">http://php.net/manual/en/function.feof.php</a>', 23, 'IO'),
-	(57, 'Output of the given code will be? <br><br><pre><?php echo (2) . (3 * (print 3)); ?></pre>', '<p>323</p>\r\nPHP uses a specific order of operations to parse the code above. In this case it prints the last 3, the concatenates 2 and 3, thus leaving us with the output of 323.', 23, 'Operators'),
-	(58, 'Associativity of += is?', '<p>Right</p>\r\n<p>+= is an assignment operator. All assignment operators have right associativity You can learn more from SkillCaptains Advanced PHP guide, or at <a href="http://php.net/manual/en/language.operators.precedence.php" title="Operators precedence" target="_blank">http://php.net/manual/en/language.operators.precedence.php</a></p>', 23, 'Operators'),
-	(59, 'What are the 3 main principles of OOP?', '<p>1) Encapsulation <br>2) Inheritance <br> 3) Polymorphysm</p>', 59, 'OOP'),
-	(60, 'What is a Cookie?', 'A cookie, also known as an HTTP cookie, web cookie, or browser cookie, is a small piece of data sent from a website and stored in a user\'s web browser while the user is browsing that website.', 2, 'Session and Cookies'),
-	(61, 'What is the database normalization?', '<p>Database normalization is the process of organizing the fields and tables of a relational database to minimize redundancy.</p>\r\n\r\n<p><a href="http://en.wikipedia.org/wiki/Database_normalization" target="_blank">http://en.wikipedia.org/wiki/Database_normalization</a></p>', 7, 'MySQL'),
-	(62, 'What are SOLID principles?', '<p>Single responsability principles (SRP) : a class should have only a single responsibility (i.e. only one potential change in the software\'s specification should be able to affect the specification of the class)</p>\r\n	\r\n<p>Open/closed principle (OCP): "software entities … should be open for extension, but closed for modification."</p>\r\n		\r\n<p>Liskov substitution principle (LSP): "objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program." See also design by contract.</p>\r\n		\r\n<p>Interface segregation principle: "many client-specific interfaces are better than one general-purpose interface."</p>\r\n		\r\n<p>Dependency inversion principle: one should "Depend upon Abstractions. Do not depend upon concretions.". Dependency injection is one method of following this principle.</p>\r\n	\r\n<p><a href="http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)" target="_blank">http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)</a></p>', 12, 'OOP'),
-	(63, 'What are main vulnerabilities on web applications?', '<p>Cross site scripting (XSS), <a href="http://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">http://en.wikipedia.org/wiki/Cross-site_scripting</a></p>\r\n\r\n<p>Cross-site request forgery (CRSF), <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank">http://en.wikipedia.org/wiki/Cross-site_request_forgery</a></p>', 20, 'Security'),
-	(64, 'What is OOP?', '<p>Object-oriented programming (OOP) is a programming paradigm that represents the concept of "objects" that have data fields (attributes that describe the object) and associated procedures known as methods. Objects, which are usually instances of classes, are used to interact with one another to design applications and computer programs.</p>', 24, 'OOP');
+INSERT INTO `interview` (`id`, `question`, `answer`, `position`, `important`, `topics_old`) VALUES
+	(1, 'What is PHP?', 'PHP is an open source server side scripting language used to develop dynamic websites. PHP  stands for Hypertext Preprocessor, also stood for  Personal Home Page. Now the implementations of PHP is produced by The PHP group. It was created by Rasmus Lerdorf in 1995. It is a free software released under the PHP license.', 1, 0, ''),
+	(2, 'Who is the father of PHP?', 'Rasmus Lerdorf known as the father of PHP. Php was created by Rasmus Lerdorf In 1995', 2, 0, ''),
+	(3, 'Which is the latest version of PHP?', 'The latest stable version of PHP is 5.5.14 released at 27 June 2014', 3, 0, ''),
+	(4, 'What is the difference between session and cookies?', 'There are some difference between session and cookies thath are as following:\r\n\r\n			<ol>\r\n				<li>Session are temporary and Cookies are parmanent</li>\r\n				<li>Session data is store on server while Cookies are store on user\'s computer</li>\r\n				<li>Cookies contents can be easily modify but to modify Session contents is very hard</li>\r\n				<li>Cookies could be save for future reference but Session couldn\'t when user close the browser Session data also lost</li>\r\n			</ol>', 3, 1, ''),
+	(5, 'What is the current version of Apache?', 'The latest stable version of  Apache is 2.4.9, released  on 17th  March 2014.', 5, 0, ''),
+	(6, 'What is difference between unset and unlink?', 'Unset is used to delete(destroy) a variable whereas unlink used to delete a file.', 4, 0, 'Syntax'),
+	(7, 'How we declare cookies and how we expire it?', '<p><strong>setcookie()</strong> function is used to set cookies in php.</p>\r\n<p>To declare Cookies syntax will be:</p>\r\n<i>setcookie(name, value, expire, path, domain);</i>\r\n<p>name    : Name of the cookie</p>\r\n<p>value     : Value of the cookie</p>\r\n<p>expire   : The time for cookie to expire</p>\r\n<p>path      : path to save the cookie where we want to save the cookie information</p>\r\n<p>domain  : domain name on which we want to save the cookie</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>e.g:</strong> <i>setcookie("username","harry",time()+60*60*60*24);</i></p>\r\n<p>In the above example the cookie name is username having value harry and set for one day.</p>\r\n<p>To expire cookies we have set the time of cookie in past</p>\r\n<p>To expire Cookies syntax will be: setcookie(name,value,time-3600);</p>', 4, 0, 'Session and Cookies'),
+	(8, 'What is the difference between array_merge and array_combine?', '<p><strong>array_merge</strong> merges the elements of one or more than one array such that the value of one array appended at the end of first array. If the arrays have same strings  key  then the later value overrides the previous value for that key.</p>\r\n<pre>\r\n<?php\r\n$array1 = array("course1" => "java","course2" => "sql");\r\n$array2 = array(("course1" => "php","course3" => "html");\r\n$result = array_merge($array1, $array2);\r\nprint_r($result);\r\n?>\r\nOUTPUT :  \r\narray\r\n(\r\n[course1] => php\r\n[course2] => sql\r\n[course3] => html\r\n)\r\n</pre>\r\n\r\n<p>Array_combine creates a new array by using the key of one array as keys and using the value of other array as values.</p>\r\n\r\n<pre>\r\n<?php\r\n$array1    = array("course1","course2");\r\n$array2    = array(("php","html");\r\n$new_array = array_combine($array1, $array2);\r\nprint_r($new_array);\r\n?>\r\nOUTPUT :\r\narray\r\n(\r\n[course1]  => php\r\n[course2]    => html\r\n)\r\n</pre>', 8, 0, 'Array'),
+	(9, 'What is use of var_dump?', 'var_dump() function is used to display structured information(type and value) about one or more variable.\r\nsyntax:- var_dump(variable1,variable2,.....variablen);\r\ne.g   \r\n<pre><?php\r\n          $a=3.1;\r\n          $b=true;\r\n          var_dump($a,$b);\r\n         ?>\r\noutput   :  float(3.1)\r\n              bool(true)\r\n</pre>', 9, 0, 'Syntax'),
+	(10, 'What is str_replace()?', '<p>This function replace some characters with some other characters in a string , this function is case sensitive.</p>\r\n<p>syntax:- str_replace(find,replace,string);</p>\r\n<p>&nbsp;</p>\r\n<p>find:-required,specifies the value to find.</p>\r\n<p>replace:-required,specifies the value to replace the value in find.</p>\r\n<p>string:-required,specifies the string to searched.</p>\r\n<p>&nbsp;</p>\r\n<p>for examlpe:</p>\r\n<pre>\r\n<?php\r\necho str_replace("world","india","hello world");\r\n?>\r\n</pre>\r\n<p>output: -  hello india</p>', 10, 0, 'Strings'),
+	(11, 'What are the differences between require and include, include_once and require_once?', '<p>The <strong>include()</strong> statement includes and evaluates the specified <span class="skimlinks-unlinked">file.The</span> documentation below also applies to <strong>require()</strong>. The two constructs are identical in every way except how they handle<br>\r\nfailure. <strong>include()</strong> produces a Warning while <strong>require()</strong> results in a Fatal Error. In other words, use<br>\r\n<strong>require()</strong> if you want a missing file to halt processing of the page.  <strong>include()</strong> does not behave this way, the script will continue regardless. The <strong>include_once() </strong>statement includes and evaluates the<br>\r\nspecified file during the execution of the script. This is a behavior similar to the <strong>include() </strong>statement, with the only difference being that if the code from a file has already been included, it will not be<br>\r\nincluded again. As the name suggests, it will be included just once.<strong>include_once() </strong>should be used in cases where the same file might be included and evaluated more than once during a particular execution of a script, and you want to be sure that it is included exactly once to avoid problems with function redefinitions, variable value reassignments, etc. <strong>require_once() </strong>should be used in cases where the same file might be included and evaluated more than once during a particular execution of a script, and you want to be sure that it is included exactly once to avoid problems with function<br>\r\nredefinitions, variable value reassignments, etc.</p>', 11, 0, 'Syntax'),
+	(12, 'What is final class?', '<p>final class is a class that can not be inherited.Its protect the methods of class to be overriden by the child classes.</p>\r\n<strong>e.g.</strong>\r\n<pre>final class baseclass\r\n            {\r\n                public function mymethod()  {\r\n                          echo  "baseclass method";\r\n                            }\r\n\r\n            }\r\n\r\n            class derivedclass extends baseclass\r\n             {\r\n                        public function mymethod() {\r\n                                 echo   "derivedclass method";\r\n\r\n                              }\r\n\r\n               }\r\n\r\n          $c= new derivedclass();\r\n          $c->mymethod();\r\n</pre>\r\n<p>In the above example base class is declared as final and hence can not be inherited. Derived class tries to extends baseclass then compile error will be generated</p>', 12, 0, 'OOP'),
+	(13, 'What is difference between abstract class and interface classes?', '<strong>Interface:</strong> An interface does not contain any code,it contain only declaration of    methods,properties,events. Interfaces allow us to code which specifies which methods a class must have implement . Interfaces defines with the word interface . All methods in interfaces must be public\r\n           <strong>e.g :</strong><pre>interface myItem\r\n                    {\r\n\r\n                        void Id();\r\n                       string description();\r\n                        string Runtest(int testnumber);\r\n\r\n                    }\r\n</pre>\r\n\r\n<p><strong>Abstract class :</strong> Abstract classes are look like interfaces. Abstract classes may contain code although it may also have abstract method that do not have code. Abstract classes defines only signature of the method ,not implementation.  \r\nThe child class which inherit the abstarct class must define all the abstarct methods of its parent class .</p>\r\n\r\n         <strong>e.g :</strong><pre>abstract class myItem\r\n                    {\r\n\r\n                        abstract protected function getitem();\r\n                        abstract protected function setitem();\r\n\r\n                    }</pre>', 13, 1, 'OOP'),
+	(14, 'What is difference between echo() and print()?', '<p><strong>echo()</strong> and <strong>print()</strong> function both are used to show the output on the visitors screen but in echo we can take  one or more parameters.</p>\r\n\r\n<p><strong>print()</strong> has a return value of true or false whereas echo has a void return type.</p>\r\n\r\n <p><strong>echo()</strong> is slightly faster than print.</p>', 14, 0, 'Syntax'),
+	(15, 'What is the difference between PHP4 and PHP5?', 'There are some difference between PHP4 and PHP5 that are as following:\r\n<ol>\r\n      <li>In PHP5 abstract classes are used but not used in PHP4</li>\r\n      <li>In PHP5 interfaces are used but not used in PHP4</li>\r\n      <li>In PHP5 visibility are used but not used in PHP4</li>\r\n      <li>In PHP5 magic methods are used but not uesd in PHP4</li>\r\n      <li>In PHP5 typehinting are used but not used in PHP4</li>\r\n      <li>In PHP5 cloning are used but not used in PHP4</li>\r\n      <li>In PHP5 construtor are written as __construct keyword but in PHP4 are written as class name </li>\r\n</ol>', 15, 0, 'PHP Version'),
+	(16, 'Why do we use ob_start()?', '<strong>Ob_start used</strong> to active the output buffering.When output buffering is on all output of the page sent at one time to the browser ,otherwise sometimes we face headers already sent type errors.', 16, 0, 'Cache'),
+	(17, 'What is a .htacces file?', '<p>.htaccess is a configuration file running on Apache server.These .htaccess file used to change the functionality and features of apache web server.</p>\r\n<p><strong> e.g</strong>   .htaccess file used for url rewrite .</p>\r\n<p>.htaccess file used to make the site password protected.</p>\r\n<p>.htaccess file can restrict  some ip addresses, so that on restricted ip adresses  site will not open.</p>', 17, 0, 'Htaccess'),
+	(18, 'Is PHP an interpreted language or compiler language?', 'PHP is an interpreted language.', 18, 0, 'Language'),
+	(19, 'What is the difference between compiler language and interpreted language?', '<p><strong>Interpreted language</strong> executes line by line  , if there is some error on a line it stops the execution of script.</p>\r\n\r\n<p><strong>Compiler language</strong> can execute the whole script at a time and gives all the errors at a time. It does not stops the execution of script ,if there is some error on some line.</p>', 19, 0, 'Language'),
+	(20, 'What are web services in PHP?', 'Web services converts our applicaton into a web-application, which can publish its functions and messages to the internet users. The main web services platform is XML and HTTP. Web services can be published, found and used through web', 20, 0, 'Web services'),
+	(21, 'What is static methods and properties in PHP?', 'A <strong>static</strong> method is accessible without needing instantiation of  a class. It means there is no need to make an  object to call the static methods .Static  methods and properties can be directly call from its class name with (::)  a scope resolution operator. They cannot be call from the object of its class. We need static methods to overcome   long overhead of instantiation of classes .\r\n<strong>e.g:</strong>\r\n<pre>\r\n<?php\r\nClass foo\r\n{\r\n      public static  $variable_name = \'it is a static variable\';\r\n} \r\n\r\necho foo :: $variable_name;      // Output:  it is a static varaible\r\n\r\n?>\r\n</pre>', 21, 0, 'OOP'),
+	(22, 'What are magic methods in PHP?', '<p><strong>Magic methods</strong> are very easy to identify, that every magical method name is started with double underscore( __)sign. We can not declare any user-defined functions with __ sign.<br>\r\n<br>\r\nSome magic methods are <strong>:</strong></p>\r\n<p><br>\r\n__construct() , __destruct()&nbsp; ,&nbsp;&nbsp;&nbsp; __call()&nbsp;&nbsp; ,&nbsp; __callStatic()&nbsp; ,&nbsp; __get(),&nbsp; __set()&nbsp;&nbsp;&nbsp;&nbsp; , __isset()&nbsp;&nbsp;&nbsp;&nbsp; ,__unset()</p>\r\n<p>,&nbsp; __sleep()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,&nbsp; __wakeup(),&nbsp;&nbsp; __toString()&nbsp; , __invoke()&nbsp;&nbsp;&nbsp; , __set_state() ,&nbsp; __clone().</p>', 22, 0, 'OOP'),
+	(23, 'What is the difference between GET and POST methods?', '<p><strong>GET Method:</strong></p>\r\n<ol>\r\n<li>All the name value pairs are submitted as a query string in URL</li>\r\n<li>It\'s not secured</li>\r\n<li>Length of the string is restricted about 256</li>\r\n<li>If method is not mentioned in the Form tag, this is the default method used</li>\r\n<li>Data is always submitted in the form of text</li>\r\n<li>It has some limit like only 2Kb data able to send for request</li>\r\n</ol>\r\n<p>GET requests a representation of the specified resource. Note that GET should not be used for operations that cause side-effects, such as using it for taking actions in web applications. One reason for this is that GET may be used arbitrarily by robots or crawlers, which should not need to consider the side effects that a request should cause.</p>\r\n \r\n<p><strong>POST Method:</strong></p>\r\n<ol>\r\n<li>All the name value pairs are submitted in the Message Body of the request.</li>\r\n<li>Length of the string (amount of data submitted) is not restricted.</li>\r\n<li>Post Method is secured because Name-Value pairs cannot be seen in location bar of the web browser.</li>\r\n<li> If post method is used and if the page is refreshed it would prompt before the request is resubmitted.</li>\r\n<li>If the service associated with the processing of a form has side effects (for example, modification of a database or subscription to a service), the method should be POST.</li>\r\n<lI>Unlimited data can we send</li>\r\n</ol>\r\n\r\n<p>POST submits data to be processed (e.g., from an HTML form) to the identified resource. The data is included in the body of the request. This may result in the creation of a new resource or the updates of existing resources or both.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>So essentially GET is used to retrieve remote data, and POST is used to insert/update remote data.</strong></p>\r\n\r\n<p>Another answer for about the main difference is: <strong>GET</strong> when you want to retrieve data (GET DATA). <strong>POST</strong> when you want to send data (POST DATA).</p>\r\n\r\n<p>Use GET for safe actions and POST for unsafe actions.</p>', 23, 1, 'HTTP'),
+	(24, 'What are access control modifiers in php?', 'Keywords <strong>public, protected and private</strong> are the three types of access control modifiers in php. With the help of these keywords we can manage the accessing  of a method or property of a class  in php.', 24, 0, 'OOP'),
+	(25, 'What is difference between public, private and protected in php?', '<p><strong>Public:</strong></p>\r\n<p>The items which are declared public can be access from everywhere ie access from inside the class ,access in inherited class and   access from outside the class.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Protected:</strong></p>\r\n<p>The items which are declared protected can be access inside the class that defines the item  and can acess in its child classes  (ie access in its inherited class) .</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Private:</strong></p>\r\n<p>The items which are declared private can only be access inside its class that defines the item.</p>', 24, 1, 'OOP'),
+	(26, 'How can we get all the properties of browser in PHP?', 'We can get the browser properties in PHP by:\r\n<pre>\r\n<?php\r\n$_SERVER [\'HTTP_USER_AGENT\'];\r\n?>\r\n</pre>', 23, 0, 'HTTP'),
+	(27, 'How to get difference between two dates?', '<pre>\r\n$firstdate           = "2010-10-07";\r\n$seconddate      = "2014-03-10";\r\n\r\n$differnce          = abs(strtotime($date2) - strtotime($date1));\r\n\r\n$years              =   floor($differnce / (365*60*60*24));\r\n$months           =   floor(($differnce - $years * 365*60*60*24) / (30*60*60*24));\r\n$days               =   floor(($differnce- $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));\r\n\r\nprintf("%d years, %d months, %d daysn", $years, $months, $days);\r\n</pre>', 24, 0, 'DateTime'),
+	(28, 'What is the difference between $name and $$name?', '$name is variable where as $$name is reference variable like $name=sonia and $$name=singh so $sonia value is singh', 11, 0, 'Syntax'),
+	(29, 'What Is a Session?', '<p>A session is a logical object created by the PHP engine to allow you to preserve data across subsequent HTTP requests. Sessions are commonly used to store temporary data to allow multiple PHP pages to offer a complete functional transaction for the same visitor.</p>\r\n<p><a href="http://en.wikipedia.org/wiki/HTTP#HTTP_session" target="_blank" title="">http://en.wikipedia.org/wiki/HTTP#HTTP_session</a></p>\r\n<p><a href="http://en.wikipedia.org/wiki/Session_%28computer_science%29" target="_blank" title="">http://en.wikipedia.org/wiki/Session_%28computer_science%29</a></p>', 1, 1, 'Session and Cookies'),
+	(30, 'How can we register the variables into a session?', '<p>&lt;?php<br />\r\n	session_register($ur_session_var);<br />\r\n	?&gt;<br />\r\n	&nbsp;</p>\r\n<p>', 5, 0, 'Session and Cookies'),
+	(31, 'How many ways we can pass the variable through the navigation between the pages?', '<ul>\r\n<li>Register the variable into the session</li>\r\n<li>Pass the variable as a cookie</li>\r\n<li>Pass the variable as part of the URL</li>\r\n</ul>', 6, 0, 'Session and Cookies'),
+	(32, 'What is the functionality of the function strstr and stristr?', '<p><strong>strstr()</strong> returns part of a given string from the first occurrence of a given substring to the end of the string.<br />\r\nFor example:strstr(&quot;user@example.com&quot;,&quot;@&quot;) will return &quot;@example.com&quot;.<br />\r\n<strong>stristr()</strong> is idential to strstr() except that it is case insensitive.</p>', 7, 0, 'Strings'),
+	(33, 'What is Constructors and Destructors?', '<p><strong>CONSTRUCTOR:</strong> PHP allows developers to declare constructor methods for classes. Classes which have a constructor method call this method on each newly-created object, so it is suitable for any initialization that the object may need before it is used.<br />\r\n<p><strong>DESTRUCTORS:</strong> PHP 5 introduces a destructor concept similar to that of other object-oriented languages, such as C++. The destructor method will be called as soon as all references to a particular object are removed or when the object is explicitly destroyed or in any order in shutdown sequence.</p>', 24, 0, 'OOP'),
+	(34, 'What is use of header() function in php?', '<p>The header() function sends a raw HTTP header to a client.We can use header()<br />\r\n	function for redirection of pages. It is important to notice that header() must<br />\r\n	be called before any actual output is seen.</p>', 23, 0, 'HTTP'),
+	(35, 'List out the predefined classes in PHP?', '<ul>\r\n<li>Directory</li>\r\n<li>stdClass</li>\r\n<li>__PHP_Incomplete_Class</li>\r\n<li>exception</li>\r\n<li>php_user_filter</li>\r\n</ul>', 24, 0, 'OOP'),
+	(36, 'What type of inheritance that PHP supports?', 'In PHP an extended class is always dependent on a single base class,that is, multiple inheritance is not supported. Classes are extended using the keyword &#39;extends&#39;.', 24, 0, 'OOP'),
+	(37, 'What is the difference between explode and split?', 'Split function splits string into array by regular expression. Explode splits a string into array by string.<br />\r\nFor Example:explode(&quot; and&quot;, &quot;India and Pakistan and Srilanka&quot;);<br />\r\n&nbsp;split(&quot; :&quot;, &quot;India : Pakistan : Srilanka&quot;);<br />\r\nBoth of these functions will return an array that contains India, Pakistan, and Srilanka.', 7, 0, 'Strings'),
+	(38, 'What&rsquo;s the special meaning of __sleep and __wakeup?', '__sleep returns the array of all the variables than need to be saved, while __wakeup retrieves them.', 24, 0, 'OOP'),
+	(39, 'What are the Formatting and Printing Strings available in PHP?', '<p><strong>printf()</strong>-&nbsp;&nbsp; &nbsp;Displays a formatted string<br />\r\n<strong>sprintf()</strong>-Saves a formatted string in a variable<br />\r\n<strong>fprintf()</strong>&nbsp;&nbsp; &nbsp;-Prints a formatted string to a file<br />\r\n<strong>number_format()</strong>-Formats numbers as strings</p>', 7, 0, 'Strings'),
+	(40, 'What are the different tables types present in MySQL?', '<p></em>Total 5 types of tables we can create<br>\r\n1. MyISAM<br>\r\n2. Heap<br>\r\n3. Merge<br>\r\n4. INNO DB<br>\r\n5. ISAM<br>\r\nMyISAM is the default storage engine as of MySQL 3.23 and as a result if we do not specify the table name explicitly it will be assigned to the default engine.</p>', 7, 0, 'MySQL'),
+	(41, 'How can I execute a PHP script using command line?', 'As of version 4.3.0, PHP supports a new SAPI type (Server Application Programming Interface) named CLI which means Command Line Interface. Just run the PHP CLI (Command Line Interface) program and provide the PHP script file name as the command line argument. For example, “php myScript.php”, assuming “php” is the command to invoke the CLI program.\r\nBe aware that if your PHP script was written for the Web CGI interface, it may not execute properly in command line environment.', 3, 0, 'PHP Version'),
+	(42, 'How can we encrypt the username and password using PHP?', '<p>The functions in this section perform encryption and decryption, and compression and uncompression:</p>\r\n<table border="0">\r\n<tbody>\r\n<tr>\r\n<td><strong>Encryption</strong></td>\r\n<td><strong>Decryption</strong></td>\r\n</tr>\r\n<tr>\r\n<td>AES_ENCRYPT()</td>\r\n<td>AES_DECRYPT()</td>\r\n</tr>\r\n<tr>\r\n<td>ENCODE()</td>\r\n<td>DECODE()</td>\r\n</tr>\r\n<tr>\r\n<td>DES_ENCRYPT()</td>\r\n<td>DES_DECRYPT()</td>\r\n</tr>\r\n<tr>\r\n<td>ENCRYPT()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>MD5()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>OLD_PASSWORD()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>PASSWORD()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>SHA() or SHA1()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>Not available</td>\r\n<td>UNCOMPRESSED_LENGTH()</td>\r\n</tr>\r\n</tbody>\r\n</table>', 7, 0, 'MySQL'),
+	(43, 'What are the features and advantages of object-oriented programming?', 'One of the main advantages of OO programming is its ease of modification; objects can easily be modified and added to a system there by reducing maintenance costs. OO programming is also considered to be better at modeling the real world than is procedural programming. It allows for more complicated and flexible interactions. OO systems are also easier for non-technical personnel to understand and easier for them to participate in the maintenance and enhancement of a system because it appeals to natural human cognition patterns. For some systems, an OO approach can speed development time since many objects are standard across systems and can be reused. Components that manage dates, shipping, shopping carts, etc. can be purchased and easily modified for a specific system.', 24, 0, 'OOP'),
+	(44, 'What are the differences between procedure-oriented languages and object-oriented languages?', 'Traditional programming has the following characteristics:Functions are written sequentially, so that a change in programming can affect any code that follows it. If a function is used multiple times in a system (i.e., a piece of code that manages the date), it is often simply cut and pasted into each program (i.e., a change log, order function, fulfillment system, etc). If a date change is needed (i.e., Y2K when the code needed to be changed to handle four numerical digits instead of two), all these pieces of code must be found, modified, and tested. Code (sequences of computer instructions) and data (information on which the instructions operates on) are kept separate. Multiple sets of code can access and modify one set of data. One set of code may rely on data in multiple places. Multiple sets of code and data are required to work together. Changes made to any of the code sets and data sets can cause problems through out the system.Object-Oriented programming takes a radically different approach:Code and data are merged into one indivisible item – an object (the term “component” has also been used to describe an object.) An object is an abstraction of a set of real-world things (for example, an object may be created around “date”) The object would contain all information and\r\nfunctionality for that thing (A date object it may contain labels like January, February, Tuesday, Wednesday.\r\nIt may contain functionality that manages leap years, determines if it is a business day or a holiday, etc., See Fig. 1). Ideally, information about a particular thing should reside in only one place in a system.The information within an object is encapsulated (or hidden) from the rest of the system. A system is composed of multiple objects (i.e., date function, reports, order processing, etc., See Fig 2). When one object needs information from another object, a request is sent asking for specific information. (for example, a report object may need to know what today’s date is and will send a request to the date object) These requests are called messages and each object has an interface that manages messages. OO programming languages include features such as “class”, “instance”, “inheritance”, and “polymorphism” that increase the power and\r\nflexibility of an object.', 24, 0, 'OOP'),
+	(45, 'What are the differences between public, private, protected,static, transient, final and volatile?', '<p><strong>Public</strong>: Public declared items can be accessed everywhere.<br>\r\n<strong>Protected</strong>: Protected limits access to inherited and parent classes (and to the class that defines the item).<br>\r\n<strong>Private</strong>: Private limits visibility only to the class that defines the item.<br>\r\n<strong>Static</strong>: A static variable exists only in a local function scope, but it does not lose its value when program execution leaves this scope.<br>\r\n<strong>Final</strong>: Final keyword prevents child classes from overriding a method by prefixing the definition with final. If the class itself is being defined final then it cannot be extended.<br>\r\n<strong>Transient</strong>: A transient variable is a variable that may not be serialized.<br>\r\n<strong>Volatile</strong>: a variable that might be concurrently modified by multiple threads should be declared volatile. Variables declared to be volatile will not be optimized by the compiler because their value can change at any time.</p>', 24, 0, 'OOP'),
+	(46, 'What are the different types of errors in PHP?', '<p>Three are three types of errors:</p>\r\n<ul>\r\n	<li>Notices: These are trivial, non-critical errors that PHP encounters while executing a script - for example, accessing a variable that has not yet been defined. By default, such errors are not displayed to the user at all – although, as you will see, you can change this default behavior.</li>\r\n	<li>Warnings: These are more serious errors – for example, attempting to include() a file which does not exist. By default, these errors are displayed to the user, but they do not result in script termination.</li>\r\n	<li>Fatal errors: These are critical errors – for example, instantiating an object of a non-existent class, or calling a non-existent function. These errors cause the immediate termination of the script, and PHP’s default behavior is to display them to the user when they take place.</li>\r\n</ul>', 7, 0, 'Errors'),
+	(47, 'What are the difference between abstract class and interface?', '<p><em>Abstract class</em>: abstract classes are the class where one or moremethods are abstract but not necessarily all method has to be abstract.</p>', 24, 0, 'OOP'),
+	(48, 'What are the advantages of stored procedures, triggers, indexes?', '<p><strong>Answer</strong><em> : </em>A stored procedure is a set of SQL commands that can be compiled and stored in the server. Once this has been done, clients don’t need tokeep re-issuing the entire query but can refer to the stored <span class="skimlinks-unlinked">procedure.This</span> provides better overall performance because the query has to beparsed only once, and less information needs to be sent between theserver and the client. You can also raise the conceptual level by havinglibraries of functions in the server. However, stored procedures ofcourse do increase the load on the database server <a id="KonaLink5" class="kLink" href="http://www.shashionline.in/2008/08/02/php-interview-question/#" target="_top" sl-processed="1"></a>system, as more of the work is done on the server side and less on the client (application)side.Triggers will also be implemented. A trigger is effectively a type of stored procedure, one that is invoked when a particular event <span class="skimlinks-unlinked">occurs.For</span> example, you can install a stored procedure that is triggered each time a record is deleted from a transaction table and that stored procedure automatically deletes the corresponding customer from a customer table when all his transactions are deleted.Indexes are used to find rows with specific column values quickly.Without an index, MySQL must begin with the first row and then read through the entire table to find the relevant rows. The larger the table, the more this costs. If the table has an index for the columns in question, MySQL can quickly determine the position to seek to in the middle of the data file without having to look at all the data. If a table has 1,000 rows, this is at least 100 times faster than reading sequentially. If you need to access most of the rows, it is faster to read sequentially, because this minimizes disk seeks.</p>', 7, 0, 'MySQL'),
+	(49, 'What is the maximum length of a table name, database name and field name in MySQL?', '<p>The following table describes the maximum length for each type of identifier.</p>\r\n<table border="0">\r\n<tbody>\r\n<tr>\r\n<td>Identifier</td>\r\n<td>Maximum Length(bytes)</td>\r\n</tr>\r\n<tr>\r\n<td>Database</td>\r\n<td>64</td>\r\n</tr>\r\n<tr>\r\n<td>Table</td>\r\n<td>64</td>\r\n</tr>\r\n<tr>\r\n<td>Column</td>\r\n<td>64</td>\r\n</tr>\r\n<tr>\r\n<td>Index</td>\r\n<td>64</td>\r\n</tr>\r\n<tr>\r\n<td>Alias</td>\r\n<td>255</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>There are some restrictions on the characters that may appear in identifiers.</p>', 7, 0, 'MySQL'),
+	(50, 'What is class?', 'Class is a collection of variables and method.', 24, 0, 'OOP'),
+	(51, 'What is data encapsulation and how to achieve it PHP?', 'Data encapsulation is hiding the member variables and method from the access of others.In PHP data encapsulation is implementated with concept called Class. Class is the collection of variable and method whoes access to other classes is defined in the class  itself.', 24, 0, 'OOP'),
+	(52, 'What is the difference between errors and exceptions?', 'An error is a fatal to the programs’s ability to do its job. Where as an exception is a stituation which is uncommon but recoverable.', 7, 0, 'Errors'),
+	(53, 'What is HTTP?', 'The Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems.[1] HTTP is the foundation of data communication for the World Wide Web.', 23, 1, 'HTTP'),
+	(54, 'Which is the most appropriate function to remove first element in an array?', '<p><strong>array_shift()</strong> is the function used to remove the first element of an array in PHP. Comes in handy when you need to use the first item in an array.</p>\r\n', 8, 0, 'Array'),
+	(55, 'chr() works with which encoding?', 'chr() Returns a one-character string containing the character specified by ascii.', 7, 0, 'Strings'),
+	(56, 'Is it possible to use feof () with a file opened by fsockopen()?', 'Yes: <a href="" target="_blank">http://php.net/manual/en/function.feof.php</a>', 23, 0, 'IO'),
+	(57, 'What\'s the difference between a left join and an inner join?', '<a href="http://stackoverflow.com/questions/448023/what-is-the-difference-between-left-right-outer-and-inner-joins">http://stackoverflow.com/questions/448023/what-is-the-difference-between-left-right-outer-and-inner-joins</a>', 23, 1, 'Operators'),
+	(58, 'Associativity of += is?', '<p>Right</p>\r\n<p>+= is an assignment operator. All assignment operators have right associativity You can learn more from SkillCaptains Advanced PHP guide, or at <a href="http://php.net/manual/en/language.operators.precedence.php" title="Operators precedence" target="_blank">http://php.net/manual/en/language.operators.precedence.php</a></p>', 23, 0, 'Operators'),
+	(59, 'What are the 3 main principles of OOP?', '<p>1) Encapsulation <br>2) Inheritance <br> 3) Polymorphysm</p>', 59, 1, 'OOP'),
+	(60, 'What is a Cookie?', 'A cookie, also known as an HTTP cookie, web cookie, or browser cookie, is a small piece of data sent from a website and stored in a user\'s web browser while the user is browsing that website.<br><br>\r\n<a href="http://en.wikipedia.org/wiki/HTTP_cookie" title="Cookie wikipedia" target="_blank">http://en.wikipedia.org/wiki/HTTP_cookie</a>', 2, 1, 'Session and Cookies'),
+	(61, 'What is the database normalization?', '<p>Database normalization is the process of organizing the fields and tables of a relational database to minimize redundancy.</p>\r\n\r\n<p><a href="http://en.wikipedia.org/wiki/Database_normalization" target="_blank">http://en.wikipedia.org/wiki/Database_normalization</a></p>', 7, 1, 'MySQL'),
+	(62, 'What are SOLID principles?', '<p>Single responsability principles (SRP) : a class should have only a single responsibility (i.e. only one potential change in the software\'s specification should be able to affect the specification of the class)</p>\r\n	\r\n<p>Open/closed principle (OCP): "software entities … should be open for extension, but closed for modification."</p>\r\n		\r\n<p>Liskov substitution principle (LSP): "objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program." See also design by contract.</p>\r\n		\r\n<p>Interface segregation principle: "many client-specific interfaces are better than one general-purpose interface."</p>\r\n		\r\n<p>Dependency inversion principle: one should "Depend upon Abstractions. Do not depend upon concretions.". Dependency injection is one method of following this principle.</p>\r\n	\r\n<p><a href="http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)" target="_blank">http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)</a></p>', 12, 1, 'OOP'),
+	(63, 'What are main vulnerabilities on web applications?', '<p>Cross site scripting (XSS), <a href="http://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">http://en.wikipedia.org/wiki/Cross-site_scripting</a></p>\r\n\r\n<p>Cross-site request forgery (CRSF), <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank">http://en.wikipedia.org/wiki/Cross-site_request_forgery</a></p>', 20, 0, 'Security'),
+	(64, 'What is OOP?', '<p>Object-oriented programming (OOP) is a programming paradigm that represents the concept of "objects" that have data fields (attributes that describe the object) and associated procedures known as methods. Objects, which are usually instances of classes, are used to interact with one another to design applications and computer programs.</p>', 24, 1, 'OOP'),
+	(65, 'What is the cause of this warning: \'Warning: Cannot modify header information - headers already sent\', and what is a good practice to prevent it?', '<strong>A</strong>: *Cause:* body data was sent, causing headers to be sent too.<br>\r\n<strong>Prevention</strong>: Be sure to execute header specific code first before you output any body data. Be sure you haven\'t accidentally sent out whitespace or any other characters.', 25, 0, 'OOP'),
+	(66, 'What is T_PAAMAYIM_NEKUDOTAYIM?', 'ts the scope resolution operator (double colon)<br><br>\r\n<a href="http://en.wikipedia.org/wiki/Scope_resolution_operator#PHP" title="PHP scope resolution operator">http://en.wikipedia.org/wiki/Scope_resolution_operator#PHP</a>', 26, 0, 'PHP'),
+	(67, 'What is wrong with this query: "SELECT * FROM table WHERE id = $_POST[ \'id\' ]"?', '1. It is vulnarable to SQL injection. Never use user input directly in queries. Sanitize it first. Preferebly use prepared statements (<a href="http://php.net/manual/en/book.pdo.php" rel="nofollow">PDO</a>) <br>\r\n2. Don\'t select all columns (*), but specify every single column. This is predominantly ment to prevent queries hogging up memory when for instance a BLOB column is added at some point in the future.', 27, 0, 'PHP'),
+	(68, 'How to deal with SQL injection ?', 'mysql_real_escape_string() for a start with MySQL. Then try to learn PDO to take advantage of prepared statements and portability across database vendors.', 28, 0, 'Security'),
+	(69, 'How to deal with CSRF (Cross-Site Request Forgery) ?', 'Add a token on every important request to secure important operations (user must have seen the form before sending the crucial request).?', 28, 0, 'Security'),
+	(70, 'How to deal XSS (Cross-Site Scripting) reflected and stored ?', 'htmlentities() is good for a start.', 28, 0, 'Security'),
+	(71, 'Variant of XXX injections: LDAP injection, XPath injection, etc... ?', 'You need to know what is the "vocabulary" used by the XXX and then deduct what you need to sanitize and/or "check-and-reject".', 28, 0, 'Security'),
+	(72, 'What is the list of sensible functions ?', 'Functions which interpret PHP code (possibly included in a remote file) or which execute command on your system. A short and incomplete list could be: exec(), passthru(), system(), popen(), eval(), preg_replace()...', 28, 0, 'Security'),
+	(73, 'What are the differences between PHP3, PHP4, and PHP5?', 'PHP3 is oldest stable version and it was pure procedural language constructive like C. <br>\r\nWhere as PHP4 have some OOPs concept added like class and object with new functionality and in PHP5 approximately all major oops functionality has been added along with below thing. <br>\r\n- Implementation of exceptions and exception handling <br>\r\n- Type hinting which allows you to force the type of a specific argument<br>\r\n3. Overloading of methods through the __call function<br>\r\n4. Full constructors and destructors etc through a __constuctor and __destructor function<br>\r\n5. __autoload function for dynamically including certain include files depending on the class you are trying to create.<br>\r\n6 Finality : can now use the final keyword to indicate that a method cannot be overridden by a child. You can also declare an entire class as final which prevents it from having any children at all.<br>\r\n7 Interfaces & Abstract Classes<br>\r\n8 Passed by Reference :<br>\r\n9 An __clone method if you really want to duplicate an object<br>\r\n10 Numbers of Functions Deprecated or removed in PHP5.x like ereg,ereg_replace,magic_quotes, session_register,register_globals, split(), call_user_method() etc<br>', 16, 1, 'Cache'),
+	(74, 'A select query over a large table runs very slow because of the growing number of entries in a table. What different measures could be taken to improv', 'Use Indexes, write table fields to select, use "limit" when possibile, use explain to see some info about the query', 16, 1, 'MySQL'),
+	(75, 'How can we increase the execution time of a PHP script?', 'You can do it with htaccess files: <br>\r\n\r\n<pre>\r\n<IfModule mod_php5.c>\r\nphp_value max_execution_time 259200\r\n</IfModule>\r\n</pre>\r\n\r\n or PHP: <br>\r\n\r\n<pre>ini_set(\'max_execution_time\', 300); set_time_limit(0);</pre>', 16, 0, 'MySQL'),
+	(76, 'What are different types of tables in MySQL and their differences.', 'MySQL table types: \r\n\r\n\r\n<ul><li>MyISAM</li><li>InnoDB</li><li>MERGE</li><li>MEMORY (HEAP)</li><li>ARCHIVE</li><li>CSV</li><li>FEDERATED</li></ul>\r\n\r\n\r\n<strong>MyISAM</strong><br>\r\n\r\nMyISAM extends the former ISAM storage engine. The MyISAM tables are optimized for compression an speed. MyISAM tables are also portable between platforms and OSes.\r\n\r\nThe size of MyISAM table can be up to 256TB, which is huge. In addition, MyISAM tables can be compressed into read-only tables to save space. At startup, MySQL checks MyISAM tables for corruption and even repair them in case of errors. The MyISAM tables are not transaction-safe.\r\n\r\nBefore MySQL version 5.5, MyISAM is the default storage engine when you create a table without explicitly specify the storage engine. From version 5.5, MySQL uses InnoDB as the default storage engine.\r\n\r\n<strong>InnoDB</strong><br>\r\n\r\nThe InnoDB tables fully support ACID-compliant and transactions. They are also very optimal for performance. InnoDB table supports foreign keys, commit, rollback, roll-and forward operations. The size of the InnoDB table can be up to 64TB.\r\n\r\nLike MyISAM, the InnoDB tables are portable between different platforms and OSes. MySQL also checks and repair InnoDB tables, if necessary, at startup.\r\n\r\n<strong>MERGE</strong><br>\r\n\r\nA MERGE table is a virtual table that combines multiple MyISAM tables, which has similar structure, into one table. The MERGE storage engine is also known as the MRG_MyISAM engine. The MERGE table does not have its own indexes; it uses indexes of the component tables instead.\r\n\r\nUsing MERGE table, you can speed up performance in joining multiple tables. MySQL only allows you to perform SELECT, DELETE, UPDATE and INSERT operations on the MERGE tables. If you use DROP TABLE statement on a MERGE table, only MERGE specification is removed. The underlying tables will not be affected.\r\n\r\n<strong>Memory</strong><br>\r\n\r\nThe memory tables are stored in memory and used hash indexes so that they are faster than MyISAM tables. The lifetime of the data of the memory tables depends on the up time of the database server. The memory storage engine is formerly known as HEAP.\r\n\r\n<strong>Archive</strong><br>\r\n\r\nThe archive storage engine allows you to store a large number of records, which for archiving purpose, into a compressed format to save disk space. The archive storage engine compresses a record when it is inserted and decompress it using zlib library as it is read.\r\n\r\nThe archive tables only allow INSERT and SELECT commands. The archive tables do not support indexes, so reading records requires a full table scanning.\r\n\r\n<strong>CSV</strong><br>\r\n\r\nThe CSV storage engine stores data in comma-separated values file format. A CSV table brings a convenient way to migrate data into non-SQL applications such as spreadsheet software.\r\n\r\nCSV table does not support NULL data type and read operation requires a full table scan.\r\n\r\n<strong>FEDERATED</strong><br>\r\n\r\nThe FEDERATED storage engine allows you to manage data from a remote MySQL server without using cluster or replication technology. The local federated table stores no data. When you query data from a local federated table, the data is pull automatically from the remote federated tables.', 16, 0, 'MySQL'),
+	(77, 'What is the difference between GROUP BY and ORDER BY in SQL', 'ORDER BY alters the order in which items are returned.<br><br>\r\n\r\nGROUP BY will aggregate records by the specified columns which allows you to perform aggregation functions on non-grouped columns (such as SUM, COUNT, AVG, etc).', 16, 0, 'MySQL'),
+	(78, 'What is an EXPLAIN? What does its result look like?', 'The DESCRIBE and EXPLAIN statements are synonyms.  EXPLAIN is used to obtain a query execution plan', 16, 0, 'MySQL');
 /*!40000 ALTER TABLE `interview` ENABLE KEYS */;
 
 
@@ -102,9 +118,10 @@ CREATE TABLE IF NOT EXISTS `interview_relations` (
   KEY `fk_interview_question_id` (`question_id`),
   CONSTRAINT `fk_interview_question_id` FOREIGN KEY (`question_id`) REFERENCES `interview` (`id`),
   CONSTRAINT `fk_interview_topic_id` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.interview_relations: ~64 rows (circa)
+-- Dump dei dati della tabella quiz.interview_relations: ~78 rows (circa)
+DELETE FROM `interview_relations`;
 /*!40000 ALTER TABLE `interview_relations` DISABLE KEYS */;
 INSERT INTO `interview_relations` (`id`, `topic_id`, `question_id`) VALUES
 	(1, 8, 1),
@@ -170,7 +187,21 @@ INSERT INTO `interview_relations` (`id`, `topic_id`, `question_id`) VALUES
 	(61, 8, 61),
 	(62, 8, 62),
 	(63, 8, 63),
-	(64, 8, 64);
+	(64, 8, 64),
+	(65, 8, 65),
+	(66, 8, 66),
+	(67, 8, 67),
+	(68, 8, 68),
+	(69, 8, 69),
+	(70, 8, 70),
+	(71, 8, 71),
+	(72, 8, 72),
+	(73, 8, 73),
+	(74, 8, 74),
+	(75, 8, 75),
+	(76, 8, 76),
+	(77, 8, 77),
+	(78, 8, 78);
 /*!40000 ALTER TABLE `interview_relations` ENABLE KEYS */;
 
 
@@ -185,12 +216,49 @@ CREATE TABLE IF NOT EXISTS `interview_tags_relations` (
   KEY `tag_id` (`tag_id`),
   CONSTRAINT `interview_tags_relations_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `interview` (`id`),
   CONSTRAINT `interview_tags_relations_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `quiz_tags` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
--- Dump dei dati della tabella quiz.interview_tags_relations: ~1 rows (circa)
+-- Dump dei dati della tabella quiz.interview_tags_relations: ~28 rows (circa)
+DELETE FROM `interview_tags_relations`;
 /*!40000 ALTER TABLE `interview_tags_relations` DISABLE KEYS */;
 INSERT INTO `interview_tags_relations` (`id`, `question_id`, `tag_id`) VALUES
-	(1, 1, 1);
+	(1, 1, 1),
+	(2, 2, 1),
+	(3, 3, 1),
+	(4, 4, 28),
+	(5, 4, 31),
+	(6, 5, 92),
+	(7, 5, 2),
+	(8, 6, 2),
+	(9, 7, 31),
+	(10, 8, 86),
+	(11, 9, 2),
+	(12, 10, 2),
+	(13, 11, 2),
+	(14, 12, 35),
+	(15, 13, 35),
+	(16, 14, 2),
+	(17, 15, 1),
+	(18, 16, 2),
+	(19, 17, 50),
+	(20, 18, 50),
+	(21, 18, 92),
+	(22, 20, 22),
+	(23, 21, 35),
+	(24, 22, 35),
+	(25, 23, 27),
+	(26, 24, 35),
+	(27, 25, 35),
+	(28, 26, 27),
+	(29, 27, 25),
+	(30, 28, 4),
+	(31, 29, 28),
+	(32, 30, 28),
+	(33, 31, 27),
+	(34, 32, 70),
+	(35, 33, 35),
+	(36, 34, 32),
+	(37, 35, 35);
 /*!40000 ALTER TABLE `interview_tags_relations` ENABLE KEYS */;
 
 
@@ -206,7 +274,8 @@ CREATE TABLE IF NOT EXISTS `quiz_answers` (
   CONSTRAINT `fk_question_id` FOREIGN KEY (`question_id`) REFERENCES `quiz_questions` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=947 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.quiz_answers: ~780 rows (circa)
+-- Dump dei dati della tabella quiz.quiz_answers: ~854 rows (circa)
+DELETE FROM `quiz_answers`;
 /*!40000 ALTER TABLE `quiz_answers` DISABLE KEYS */;
 INSERT INTO `quiz_answers` (`id`, `answer`, `correct`, `question_id`) VALUES
 	(1, '<SCRIPT LANGUAGE="php">', '1', 1),
@@ -1167,9 +1236,10 @@ CREATE TABLE IF NOT EXISTS `quiz_questions` (
   `comment` text,
   `number_correct_answers` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=198 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.quiz_questions: ~221 rows (circa)
+-- Dump dei dati della tabella quiz.quiz_questions: ~186 rows (circa)
+DELETE FROM `quiz_questions`;
 /*!40000 ALTER TABLE `quiz_questions` DISABLE KEYS */;
 INSERT INTO `quiz_questions` (`id`, `question`, `question_code`, `comment`, `number_correct_answers`) VALUES
 	(1, 'Which of the following tags are an acceptable way to begin a PHP Code block?', NULL, NULL, 4),
@@ -1386,6 +1456,7 @@ CREATE TABLE IF NOT EXISTS `quiz_questions_relations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=latin1;
 
 -- Dump dei dati della tabella quiz.quiz_questions_relations: ~198 rows (circa)
+DELETE FROM `quiz_questions_relations`;
 /*!40000 ALTER TABLE `quiz_questions_relations` DISABLE KEYS */;
 INSERT INTO `quiz_questions_relations` (`id`, `topic_id`, `question_id`) VALUES
 	(1, 8, 1),
@@ -1594,105 +1665,109 @@ DROP TABLE IF EXISTS `quiz_tags`;
 CREATE TABLE IF NOT EXISTS `quiz_tags` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
+  `slug` varchar(50) DEFAULT NULL,
   `parent_id` bigint(20) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
--- Dump dei dati della tabella quiz.quiz_tags: ~91 rows (circa)
+-- Dump dei dati della tabella quiz.quiz_tags: ~93 rows (circa)
+DELETE FROM `quiz_tags`;
 /*!40000 ALTER TABLE `quiz_tags` DISABLE KEYS */;
-INSERT INTO `quiz_tags` (`id`, `name`, `parent_id`) VALUES
-	(1, 'PHP Basics', 0),
-	(2, 'Syntax', 1),
-	(3, 'Operators', 1),
-	(4, 'Variables', 1),
-	(5, 'Control Structures', 1),
-	(6, 'Language Constructs and Functions', 1),
-	(7, 'Namespaces ', 1),
-	(8, 'Extensions', 1),
-	(9, 'Config', 1),
-	(10, 'Performance / bytecode caching *', 1),
-	(11, 'Functions', 0),
-	(12, 'Arguments', 11),
-	(13, 'Variables', 11),
-	(14, 'References', 11),
-	(15, 'Returns', 11),
-	(16, 'Variable Scope', 11),
-	(17, 'Anonymous Functions, closures', 11),
-	(18, 'Data Format & Types', 0),
-	(19, 'XML Basics', 18),
-	(20, 'SimpleXML', 18),
-	(21, 'XML Extension', 18),
-	(22, 'Webservices Basics', 18),
-	(23, 'SOAP', 18),
-	(24, 'JSON', 18),
-	(25, 'DateTime ', 18),
-	(26, 'DOMDocument', 18),
-	(27, 'Web Features', 0),
-	(28, 'Sessions', 27),
-	(29, 'Forms', 27),
-	(30, 'GET and POST data', 27),
-	(31, 'Cookies', 27),
-	(32, 'HTTP Headers', 27),
-	(33, 'HTTP Authentication', 27),
-	(34, 'HTTP Status Codes ', 27),
-	(35, 'Object Oriented Programming', 0),
-	(36, 'Instantiation', 35),
-	(37, 'Modifiers/Inheritance', 35),
-	(38, 'Interfaces', 35),
-	(39, 'Exceptions', 35),
-	(40, 'Autoload', 35),
-	(41, 'Reflection', 35),
-	(42, 'Type Hinting', 35),
-	(43, 'Class Constants', 35),
-	(44, 'Late Static Binding', 35),
-	(45, 'Magic (_*) Methods', 35),
-	(46, 'Instance Methods & Properties', 35),
-	(47, 'SPL', 35),
-	(48, 'Traits', 35),
-	(49, 'Security', 0),
-	(50, 'Configuration', 49),
-	(51, 'Session Security', 49),
-	(52, 'Cross-Site Scripting', 49),
-	(53, 'Cross-Site Request Forgeries', 49),
-	(54, 'SQL Injection', 49),
-	(55, 'Remote Code Injection', 49),
-	(56, 'Email Injection', 49),
-	(57, 'Filter Input', 49),
-	(58, 'Escape Output', 49),
-	(59, 'Encryption, Hashing algorithms', 49),
-	(60, 'File uploads', 49),
-	(61, 'PHP Configuration', 49),
-	(62, 'Password hashing API ', 49),
-	(63, 'I/O', 0),
-	(64, 'Files', 63),
-	(65, 'Reading', 63),
-	(66, 'Writing', 63),
-	(67, 'File System Functions', 63),
-	(68, 'Streams', 63),
-	(69, 'Contexts', 63),
-	(70, 'Strings & Patterns', 0),
-	(71, 'Quoting', 70),
-	(72, 'Matching', 70),
-	(73, 'Extracting', 70),
-	(74, 'Searching', 70),
-	(75, 'Replacing', 70),
-	(76, 'Formatting', 70),
-	(77, 'PCRE', 70),
-	(78, 'NOWDOC', 70),
-	(79, 'Encodings', 70),
-	(80, 'Databases & SQL', 0),
-	(81, 'SQL', 80),
-	(82, 'Joins', 80),
-	(83, 'Prepared Statements', 80),
-	(84, 'Transactions', 80),
-	(85, 'PDO', 80),
-	(86, 'Arrays', 0),
-	(87, 'Associative Arrays', 86),
-	(88, 'Array Iteration', 86),
-	(89, 'Array Functions', 86),
-	(90, 'SPL, Objects as arrays ', 86),
-	(91, 'Casting', 86);
+INSERT INTO `quiz_tags` (`id`, `name`, `slug`, `parent_id`) VALUES
+	(1, 'PHP Basics', 'php-basics', 0),
+	(2, 'Syntax', 'syntax', 1),
+	(3, 'Operators', 'operators', 1),
+	(4, 'Variables', 'variables', 1),
+	(5, 'Control Structures', 'control-structures', 1),
+	(6, 'Language Constructs and Functions', 'language-constructs-and-functions', 1),
+	(7, 'Namespaces ', 'namespaces', 1),
+	(8, 'Extensions', 'extensions', 1),
+	(9, 'Config', 'config', 1),
+	(10, 'Performance / bytecode caching *', 'performance-bytecode-caching', 1),
+	(11, 'Functions', 'functions', 0),
+	(12, 'Arguments', 'arguments', 11),
+	(13, 'Variables', 'variables', 11),
+	(14, 'References', 'references', 11),
+	(15, 'Returns', 'returns', 11),
+	(16, 'Variable Scope', 'variable-scope', 11),
+	(17, 'Anonymous Functions, closures', 'anonymous-functions,-closures', 11),
+	(18, 'Data Format & Types', 'data-format-&-types', 0),
+	(19, 'XML Basics', 'xml-basics', 18),
+	(20, 'SimpleXML', 'simplexml', 18),
+	(21, 'XML Extension', 'xml-extension', 18),
+	(22, 'Web Services', 'web-services', 18),
+	(23, 'SOAP', 'soap', 18),
+	(24, 'JSON', 'json', 18),
+	(25, 'DateTime ', 'datetime', 18),
+	(26, 'DOMDocument', 'domdocument', 18),
+	(27, 'Web Features', 'web-features', 0),
+	(28, 'Sessions', 'sessions', 27),
+	(29, 'Forms', 'forms', 27),
+	(30, 'GET and POST data', 'get-and-post-data', 27),
+	(31, 'Cookies', 'cookies', 27),
+	(32, 'HTTP Headers', 'http-headers', 27),
+	(33, 'HTTP Authentication', 'http-authentication', 27),
+	(34, 'HTTP Status Codes ', 'http-status-codes', 27),
+	(35, 'OOP', 'oop', 0),
+	(36, 'Instantiation', 'instantiation', 35),
+	(37, 'Modifiers/Inheritance', 'modifiers/inheritance', 35),
+	(38, 'Interfaces', 'interfaces', 35),
+	(39, 'Exceptions', 'exceptions', 35),
+	(40, 'Autoload', 'autoload', 35),
+	(41, 'Reflection', 'reflection', 35),
+	(42, 'Type Hinting', 'type-hinting', 35),
+	(43, 'Class Constants', 'class-constants', 35),
+	(44, 'Late Static Binding', 'late-static-binding', 35),
+	(45, 'Magic (_*) Methods', 'magic--methods', 35),
+	(46, 'Instance Methods & Properties', 'instance-methods-&-properties', 35),
+	(47, 'SPL', 'spl', 35),
+	(48, 'Traits', 'traits', 35),
+	(49, 'Security', 'security', 0),
+	(50, 'Configuration', 'configuration', 49),
+	(51, 'Session Security', 'session-security', 49),
+	(52, 'Cross-Site Scripting', 'cross-site-scripting', 49),
+	(53, 'Cross-Site Request Forgeries', 'cross-site-request-forgeries', 49),
+	(54, 'SQL Injection', 'sql-injection', 49),
+	(55, 'Remote Code Injection', 'remote-code-injection', 49),
+	(56, 'Email Injection', 'email-injection', 49),
+	(57, 'Filter Input', 'filter-input', 49),
+	(58, 'Escape Output', 'escape-output', 49),
+	(59, 'Encryption, Hashing algorithms', 'encryption,-hashing-algorithms', 49),
+	(60, 'File uploads', 'file-uploads', 49),
+	(61, 'PHP Configuration', 'php-configuration', 49),
+	(62, 'Password hashing API ', 'password-hashing-api', 49),
+	(63, 'I/O', 'i/o', 0),
+	(64, 'Files', 'files', 63),
+	(65, 'Reading', 'reading', 63),
+	(66, 'Writing', 'writing', 63),
+	(67, 'File System Functions', 'file-system-functions', 63),
+	(68, 'Streams', 'streams', 63),
+	(69, 'Contexts', 'contexts', 63),
+	(70, 'Strings & Patterns', 'strings-patterns', 0),
+	(71, 'Quoting', 'quoting', 70),
+	(72, 'Matching', 'matching', 70),
+	(73, 'Extracting', 'extracting', 70),
+	(74, 'Searching', 'searching', 70),
+	(75, 'Replacing', 'replacing', 70),
+	(76, 'Formatting', 'formatting', 70),
+	(77, 'PCRE', 'pcre', 70),
+	(78, 'NOWDOC', 'nowdoc', 70),
+	(79, 'Encodings', 'encodings', 70),
+	(80, 'Databases & SQL', 'databases-&-sql', 0),
+	(81, 'SQL', 'sql', 80),
+	(82, 'Joins', 'joins', 80),
+	(83, 'Prepared Statements', 'prepared-statements', 80),
+	(84, 'Transactions', 'transactions', 80),
+	(85, 'PDO', 'pdo', 80),
+	(86, 'Arrays', 'arrays', 0),
+	(87, 'Associative Arrays', 'associative-arrays', 86),
+	(88, 'Array Iteration', 'array-iteration', 86),
+	(89, 'Array Functions', 'array-functions', 86),
+	(90, 'SPL, Objects as arrays ', 'spl,-objects-as-arrays', 86),
+	(91, 'Casting', 'casting', 86),
+	(92, 'Apache', 'apache', 0),
+	(93, 'Language basics', 'language-basics', 0);
 /*!40000 ALTER TABLE `quiz_tags` ENABLE KEYS */;
 
 
@@ -1710,6 +1785,7 @@ CREATE TABLE IF NOT EXISTS `quiz_tags_relations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- Dump dei dati della tabella quiz.quiz_tags_relations: ~7 rows (circa)
+DELETE FROM `quiz_tags_relations`;
 /*!40000 ALTER TABLE `quiz_tags_relations` DISABLE KEYS */;
 INSERT INTO `quiz_tags_relations` (`id`, `question_id`, `tag_id`) VALUES
 	(1, 1, 1),
@@ -1726,32 +1802,53 @@ INSERT INTO `quiz_tags_relations` (`id`, `question_id`, `tag_id`) VALUES
 DROP TABLE IF EXISTS `topics`;
 CREATE TABLE IF NOT EXISTS `topics` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
   `parent_id` bigint(20) DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL,
   `position` bigint(20) DEFAULT NULL,
+  `slug` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- Dump dei dati della tabella quiz.topics: ~14 rows (circa)
+DELETE FROM `topics`;
 /*!40000 ALTER TABLE `topics` DISABLE KEYS */;
-INSERT INTO `topics` (`id`, `name`, `parent_id`, `status`, `position`) VALUES
-	(1, 'Development', 0, NULL, 1),
-	(2, 'OOP', 10, NULL, 2),
-	(3, 'Java', 1, NULL, 3),
-	(4, 'Scrum', 12, NULL, 4),
-	(5, 'Ruby', 1, NULL, 5),
-	(6, 'Database', 0, NULL, 2),
-	(7, 'MySQL', 6, NULL, 7),
-	(8, 'PHP', 1, NULL, 8),
-	(9, 'MongoDB', 6, NULL, 9),
-	(10, 'Concepts', 0, NULL, 3),
-	(11, 'Design Patterns', 10, NULL, 3),
-	(12, 'Methodologies', 0, NULL, 3),
-	(13, 'Network protocols', 0, NULL, 3),
-	(14, 'HTTP', 13, NULL, 3);
+INSERT INTO `topics` (`id`, `name`, `parent_id`, `status`, `position`, `slug`) VALUES
+	(1, 'Development', 0, NULL, 1, 'development'),
+	(2, 'OOP', 10, NULL, 2, 'oop'),
+	(3, 'Java', 1, NULL, 3, 'java'),
+	(4, 'Scrum', 12, NULL, 4, 'scrum'),
+	(5, 'Ruby', 1, NULL, 5, 'ruby'),
+	(6, 'Database', 0, NULL, 2, 'database'),
+	(7, 'MySQL', 6, NULL, 7, 'mysql'),
+	(8, 'PHP', 1, NULL, 8, 'php'),
+	(9, 'MongoDB', 6, NULL, 9, 'mongodb'),
+	(10, 'Concepts', 0, NULL, 3, 'concepts'),
+	(11, 'Design Patterns', 10, NULL, 3, 'design-patterns'),
+	(12, 'Methodologies', 0, NULL, 3, 'methodologies'),
+	(13, 'Network protocols', 0, NULL, 3, 'network-protocols'),
+	(14, 'HTTP', 13, NULL, 3, 'http');
 /*!40000 ALTER TABLE `topics` ENABLE KEYS */;
+
+
+-- Dump della struttura di tabella quiz.users
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT '0',
+  `surname` varchar(50) NOT NULL DEFAULT '0',
+  `email` varchar(50) NOT NULL DEFAULT '0',
+  `username` varchar(50) NOT NULL DEFAULT '0',
+  `password` varchar(80) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dump dei dati della tabella quiz.users: ~0 rows (circa)
+DELETE FROM `users`;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

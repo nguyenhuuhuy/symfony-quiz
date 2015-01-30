@@ -5,16 +5,20 @@ namespace Acme\ModelBundle\Model\Interview;
 use Acme\ModelBundle\Model\RecordsGetterWrapperAbstract;
 
 /**
+ * Class InterviewTagsGetterWrapper
+ *
  * @author Andrea Fiori
  * @since  22 October 2014
  */
 class InterviewTagsGetterWrapper extends RecordsGetterWrapperAbstract
 {
-    /** @var \Acme\ReqBundle\Model\Interview\InterviewTagsGetter **/
+    /**
+     * @var InterviewTagsGetter
+     */
     protected $objectGetter;
     
     /**
-     * @param \Acme\ReqBundle\Model\Interview\InterviewTagsGetter $objectGetter
+     * @param InterviewTagsGetter $objectGetter
      */
     public function __construct(InterviewTagsGetter $objectGetter)
     {
@@ -26,6 +30,8 @@ class InterviewTagsGetterWrapper extends RecordsGetterWrapperAbstract
         $this->objectGetter->setSelectQueryFields( $this->getInput('fields', 1) );
         $this->objectGetter->setMainQuery();
         $this->objectGetter->setOrderBy( $this->getInput('orderBy', 1) );
+        $this->objectGetter->setQuestionId( $this->getInput('questionId', 1) );
+        $this->objectGetter->setTagSlug( $this->getInput('tagSlug', 1) );
         $this->objectGetter->setLimit( $this->getInput('limit', 1) );
         $this->objectGetter->setGroupBy( $this->getInput('groupBy', 1) );
     }

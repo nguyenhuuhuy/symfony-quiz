@@ -35,18 +35,22 @@ Ensure you have PHPUnit installed.
     
     phpunit -c app/
 
-Frontend and Backend features
+Backend features
 --------------------------------
 
 - Doctrine2 ORM
 - Symfony2 with Twig and knpPaginatorBundle for pagination
 - Twig Macro for printing topics recursively
 - Twig custom class and functions to slugify string\s
+- The web directory was deleted so the application can be deployed on a shared hosting
+- Netbeans IDE was used for coding and design
+
+Frontend features
+--------------------------------
+
 - HTML output compression
 - Twitter Bootstrap 3
 - JQuery
-- The web directory was deleted so the application can be deployed on a shared hosting
-- Netbeans IDE was used for coding and design
 
 TODO
 --------------------------------
@@ -54,6 +58,7 @@ TODO
 - Always add new records to the database!
 - Complete the Admin area
 - Functional testing
+- Select users from db
 
 Zend questions resources
 --------------------------------

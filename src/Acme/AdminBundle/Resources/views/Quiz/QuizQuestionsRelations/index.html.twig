@@ -30,8 +30,8 @@
                 <tr>
                     <td>{{ entity.question.question | truncate(80) }}</td>
                     <td>{{ entity.topic.name }}</td>
-                    <td><a href="{{ path('admin_quizquestionsrelations_show', { 'id': entity.id }) }}">Show</a></td>
-                    <td><a href="{{ path('admin_quizquestionsrelations_edit', { 'id': entity.id }) }}">Edit</a></td>
+                    <td><a href="{{ path('admin_quizquestionsrelations_show', { 'id': entity.id }) }}" title="Show"><i class="fa fa-table"></i></a></td>
+                    <td><a href="{{ path('admin_quizquestionsrelations_edit', { 'id': entity.id }) }}" title="Edit"><i class="fa fa-pencil"></i></a></td>
                 </tr>
             {% endfor %}
             </tbody>

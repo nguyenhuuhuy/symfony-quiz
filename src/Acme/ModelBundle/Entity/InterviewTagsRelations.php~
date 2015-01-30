@@ -42,4 +42,60 @@ class InterviewTagsRelations
     private $question;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set tag
+     *
+     * @param \Acme\ModelBundle\Entity\QuizTags $tag
+     * @return InterviewTagsRelations
+     */
+    public function setTag(\Acme\ModelBundle\Entity\QuizTags $tag = null)
+    {
+        $this->tag = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Get tag
+     *
+     * @return \Acme\ModelBundle\Entity\QuizTags 
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * Set question
+     *
+     * @param \Acme\ModelBundle\Entity\Interview $question
+     * @return InterviewTagsRelations
+     */
+    public function setQuestion(\Acme\ModelBundle\Entity\Interview $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \Acme\ModelBundle\Entity\Interview 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
 }

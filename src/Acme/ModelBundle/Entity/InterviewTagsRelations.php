@@ -59,7 +59,7 @@ class InterviewTagsRelations
      * @param \Acme\ModelBundle\Entity\QuizTags $tag
      * @return InterviewTagsRelations
      */
-    public function setTag(QuizTags $tag = null)
+    public function setTag(\Acme\ModelBundle\Entity\QuizTags $tag = null)
     {
         $this->tag = $tag;
 
@@ -82,7 +82,7 @@ class InterviewTagsRelations
      * @param \Acme\ModelBundle\Entity\Interview $question
      * @return InterviewTagsRelations
      */
-    public function setQuestion(Interview $question = null)
+    public function setQuestion(\Acme\ModelBundle\Entity\Interview $question = null)
     {
         $this->question = $question;
 
@@ -92,7 +92,7 @@ class InterviewTagsRelations
     /**
      * Get question
      *
-     * @return Interview 
+     * @return \Acme\ModelBundle\Entity\Interview 
      */
     public function getQuestion()
     {

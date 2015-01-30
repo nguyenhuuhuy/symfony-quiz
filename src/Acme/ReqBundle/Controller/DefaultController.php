@@ -22,6 +22,7 @@ class DefaultController extends Controller
 {
     /**
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request)
@@ -46,7 +47,9 @@ class DefaultController extends Controller
         $interviewTopicsGetter->setInput( array() );
         
         $interviewTagsGetterWrapper = new InterviewTagsGetterWrapper( new InterviewTagsGetter($em) );
-        $interviewTagsGetterWrapper->setInput( array() );
+        $interviewTagsGetterWrapper->setInput( array(
+            'fields' => 'DISTINCT(t.id) AS tagId, t.name, t.slug'
+        ) );
         $interviewTagsGetterWrapper->setupQueryBuilder();
 
         return $this->render('::default/index.html.twig', array(

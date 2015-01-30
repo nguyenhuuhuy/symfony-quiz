@@ -37,12 +37,12 @@ class QuizQuestionsController extends Controller
             $this->get('request')->query->get('page', 1),
             8
         );
-        
+
         $records = array();
         foreach($pagination as $paging) {
             $records[] = $paging;
         }
-        
+
         return array(
             'pagination' => $pagination,
             'entities'   => $records
@@ -269,7 +269,7 @@ class QuizQuestionsController extends Controller
         return $this->createFormBuilder()
                     ->setAction($this->generateUrl('acme_admin_quiz_quizquestions_delete', array('id' => $id)))
                     ->setMethod('DELETE')
-                    ->add('submit', 'submit', array('label' => 'Delete'))
+                    ->add('submit', 'submit', array('label' => 'Delete', 'attr' => array('class' => 'btn btn-danger')))
                     ->getForm()
         ;
     }

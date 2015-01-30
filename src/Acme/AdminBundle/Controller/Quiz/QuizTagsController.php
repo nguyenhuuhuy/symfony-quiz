@@ -17,7 +17,6 @@ use Acme\AdminBundle\Form\QuizTagsType;
  */
 class QuizTagsController extends Controller
 {
-
     /**
      * Lists all QuizTags entities.
      *
@@ -35,6 +34,7 @@ class QuizTagsController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new QuizTags entity.
      *
@@ -169,6 +169,7 @@ class QuizTagsController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing QuizTags entity.
      *
@@ -202,6 +203,7 @@ class QuizTagsController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
+    
     /**
      * Deletes a QuizTags entity.
      *
@@ -240,7 +242,7 @@ class QuizTagsController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('quiz_tags_management_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Delete', 'attr' => array('class' => 'btn btn-danger')))
             ->getForm()
         ;
     }

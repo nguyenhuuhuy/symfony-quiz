@@ -35,7 +35,33 @@ class QuizTags
      */
     private $id;
 
+    /**
+     * @var string
+     */
+    private $slug;
 
+    /**
+     * Set id
+     *
+     * @param $id
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set name
@@ -84,17 +110,25 @@ class QuizTags
     }
 
     /**
-     * Get id
+     * Set slug
      *
-     * @return integer 
+     * @param string $slug
+     * @return QuizTags
      */
-    public function getId()
+    public function setSlug($slug)
     {
-        return $this->id;
+        $this->slug = $slug;
+
+        return $this;
     }
-    
-    public function __toString()
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
     {
-        return $this->name;
+        return $this->slug;
     }
 }

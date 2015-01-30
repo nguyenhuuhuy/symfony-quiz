@@ -19,7 +19,6 @@ use Acme\ModelBundle\Model\Topics\TopicsGetterWrapper;
  */
 class TopicsController extends Controller
 {
-
     /**
      * Lists all Topics entities.
      *
@@ -49,6 +48,7 @@ class TopicsController extends Controller
             'entities'   => $records
         );
     }
+
     /**
      * Creates a new Topics entity.
      *
@@ -183,6 +183,7 @@ class TopicsController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Topics entity.
      *
@@ -216,6 +217,7 @@ class TopicsController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a Topics entity.
      *

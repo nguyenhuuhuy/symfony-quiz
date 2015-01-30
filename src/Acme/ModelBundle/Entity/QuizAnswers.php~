@@ -46,4 +46,83 @@ class QuizAnswers
     private $question;
 
 
+
+    /**
+     * Set answer
+     *
+     * @param string $answer
+     * @return QuizAnswers
+     */
+    public function setAnswer($answer)
+    {
+        $this->answer = $answer;
+
+        return $this;
+    }
+
+    /**
+     * Get answer
+     *
+     * @return string 
+     */
+    public function getAnswer()
+    {
+        return $this->answer;
+    }
+
+    /**
+     * Set correct
+     *
+     * @param string $correct
+     * @return QuizAnswers
+     */
+    public function setCorrect($correct)
+    {
+        $this->correct = $correct;
+
+        return $this;
+    }
+
+    /**
+     * Get correct
+     *
+     * @return string 
+     */
+    public function getCorrect()
+    {
+        return $this->correct;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set question
+     *
+     * @param \Acme\ModelBundle\Entity\QuizQuestions $question
+     * @return QuizAnswers
+     */
+    public function setQuestion(\Acme\ModelBundle\Entity\QuizQuestions $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \Acme\ModelBundle\Entity\QuizQuestions 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
 }

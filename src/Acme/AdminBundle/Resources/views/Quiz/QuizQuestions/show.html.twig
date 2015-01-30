@@ -1,7 +1,16 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 
 {% block section %}
+
     <h1>Quiz questions</h1>
+
+    <a href="{{ path('acme_admin_quiz_quizquestions_index') }}" class="btn btn-default" title="Back to the list">
+        Back to the list
+    </a>
+
+    <a href="{{ path('acme_admin_quiz_quizquestions_edit', { 'id': entity.id }) }}" class="btn btn-primary" title="Edit question">
+        Edit
+    </a>
 
     <table class="record_properties">
         <tbody>
@@ -10,7 +19,7 @@
                 <td>{{ entity.question }}</td>
             </tr>
             <tr>
-                <th>Questioncode</th>
+                <th>Question code</th>
                 <td>{{ entity.questionCode }}</td>
             </tr>
             <tr>
@@ -18,7 +27,7 @@
                 <td>{{ entity.comment }}</td>
             </tr>
             <tr>
-                <th>Numbercorrectanswers</th>
+                <th>Number of correct answers</th>
                 <td>{{ entity.numberCorrectAnswers }}</td>
             </tr>
             <tr>
@@ -28,17 +37,6 @@
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('acme_admin_quiz_quizquestions_index') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('acme_admin_quiz_quizquestions_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    {{ form(delete_form) }}
+
 {% endblock %}

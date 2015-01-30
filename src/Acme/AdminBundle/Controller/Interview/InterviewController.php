@@ -19,7 +19,6 @@ use Acme\ModelBundle\Model\Interview\InterviewGetterWrapper;
  */
 class InterviewController extends Controller
 {
-
     /**
      * Lists all Interview entities.
      *
@@ -49,6 +48,7 @@ class InterviewController extends Controller
             'entities'   => $records
         );
     }
+
     /**
      * Creates a new Interview entity.
      *
@@ -67,7 +67,7 @@ class InterviewController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('acme_admin_interview_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('acme_admin_interview_interview_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -86,7 +86,7 @@ class InterviewController extends Controller
     private function createCreateForm(Interview $entity)
     {
         $form = $this->createForm(new InterviewType(), $entity, array(
-            'action' => $this->generateUrl('acme_admin_interview_create'),
+            'action' => $this->generateUrl('acme_admin_interview_interview_create'),
             'method' => 'POST',
         ));
 
