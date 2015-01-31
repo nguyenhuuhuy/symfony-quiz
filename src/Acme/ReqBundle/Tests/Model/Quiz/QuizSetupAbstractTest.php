@@ -5,6 +5,8 @@ namespace Acme\ReqBundle\Tests\Model\Quiz;
 use Acme\ReqBundle\Tests\Model\TestSuite;
 
 /**
+ * Class QuizSetupAbstractTest
+ *
  * @author Andrea Fiori
  * @since  04 November 2014
  */

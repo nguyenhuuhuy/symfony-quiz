@@ -60,4 +60,19 @@ class InterviewTagsGetter extends QueryBuilderHelperAbstract
 
         return $this->getQueryBuilder();
     }
+
+    /**
+     * @param int $important
+     *
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function setImportant($important)
+    {
+        if ( is_numeric($important) ) {
+            $this->getQueryBuilder()->andWhere('q.important = :important ');
+            $this->getQueryBuilder()->setParameter('important', $important);
+        }
+
+        return $this->getQueryBuilder();
+    }
 }

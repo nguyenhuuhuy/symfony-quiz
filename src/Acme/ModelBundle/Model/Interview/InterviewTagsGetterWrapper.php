@@ -32,6 +32,7 @@ class InterviewTagsGetterWrapper extends RecordsGetterWrapperAbstract
         $this->objectGetter->setOrderBy( $this->getInput('orderBy', 1) );
         $this->objectGetter->setQuestionId( $this->getInput('questionId', 1) );
         $this->objectGetter->setTagSlug( $this->getInput('tagSlug', 1) );
+        $this->objectGetter->setImportant( $this->getInput('important', 1) );
         $this->objectGetter->setLimit( $this->getInput('limit', 1) );
         $this->objectGetter->setGroupBy( $this->getInput('groupBy', 1) );
     }

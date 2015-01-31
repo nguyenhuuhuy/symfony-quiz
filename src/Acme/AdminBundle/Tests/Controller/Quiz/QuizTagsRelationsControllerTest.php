@@ -4,7 +4,7 @@ namespace Acme\ModelBundle\Tests\Controller\Quiz;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class QuizTagsRelationsControllerTest extends WebTestCase
+class QuizTagsRelationsControllerTest //extends WebTestCase
 {
     /*
     public function testCompleteScenario()

@@ -7,6 +7,8 @@ use Acme\ModelBundle\Model\Quiz\QuizAnswersGetter;
 use Acme\ModelBundle\Model\Quiz\QuizAnswersGetterWrapper;
 
 /**
+ * Class QuizAnswersGetterWrapperTest
+ *
  * @author Andrea Fiori
  * @since  06 June 2014
  */

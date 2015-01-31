@@ -6,6 +6,8 @@ use Acme\ReqBundle\Tests\Model\TestSuite;
 use Acme\ModelBundle\Model\Quiz\QuizQuestionsFromTagsGetter;
 
 /**
+ * Class QuizQuestionsFromTagsGetterTest
+ *
  * @author Andrea Fiori
  * @since  07 November 2014
  */

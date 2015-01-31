@@ -4,7 +4,7 @@ namespace Acme\ModelBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class TopicsControllerTest extends WebTestCase
+class TopicsControllerTest //extends WebTestCase
 {
     /*
     public function testCompleteScenario()

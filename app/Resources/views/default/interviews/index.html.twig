@@ -16,8 +16,8 @@
     <h3>Tags</h3>
     <div class="row">
     {% for tag in tags %}
-        <div class="col-sm-2" class="gridcellpadding">
-        <a href="{{ path('acme_interview_tags', {'tag': tag.slug}) }}" title="Interview question  {{ tag.name }}" class="btn btn-default"><i class="fa fa-tags"></i> {{ tag.name }}</a>
+        <div class="col-sm-2" class="gridcellpadding" style="padding: 4px">
+            <a href="{{ path('acme_interview_tags', {'tag': tag.slug}) }}" title="Interview question  {{ tag.name }}" class="btn btn-default"><i class="fa fa-tags"></i> {{ tag.name }}</a>
         </div>
     {% endfor %}
     </div>

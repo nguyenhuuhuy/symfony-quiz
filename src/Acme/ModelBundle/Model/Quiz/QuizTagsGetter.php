@@ -5,6 +5,8 @@ namespace Acme\ModelBundle\Model\Quiz;
 use Acme\ModelBundle\Model\QueryBuilderHelperAbstract;
 
 /**
+ * Class QuizTagsGetter
+ *
  * @author Andrea Fiori
  * @since  06 October 2014
  */

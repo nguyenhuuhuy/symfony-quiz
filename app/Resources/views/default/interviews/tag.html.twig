@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li><a href="{{ url('homepage') }}" title="Back to the home page">Home</a></li>
+        <li><a href="{{ path('acme_interview') }}">Interview question</a></li>
+        {% if currentTopic is defined %}
+            <li>Topics</li>
+            <li class="active">{{ currentTopic | capitalize }}</li>
+        {% endif %}
+        {% if currentTag is defined %}
+            <li>Tag</li>
+            <li class="active">{{ currentTag | capitalize }}</li>
+        {% endif %}
+    </ol>
+
+    {% if records is not empty %}
+        <h1>Interview questions</h1>
+
+        <p><strong>{{ pagination.getTotalItemCount }}</strong> questions available.</p>
+
+        <p>Order by {{ knp_pagination_sortable(pagination, 'Id', 'ir.id') }} - {% if pagination.isSorted('q.question') %}{% endif %}{{ knp_pagination_sortable(pagination, 'Question', 'q.question') }} </p>
+
+        {% if important == 0 %}
+            <p>&raquo; <a href="{{ path('acme_interview_tags', {'tag': currentTag, 'important': '1'}) }}" title="View question marked as important">View question marked as "important"</a></p>
+        {% else  %}
+            <p>&raquo; <a href="{{ path('acme_interview_tags', {'tag': currentTag, 'important': '0'}) }}" title="View all questions">View all</a></p>
+        {% endif %}
+
+        <div>
+            {% for question in records %}
+                <h3><strong>{{ question.question }}</strong></h3>
+                <blockquote>{{ question.answer | raw }}</blockquote>
+
+                {% if question.tags is defined %}
+
+                <div><strong>Tags:</strong>
+                    {% for tag in question.tags %}
+                        <a href="{{ path('acme_interview_tags', {'tag': tag.slug}) }}" class="btn btn-default" title="Question interview for tag {{ tag.name }}"><i class="fa fa-tags"></i> {{ tag.name }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <hr>
+            {% endfor %}
+        </div>
+
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% else %}
+        <div class="alert alert-warning">
+            <h3>No question interview</h3>
+            <div>No iquestion interview found for the current request</div>
+        </div>
+    {% endif %}
+
+    {% include '::default/footer.html.twig' %}
+</div>
+{% endblock %}

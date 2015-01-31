@@ -6,6 +6,8 @@ use Acme\ReqBundle\Tests\Model\TestSuite;
 use Acme\ModelBundle\Model\Quiz\QuizSetupQuestionGetterWrapper;
 
 /**
+ * Class QuizSetupQuestionGetterWrapperTest
+ *
  * @author Andrea Fiori
  * @since  04 November 2014
  */

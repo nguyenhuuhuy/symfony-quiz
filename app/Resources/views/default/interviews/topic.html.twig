@@ -6,15 +6,21 @@
     <ol class="breadcrumb">
         <li><a href="{{ url('homepage') }}" title="Back to the home page">Home</a></li>
         <li><a href="{{ path('acme_interview') }}">Interview question</a></li>
-        {% if currentTopic is not empty %}<li class="active">{{ currentTopic | capitalize }}</li>{% endif %}
-        {% if currentTag is not empty %}<li class="active">Tag: {{ currentTag | capitalize }}</li>{% endif %}
+        {% if currentTopic is not empty %}
+            <li>Topics</li>
+            <li class="active">{{ currentTopic | capitalize }}</li>
+        {% endif %}
+        {% if currentTag is not empty %}
+            <li>Tag</li>
+            <li class="active">{{ currentTag | capitalize }}</li>
+        {% endif %}
     </ol>
 
     {% if records is not empty %}
         <h1>Interview questions</h1>
-        
+
         <p><strong>{{ pagination.getTotalItemCount }}</strong> questions available.</p>
-        
+
         <p>Order by {{ knp_pagination_sortable(pagination, 'Id', 'ir.id') }} - {% if pagination.isSorted('q.question') %}{% endif %}{{ knp_pagination_sortable(pagination, 'Question', 'q.question') }} </p>
 
         {% if important == 0 %}
@@ -23,7 +29,7 @@
             <p>&raquo; <a href="{{ path('acme_interview', {'important': '0'}) }}" title="View all questions">View all</a></p>
         {% endif %}
 
-        <div class="panel-group" id="accordion">
+        <div>
             {% for question in records %}
                 <h3><strong>{{ question.question.question }}</strong></h3>
                 <blockquote>{{ question.question.answer | raw }}</blockquote>
@@ -46,8 +52,13 @@
         <div class="navigation">
             {{ knp_pagination_render(pagination) }}
         </div>
+    {% else %}
+        <div class="alert alert-warning">
+            <h3>No question interview</h3>
+            <div>No iquestion interview found for the current request</div>
+        </div>
     {% endif %}
-    
+
     {% include '::default/footer.html.twig' %}
 </div>
 {% endblock %}

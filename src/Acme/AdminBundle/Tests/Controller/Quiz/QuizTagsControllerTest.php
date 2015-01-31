@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 /**
  * Quiz Tags Management Controller Test
  */
-class QuizTagsControllerTest extends WebTestCase
+class QuizTagsControllerTest //extends WebTestCase
 {
     /*
     public function testCompleteScenario()

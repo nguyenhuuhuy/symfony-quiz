@@ -5,6 +5,8 @@ namespace Acme\ReqBundle\Tests\Model;
 use Acme\ReqBundle\Tests\Model\TestSuite;
 
 /**
+ * Class QueryBuilderHelperAbstractTest
+ *
  * @author Andrea Fiori
  * @since  29 May 2014
  */

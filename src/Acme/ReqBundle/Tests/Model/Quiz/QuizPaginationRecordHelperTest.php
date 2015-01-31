@@ -100,7 +100,7 @@ class QuizPaginationRecordHelperTest extends TestSuite
     }
 
         /**
-         * @return QuizQuestionsRelations
+         * @return \Acme\ModelBundle\Entity\QuizQuestionsRelations
          */
         private function getQuizQuestionsRelationsMock()
         {
@@ -116,7 +116,10 @@ class QuizPaginationRecordHelperTest extends TestSuite
             
             return $mockOjbect;
         }
-        
+
+        /**
+         * @return \Acme\ModelBundle\Entity\QuizQuestions
+         */
         private function getQuizQuestionMock()
         {
             $mockOjbect = $this->getMock('\Acme\ModelBundle\Entity\QuizQuestions');
@@ -130,7 +133,10 @@ class QuizPaginationRecordHelperTest extends TestSuite
                              ->will($this->returnValue('PHP'));
             return $mockOjbect;
         }
-        
+
+        /**
+         * @return \Acme\ModelBundle\Entity\Topics
+         */
         private function getTopicsMock()
         {
             $mockOjbect = $this->getMock('\Acme\ModelBundle\Entity\Topics');

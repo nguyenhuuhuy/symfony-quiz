@@ -28,7 +28,14 @@ class QuizQuestionsGetterTest extends TestSuite
     public function testSetQuestionId()
     {
         $this->assertInstanceOf('\Doctrine\ORM\QueryBuilder', $this->objectGetter->setQuestionId(1));
+
+        $this->assertNotEmpty( $this->objectGetter->getQueryBuilder()->getParameter('questionId') );
+    }
+
+    public function testSetQuestionIdWithArrayInput()
+    {
         $this->assertInstanceOf('\Doctrine\ORM\QueryBuilder', $this->objectGetter->setQuestionId(array(1,2,3)));
+
         $this->assertNotEmpty( $this->objectGetter->getQueryBuilder()->getParameter('questionId') );
     }
     

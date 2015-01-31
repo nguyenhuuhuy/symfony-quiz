@@ -6,6 +6,8 @@ use Acme\ReqBundle\Tests\Model\TestSuite;
 use Acme\ModelBundle\Model\Quiz\QuizAnswersGetter;
 
 /**
+ * Class QuizAnswersGetterTest
+ *
  * @author Andrea Fiori
  * @since  05 June 2014
  */
@@ -27,8 +29,15 @@ class QuizAnswersGetterTest extends TestSuite
     
     public function testSetQuestionId()
     {
-        $this->assertInstanceOf('\Doctrine\ORM\QueryBuilder', $this->objectGetter->setQuestionId(1));
-        $this->assertInstanceOf('\Doctrine\ORM\QueryBuilder', $this->objectGetter->setQuestionId(array(1,2,3)));
+        $this->objectGetter->setQuestionId(1);
+
+        $this->assertNotEmpty( $this->objectGetter->getQueryBuilder()->getParameter('questionId') );
+    }
+
+    public function testSetQuestionIdWithArrayInput()
+    {
+        $this->objectGetter->setQuestionId(array(1,2,3));
+
         $this->assertNotEmpty( $this->objectGetter->getQueryBuilder()->getParameter('questionId') );
     }
 }

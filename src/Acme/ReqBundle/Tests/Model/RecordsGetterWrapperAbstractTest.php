@@ -5,6 +5,8 @@ namespace Acme\ReqBundle\Tests\Model;
 use Acme\ReqBundle\Tests\Model\TestSuite;
 
 /**
+ * Class RecordsGetterWrapperAbstractTest
+ *
  * @author Andrea Fiori
  * @since  11 June 2014
  */

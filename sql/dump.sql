@@ -11,18 +11,17 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dump della struttura di tabella quiz.interview
-DROP TABLE IF EXISTS `interview`;
 CREATE TABLE IF NOT EXISTS `interview` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `question` text,
-  `answer` text,
-  `position` bigint(20) DEFAULT '0',
-  `important` int(2) DEFAULT '0',
-  `topics_old` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+	`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`question` text,
+	`answer` text,
+	`position` bigint(20) DEFAULT '0',
+	`important` int(2) DEFAULT '0',
+	`topics_old` varchar(150) DEFAULT NULL,
+	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.interview: ~80 rows (circa)
+-- Dump dei dati della tabella quiz.interview: ~78 rows (circa)
 DELETE FROM `interview`;
 /*!40000 ALTER TABLE `interview` DISABLE KEYS */;
 INSERT INTO `interview` (`id`, `question`, `answer`, `position`, `important`, `topics_old`) VALUES
@@ -68,9 +67,9 @@ INSERT INTO `interview` (`id`, `question`, `answer`, `position`, `important`, `t
 	(40, 'What are the different tables types present in MySQL?', '<p></em>Total 5 types of tables we can create<br>\r\n1. MyISAM<br>\r\n2. Heap<br>\r\n3. Merge<br>\r\n4. INNO DB<br>\r\n5. ISAM<br>\r\nMyISAM is the default storage engine as of MySQL 3.23 and as a result if we do not specify the table name explicitly it will be assigned to the default engine.</p>', 7, 0, 'MySQL'),
 	(41, 'How can I execute a PHP script using command line?', 'As of version 4.3.0, PHP supports a new SAPI type (Server Application Programming Interface) named CLI which means Command Line Interface. Just run the PHP CLI (Command Line Interface) program and provide the PHP script file name as the command line argument. For example, “php myScript.php”, assuming “php” is the command to invoke the CLI program.\r\nBe aware that if your PHP script was written for the Web CGI interface, it may not execute properly in command line environment.', 3, 0, 'PHP Version'),
 	(42, 'How can we encrypt the username and password using PHP?', '<p>The functions in this section perform encryption and decryption, and compression and uncompression:</p>\r\n<table border="0">\r\n<tbody>\r\n<tr>\r\n<td><strong>Encryption</strong></td>\r\n<td><strong>Decryption</strong></td>\r\n</tr>\r\n<tr>\r\n<td>AES_ENCRYPT()</td>\r\n<td>AES_DECRYPT()</td>\r\n</tr>\r\n<tr>\r\n<td>ENCODE()</td>\r\n<td>DECODE()</td>\r\n</tr>\r\n<tr>\r\n<td>DES_ENCRYPT()</td>\r\n<td>DES_DECRYPT()</td>\r\n</tr>\r\n<tr>\r\n<td>ENCRYPT()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>MD5()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>OLD_PASSWORD()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>PASSWORD()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>SHA() or SHA1()</td>\r\n<td>Not available</td>\r\n</tr>\r\n<tr>\r\n<td>Not available</td>\r\n<td>UNCOMPRESSED_LENGTH()</td>\r\n</tr>\r\n</tbody>\r\n</table>', 7, 0, 'MySQL'),
-	(43, 'What are the features and advantages of object-oriented programming?', 'One of the main advantages of OO programming is its ease of modification; objects can easily be modified and added to a system there by reducing maintenance costs. OO programming is also considered to be better at modeling the real world than is procedural programming. It allows for more complicated and flexible interactions. OO systems are also easier for non-technical personnel to understand and easier for them to participate in the maintenance and enhancement of a system because it appeals to natural human cognition patterns. For some systems, an OO approach can speed development time since many objects are standard across systems and can be reused. Components that manage dates, shipping, shopping carts, etc. can be purchased and easily modified for a specific system.', 24, 0, 'OOP'),
-	(44, 'What are the differences between procedure-oriented languages and object-oriented languages?', 'Traditional programming has the following characteristics:Functions are written sequentially, so that a change in programming can affect any code that follows it. If a function is used multiple times in a system (i.e., a piece of code that manages the date), it is often simply cut and pasted into each program (i.e., a change log, order function, fulfillment system, etc). If a date change is needed (i.e., Y2K when the code needed to be changed to handle four numerical digits instead of two), all these pieces of code must be found, modified, and tested. Code (sequences of computer instructions) and data (information on which the instructions operates on) are kept separate. Multiple sets of code can access and modify one set of data. One set of code may rely on data in multiple places. Multiple sets of code and data are required to work together. Changes made to any of the code sets and data sets can cause problems through out the system.Object-Oriented programming takes a radically different approach:Code and data are merged into one indivisible item – an object (the term “component” has also been used to describe an object.) An object is an abstraction of a set of real-world things (for example, an object may be created around “date”) The object would contain all information and\r\nfunctionality for that thing (A date object it may contain labels like January, February, Tuesday, Wednesday.\r\nIt may contain functionality that manages leap years, determines if it is a business day or a holiday, etc., See Fig. 1). Ideally, information about a particular thing should reside in only one place in a system.The information within an object is encapsulated (or hidden) from the rest of the system. A system is composed of multiple objects (i.e., date function, reports, order processing, etc., See Fig 2). When one object needs information from another object, a request is sent asking for specific information. (for example, a report object may need to know what today’s date is and will send a request to the date object) These requests are called messages and each object has an interface that manages messages. OO programming languages include features such as “class”, “instance”, “inheritance”, and “polymorphism” that increase the power and\r\nflexibility of an object.', 24, 0, 'OOP'),
-	(45, 'What are the differences between public, private, protected,static, transient, final and volatile?', '<p><strong>Public</strong>: Public declared items can be accessed everywhere.<br>\r\n<strong>Protected</strong>: Protected limits access to inherited and parent classes (and to the class that defines the item).<br>\r\n<strong>Private</strong>: Private limits visibility only to the class that defines the item.<br>\r\n<strong>Static</strong>: A static variable exists only in a local function scope, but it does not lose its value when program execution leaves this scope.<br>\r\n<strong>Final</strong>: Final keyword prevents child classes from overriding a method by prefixing the definition with final. If the class itself is being defined final then it cannot be extended.<br>\r\n<strong>Transient</strong>: A transient variable is a variable that may not be serialized.<br>\r\n<strong>Volatile</strong>: a variable that might be concurrently modified by multiple threads should be declared volatile. Variables declared to be volatile will not be optimized by the compiler because their value can change at any time.</p>', 24, 0, 'OOP'),
+	(43, 'What are the features and advantages of object-oriented programming?', 'One of the main advantages of OO programming is its ease of modification; objects can easily be modified and added to a system there by reducing maintenance costs. OO programming is also considered to be better at modeling the real world than is procedural programming. It allows for more complicated and flexible interactions. OO systems are also easier for non-technical personnel to understand and easier for them to participate in the maintenance and enhancement of a system because it appeals to natural human cognition patterns. For some systems, an OO approach can speed development time since many objects are standard across systems and can be reused. Components that manage dates, shipping, shopping carts, etc. can be purchased and easily modified for a specific system.', 24, 1, 'OOP'),
+	(44, 'What are the differences between procedure-oriented languages and object-oriented languages?', 'Traditional programming has the following characteristics:Functions are written sequentially, so that a change in programming can affect any code that follows it. If a function is used multiple times in a system (i.e., a piece of code that manages the date), it is often simply cut and pasted into each program (i.e., a change log, order function, fulfillment system, etc). If a date change is needed (i.e., Y2K when the code needed to be changed to handle four numerical digits instead of two), all these pieces of code must be found, modified, and tested. Code (sequences of computer instructions) and data (information on which the instructions operates on) are kept separate. Multiple sets of code can access and modify one set of data. One set of code may rely on data in multiple places. Multiple sets of code and data are required to work together. Changes made to any of the code sets and data sets can cause problems through out the system.Object-Oriented programming takes a radically different approach:Code and data are merged into one indivisible item – an object (the term “component” has also been used to describe an object.) An object is an abstraction of a set of real-world things (for example, an object may be created around “date”) The object would contain all information and\r\nfunctionality for that thing (A date object it may contain labels like January, February, Tuesday, Wednesday.\r\nIt may contain functionality that manages leap years, determines if it is a business day or a holiday, etc., See Fig. 1). Ideally, information about a particular thing should reside in only one place in a system.The information within an object is encapsulated (or hidden) from the rest of the system. A system is composed of multiple objects (i.e., date function, reports, order processing, etc., See Fig 2). When one object needs information from another object, a request is sent asking for specific information. (for example, a report object may need to know what today’s date is and will send a request to the date object) These requests are called messages and each object has an interface that manages messages. OO programming languages include features such as “class”, “instance”, “inheritance”, and “polymorphism” that increase the power and\r\nflexibility of an object.', 24, 1, 'OOP'),
+	(45, 'What are the differences between public, private, protected,static, transient, final and volatile?', '<p><strong>Public</strong>: Public declared items can be accessed everywhere.<br>\r\n<strong>Protected</strong>: Protected limits access to inherited and parent classes (and to the class that defines the item).<br>\r\n<strong>Private</strong>: Private limits visibility only to the class that defines the item.<br>\r\n<strong>Static</strong>: A static variable exists only in a local function scope, but it does not lose its value when program execution leaves this scope.<br>\r\n<strong>Final</strong>: Final keyword prevents child classes from overriding a method by prefixing the definition with final. If the class itself is being defined final then it cannot be extended.<br>\r\n<strong>Transient</strong>: A transient variable is a variable that may not be serialized.<br>\r\n<strong>Volatile</strong>: a variable that might be concurrently modified by multiple threads should be declared volatile. Variables declared to be volatile will not be optimized by the compiler because their value can change at any time.</p>', 24, 1, 'OOP'),
 	(46, 'What are the different types of errors in PHP?', '<p>Three are three types of errors:</p>\r\n<ul>\r\n	<li>Notices: These are trivial, non-critical errors that PHP encounters while executing a script - for example, accessing a variable that has not yet been defined. By default, such errors are not displayed to the user at all – although, as you will see, you can change this default behavior.</li>\r\n	<li>Warnings: These are more serious errors – for example, attempting to include() a file which does not exist. By default, these errors are displayed to the user, but they do not result in script termination.</li>\r\n	<li>Fatal errors: These are critical errors – for example, instantiating an object of a non-existent class, or calling a non-existent function. These errors cause the immediate termination of the script, and PHP’s default behavior is to display them to the user when they take place.</li>\r\n</ul>', 7, 0, 'Errors'),
 	(47, 'What are the difference between abstract class and interface?', '<p><em>Abstract class</em>: abstract classes are the class where one or moremethods are abstract but not necessarily all method has to be abstract.</p>', 24, 0, 'OOP'),
 	(48, 'What are the advantages of stored procedures, triggers, indexes?', '<p><strong>Answer</strong><em> : </em>A stored procedure is a set of SQL commands that can be compiled and stored in the server. Once this has been done, clients don’t need tokeep re-issuing the entire query but can refer to the stored <span class="skimlinks-unlinked">procedure.This</span> provides better overall performance because the query has to beparsed only once, and less information needs to be sent between theserver and the client. You can also raise the conceptual level by havinglibraries of functions in the server. However, stored procedures ofcourse do increase the load on the database server <a id="KonaLink5" class="kLink" href="http://www.shashionline.in/2008/08/02/php-interview-question/#" target="_top" sl-processed="1"></a>system, as more of the work is done on the server side and less on the client (application)side.Triggers will also be implemented. A trigger is effectively a type of stored procedure, one that is invoked when a particular event <span class="skimlinks-unlinked">occurs.For</span> example, you can install a stored procedure that is triggered each time a record is deleted from a transaction table and that stored procedure automatically deletes the corresponding customer from a customer table when all his transactions are deleted.Indexes are used to find rows with specific column values quickly.Without an index, MySQL must begin with the first row and then read through the entire table to find the relevant rows. The larger the table, the more this costs. If the table has an index for the columns in question, MySQL can quickly determine the position to seek to in the middle of the data file without having to look at all the data. If a table has 1,000 rows, this is at least 100 times faster than reading sequentially. If you need to access most of the rows, it is faster to read sequentially, because this minimizes disk seeks.</p>', 7, 0, 'MySQL'),
@@ -108,16 +107,15 @@ INSERT INTO `interview` (`id`, `question`, `answer`, `position`, `important`, `t
 
 
 -- Dump della struttura di tabella quiz.interview_relations
-DROP TABLE IF EXISTS `interview_relations`;
 CREATE TABLE IF NOT EXISTS `interview_relations` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `topic_id` bigint(20) DEFAULT NULL,
-  `question_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_interview_topic_id` (`topic_id`),
-  KEY `fk_interview_question_id` (`question_id`),
-  CONSTRAINT `fk_interview_question_id` FOREIGN KEY (`question_id`) REFERENCES `interview` (`id`),
-  CONSTRAINT `fk_interview_topic_id` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`)
+	`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`topic_id` bigint(20) DEFAULT NULL,
+	`question_id` bigint(20) DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	KEY `fk_interview_topic_id` (`topic_id`),
+	KEY `fk_interview_question_id` (`question_id`),
+	CONSTRAINT `fk_interview_question_id` FOREIGN KEY (`question_id`) REFERENCES `interview` (`id`),
+	CONSTRAINT `fk_interview_topic_id` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=latin1;
 
 -- Dump dei dati della tabella quiz.interview_relations: ~78 rows (circa)
@@ -206,19 +204,18 @@ INSERT INTO `interview_relations` (`id`, `topic_id`, `question_id`) VALUES
 
 
 -- Dump della struttura di tabella quiz.interview_tags_relations
-DROP TABLE IF EXISTS `interview_tags_relations`;
 CREATE TABLE IF NOT EXISTS `interview_tags_relations` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `question_id` bigint(20) DEFAULT NULL,
-  `tag_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `question_id` (`question_id`),
-  KEY `tag_id` (`tag_id`),
-  CONSTRAINT `interview_tags_relations_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `interview` (`id`),
-  CONSTRAINT `interview_tags_relations_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `quiz_tags` (`id`)
+	`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`question_id` bigint(20) DEFAULT NULL,
+	`tag_id` bigint(20) DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	KEY `question_id` (`question_id`),
+	KEY `tag_id` (`tag_id`),
+	CONSTRAINT `interview_tags_relations_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `interview` (`id`),
+	CONSTRAINT `interview_tags_relations_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `quiz_tags` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
--- Dump dei dati della tabella quiz.interview_tags_relations: ~28 rows (circa)
+-- Dump dei dati della tabella quiz.interview_tags_relations: ~49 rows (circa)
 DELETE FROM `interview_tags_relations`;
 /*!40000 ALTER TABLE `interview_tags_relations` DISABLE KEYS */;
 INSERT INTO `interview_tags_relations` (`id`, `question_id`, `tag_id`) VALUES
@@ -258,23 +255,34 @@ INSERT INTO `interview_tags_relations` (`id`, `question_id`, `tag_id`) VALUES
 	(34, 32, 70),
 	(35, 33, 35),
 	(36, 34, 32),
-	(37, 35, 35);
+	(37, 35, 35),
+	(38, 36, 35),
+	(39, 37, 2),
+	(40, 37, 89),
+	(41, 37, 70),
+	(42, 38, 35),
+	(43, 38, 45),
+	(44, 39, 70),
+	(45, 40, 80),
+	(46, 41, 94),
+	(47, 42, 62),
+	(48, 43, 35),
+	(49, 44, 35);
 /*!40000 ALTER TABLE `interview_tags_relations` ENABLE KEYS */;
 
 
 -- Dump della struttura di tabella quiz.quiz_answers
-DROP TABLE IF EXISTS `quiz_answers`;
 CREATE TABLE IF NOT EXISTS `quiz_answers` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `answer` text,
-  `correct` enum('1','0') DEFAULT '0',
-  `question_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `question_id` (`question_id`),
-  CONSTRAINT `fk_question_id` FOREIGN KEY (`question_id`) REFERENCES `quiz_questions` (`id`)
+	`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`answer` text,
+	`correct` enum('1','0') DEFAULT '0',
+	`question_id` bigint(20) DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	KEY `question_id` (`question_id`),
+	CONSTRAINT `fk_question_id` FOREIGN KEY (`question_id`) REFERENCES `quiz_questions` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=947 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.quiz_answers: ~854 rows (circa)
+-- Dump dei dati della tabella quiz.quiz_answers: ~946 rows (circa)
 DELETE FROM `quiz_answers`;
 /*!40000 ALTER TABLE `quiz_answers` DISABLE KEYS */;
 INSERT INTO `quiz_answers` (`id`, `answer`, `correct`, `question_id`) VALUES
@@ -1228,17 +1236,16 @@ INSERT INTO `quiz_answers` (`id`, `answer`, `correct`, `question_id`) VALUES
 
 
 -- Dump della struttura di tabella quiz.quiz_questions
-DROP TABLE IF EXISTS `quiz_questions`;
 CREATE TABLE IF NOT EXISTS `quiz_questions` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `question` text,
-  `question_code` text,
-  `comment` text,
-  `number_correct_answers` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+	`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`question` text,
+	`question_code` text,
+	`comment` text,
+	`number_correct_answers` bigint(20) DEFAULT NULL,
+	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.quiz_questions: ~186 rows (circa)
+-- Dump dei dati della tabella quiz.quiz_questions: ~197 rows (circa)
 DELETE FROM `quiz_questions`;
 /*!40000 ALTER TABLE `quiz_questions` DISABLE KEYS */;
 INSERT INTO `quiz_questions` (`id`, `question`, `question_code`, `comment`, `number_correct_answers`) VALUES
@@ -1443,16 +1450,15 @@ INSERT INTO `quiz_questions` (`id`, `question`, `question_code`, `comment`, `num
 
 
 -- Dump della struttura di tabella quiz.quiz_questions_relations
-DROP TABLE IF EXISTS `quiz_questions_relations`;
 CREATE TABLE IF NOT EXISTS `quiz_questions_relations` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `topic_id` bigint(20) DEFAULT NULL,
-  `question_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `question_id` (`topic_id`),
-  KEY `topic_id` (`question_id`),
-  CONSTRAINT `qstopicrel_topics_question_id` FOREIGN KEY (`question_id`) REFERENCES `quiz_questions` (`id`),
-  CONSTRAINT `qstopicrel_topic_id` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`)
+	`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`topic_id` bigint(20) DEFAULT NULL,
+	`question_id` bigint(20) DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	KEY `question_id` (`topic_id`),
+	KEY `topic_id` (`question_id`),
+	CONSTRAINT `qstopicrel_topics_question_id` FOREIGN KEY (`question_id`) REFERENCES `quiz_questions` (`id`),
+	CONSTRAINT `qstopicrel_topic_id` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=latin1;
 
 -- Dump dei dati della tabella quiz.quiz_questions_relations: ~198 rows (circa)
@@ -1661,17 +1667,16 @@ INSERT INTO `quiz_questions_relations` (`id`, `topic_id`, `question_id`) VALUES
 
 
 -- Dump della struttura di tabella quiz.quiz_tags
-DROP TABLE IF EXISTS `quiz_tags`;
 CREATE TABLE IF NOT EXISTS `quiz_tags` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
-  `slug` varchar(50) DEFAULT NULL,
-  `parent_id` bigint(20) DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `parent_id` (`parent_id`)
+	`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`name` varchar(50) DEFAULT NULL,
+	`slug` varchar(50) DEFAULT NULL,
+	`parent_id` bigint(20) DEFAULT '0',
+	PRIMARY KEY (`id`),
+	KEY `parent_id` (`parent_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
--- Dump dei dati della tabella quiz.quiz_tags: ~93 rows (circa)
+-- Dump dei dati della tabella quiz.quiz_tags: ~94 rows (circa)
 DELETE FROM `quiz_tags`;
 /*!40000 ALTER TABLE `quiz_tags` DISABLE KEYS */;
 INSERT INTO `quiz_tags` (`id`, `name`, `slug`, `parent_id`) VALUES
@@ -1684,7 +1689,7 @@ INSERT INTO `quiz_tags` (`id`, `name`, `slug`, `parent_id`) VALUES
 	(7, 'Namespaces ', 'namespaces', 1),
 	(8, 'Extensions', 'extensions', 1),
 	(9, 'Config', 'config', 1),
-	(10, 'Performance / bytecode caching *', 'performance-bytecode-caching', 1),
+	(10, 'Performance / bytecode caching', 'performance-bytecode-caching', 1),
 	(11, 'Functions', 'functions', 0),
 	(12, 'Arguments', 'arguments', 11),
 	(13, 'Variables', 'variables', 11),
@@ -1719,7 +1724,7 @@ INSERT INTO `quiz_tags` (`id`, `name`, `slug`, `parent_id`) VALUES
 	(42, 'Type Hinting', 'type-hinting', 35),
 	(43, 'Class Constants', 'class-constants', 35),
 	(44, 'Late Static Binding', 'late-static-binding', 35),
-	(45, 'Magic (_*) Methods', 'magic--methods', 35),
+	(45, 'Magic Methods', 'magic--methods', 35),
 	(46, 'Instance Methods & Properties', 'instance-methods-&-properties', 35),
 	(47, 'SPL', 'spl', 35),
 	(48, 'Traits', 'traits', 35),
@@ -1767,24 +1772,24 @@ INSERT INTO `quiz_tags` (`id`, `name`, `slug`, `parent_id`) VALUES
 	(90, 'SPL, Objects as arrays ', 'spl,-objects-as-arrays', 86),
 	(91, 'Casting', 'casting', 86),
 	(92, 'Apache', 'apache', 0),
-	(93, 'Language basics', 'language-basics', 0);
+	(93, 'Language basics', 'language-basics', 0),
+	(94, 'CLI', 'cli', 0);
 /*!40000 ALTER TABLE `quiz_tags` ENABLE KEYS */;
 
 
 -- Dump della struttura di tabella quiz.quiz_tags_relations
-DROP TABLE IF EXISTS `quiz_tags_relations`;
 CREATE TABLE IF NOT EXISTS `quiz_tags_relations` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `question_id` bigint(20) DEFAULT NULL,
-  `tag_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `question_id` (`question_id`),
-  KEY `tag_id` (`tag_id`),
-  CONSTRAINT `qstrel_tags_question_id` FOREIGN KEY (`question_id`) REFERENCES `quiz_questions` (`id`),
-  CONSTRAINT `qstrel_tags_tags_id` FOREIGN KEY (`tag_id`) REFERENCES `quiz_tags` (`id`)
+	`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`question_id` bigint(20) DEFAULT NULL,
+	`tag_id` bigint(20) DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	KEY `question_id` (`question_id`),
+	KEY `tag_id` (`tag_id`),
+	CONSTRAINT `qstrel_tags_question_id` FOREIGN KEY (`question_id`) REFERENCES `quiz_questions` (`id`),
+	CONSTRAINT `qstrel_tags_tags_id` FOREIGN KEY (`tag_id`) REFERENCES `quiz_tags` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
--- Dump dei dati della tabella quiz.quiz_tags_relations: ~7 rows (circa)
+-- Dump dei dati della tabella quiz.quiz_tags_relations: ~8 rows (circa)
 DELETE FROM `quiz_tags_relations`;
 /*!40000 ALTER TABLE `quiz_tags_relations` DISABLE KEYS */;
 INSERT INTO `quiz_tags_relations` (`id`, `question_id`, `tag_id`) VALUES
@@ -1794,21 +1799,23 @@ INSERT INTO `quiz_tags_relations` (`id`, `question_id`, `tag_id`) VALUES
 	(4, 2, 4),
 	(5, 3, 3),
 	(6, 3, 86),
-	(7, 6, 3);
+	(7, 6, 3),
+	(8, 7, 31),
+	(9, 8, 89),
+	(10, 9, 11);
 /*!40000 ALTER TABLE `quiz_tags_relations` ENABLE KEYS */;
 
 
 -- Dump della struttura di tabella quiz.topics
-DROP TABLE IF EXISTS `topics`;
 CREATE TABLE IF NOT EXISTS `topics` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  `parent_id` bigint(20) DEFAULT NULL,
-  `status` varchar(50) DEFAULT NULL,
-  `position` bigint(20) DEFAULT NULL,
-  `slug` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `name` (`name`)
+	`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`name` varchar(100) DEFAULT NULL,
+	`parent_id` bigint(20) DEFAULT NULL,
+	`status` varchar(50) DEFAULT NULL,
+	`position` bigint(20) DEFAULT NULL,
+	`slug` varchar(100) DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- Dump dei dati della tabella quiz.topics: ~14 rows (circa)
@@ -1833,16 +1840,15 @@ INSERT INTO `topics` (`id`, `name`, `parent_id`, `status`, `position`, `slug`) V
 
 
 -- Dump della struttura di tabella quiz.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL DEFAULT '0',
-  `surname` varchar(50) NOT NULL DEFAULT '0',
-  `email` varchar(50) NOT NULL DEFAULT '0',
-  `username` varchar(50) NOT NULL DEFAULT '0',
-  `password` varchar(80) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `username` (`username`)
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`name` varchar(50) NOT NULL DEFAULT '0',
+	`surname` varchar(50) NOT NULL DEFAULT '0',
+	`email` varchar(50) NOT NULL DEFAULT '0',
+	`username` varchar(50) NOT NULL DEFAULT '0',
+	`password` varchar(80) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`),
+	KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dump dei dati della tabella quiz.users: ~0 rows (circa)

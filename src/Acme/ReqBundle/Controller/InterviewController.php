@@ -40,18 +40,13 @@ class InterviewController extends Controller
         ));
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function listAction(Request $request)
+    public function topicListAction(Request $request, $topic)
     {
         $em = $this->get('doctrine.orm.entity_manager');
 
-        $important      = $request->query->get('important');
+        $important      = $request->get('important');
         $currentTopic   = $request->get('topic');
-        $currentTag     =  $request->get('tag');
+        $currentTag     = $request->get('tag');
 
         $wrapper = new InterviewGetterWrapper( new InterviewGetter($em) );
         $wrapper->setInput( array(
@@ -74,9 +69,9 @@ class InterviewController extends Controller
             $wrapper->setInput(array(
                 'fields'        => 'DISTINCT(t.id) AS tagId, t.name, t.slug',
                 'questionId'    => $paging->getQuestion()->getId(),
-
             ));
             $wrapper->setupQueryBuilder();
+
             $tagRecords = $wrapper->getRecords();
             if (!empty($tagRecords)){
                 $paging->tags = $tagRecords;
@@ -85,13 +80,67 @@ class InterviewController extends Controller
             $records[] = $paging;
         }
 
-        return $this->render('::default/interviews/list.html.twig', array(
+        return $this->render('::default/interviews/topic.html.twig', array(
             'pagination'    => $pagination,
             'records'       => $records,
             'important'     => $important,
             'topics'        => $this->findTopics(),
             'currentTopic'  => $currentTopic,
             'currentTag'    => $currentTag
+        ));
+    }
+
+    /**
+     * From a tag slug, select related interview questions
+     *
+     * @param Request $request
+     * @param string $tag
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function tagListAction(Request $request, $tag)
+    {
+        $em = $this->get('doctrine.orm.entity_manager');
+
+        $important = $request->get('important');
+
+        $wrapper = new InterviewTagsGetterWrapper( new InterviewTagsGetter($em) );
+        $wrapper->setInput(array(
+            'fields'        => 'DISTINCT(q.id) AS questionId, q.question, q.answer',
+            'tagSlug'       => $tag,
+            'important'     => $important
+        ));
+        $wrapper->setupQueryBuilder();
+
+        $pagination = $this->get('knp_paginator')->paginate(
+            $wrapper->getObjectGetter()->getQuery(),
+            $this->get('request')->query->get('page', 1),
+            12
+        );
+
+        $records = array();
+        foreach($pagination as $paging) {
+
+            $wrapper = new InterviewTagsGetterWrapper( new InterviewTagsGetter($em) );
+            $wrapper->setInput(array(
+                'fields'        => 'DISTINCT(t.id) AS tagId, t.name, t.slug',
+                'questionId'    => $paging['questionId'],
+            ));
+            $wrapper->setupQueryBuilder();
+
+            $tagRecords = $wrapper->getRecords();
+            if (!empty($tagRecords)){
+                $paging['tags'] = $tagRecords;
+            }
+
+            $records[] = $paging;
+        }
+
+        return $this->render('::default/interviews/tag.html.twig', array(
+            'pagination'    => $pagination,
+            'records'       => $records,
+            'important'     => $important,
+            'currentTag'    => $tag,
         ));
     }
 
