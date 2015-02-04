@@ -49,7 +49,6 @@ class Topics
      */
     private $position;
 
-
     /**
      * @var string
      */

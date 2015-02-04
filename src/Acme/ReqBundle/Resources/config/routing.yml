@@ -39,7 +39,7 @@ acme_interview:
 
 acme_interview_topic:
     pattern:  /interview/topic/{topic}
-    defaults: { _controller: AcmeReqBundle:Interview:topicList }
+    defaults: { _controller: AcmeReqBundle:InterviewTopics:topicList }
     requirements:
         topic: "[a-zA-Z0-9-_/]+"
         _method: GET

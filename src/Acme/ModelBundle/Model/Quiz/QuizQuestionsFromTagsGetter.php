@@ -27,15 +27,31 @@ class QuizQuestionsFromTagsGetter extends QueryBuilderHelperAbstract
     
     /**
      * @param string $tagName
+     *
      * @return \Doctrine\ORM\QueryBuilder
      */
     public function setTagName($tagName)
     {
-        if ($tagName) {
+        if (isset($tagName)) {
             $this->getQueryBuilder()->andWhere('tag.name = :tagName ');
             $this->getQueryBuilder()->setParameter('tagName', $tagName);
         }
         
+        return $this->getQueryBuilder();
+    }
+
+    /**
+     * @param string $slug
+     *
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function setSlug($slug)
+    {
+        if (isset($slug)) {
+            $this->getQueryBuilder()->andWhere('tag.slug = :slug ');
+            $this->getQueryBuilder()->setParameter('slug', $slug);
+        }
+
         return $this->getQueryBuilder();
     }
 }

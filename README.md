@@ -5,7 +5,8 @@ Quiz and interview questions
 
 The database contains question about PHP (Zend certification exam) and other topics.
 
-The quizzes have the correct answer and you can solve all problems.
+The quizzes have the correct answer and you can solve all problems. 
+No score will be stored. This is only for studying and read informations.
 
 Installation
 --------------------------------
@@ -13,7 +14,7 @@ Installation
 Install and use composer:
 
     composer self-update
-    composer install --optimize-autoloader
+    composer install
     composer update --optimize-autoloader (optional)
 
 Database
@@ -23,9 +24,8 @@ The MySQL dump with database and data is on the sql directory.
 Connection parameters are on the app/config/config.yml file.
 I've created a database called "quiz" on localhost.
 
-The tables has InnoDb tables with relationships. There's an intermediary table
-for quiz questions, topics and one for questions and tags.
-This adds some complexity but I've tried to keep all as simple as I can.
+The MySQL tables are InnoDb type with foreign keys.
+There are both one-to-many and many-to-many relationships.
 
 Testing
 --------------------------------
@@ -55,10 +55,10 @@ Frontend features
 TODO
 --------------------------------
 
-- Always add new records to the database!
-- Complete the Admin area
+- Fix and complete the Admin area
 - Functional testing
 - Select users from db
+- Always add new records on database
 
 Zend questions resources
 --------------------------------

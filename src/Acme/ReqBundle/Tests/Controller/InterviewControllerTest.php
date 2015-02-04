@@ -28,7 +28,7 @@ class InterviewControllerTest extends WebTestCase
     
     public function testInterviewTopic()
     {
-        $crawler = $this->client->request('GET', '/interview/php');
+        $crawler = $this->client->request('GET', '/interview/topic/php');
 
         $this->assertTrue($crawler->filter('html:contains("interview")')->count() > 0);
     }
@@ -36,13 +36,6 @@ class InterviewControllerTest extends WebTestCase
     public function testInterviewTopicTags()
     {
         $crawler = $this->client->request('GET', '/interview/topics/php/array');
-        
-        $this->assertTrue($crawler->filter('html:contains("interview")')->count() > 0);
-    }
-    
-    public function testInterviewTag()
-    {
-        $crawler = $this->client->request('GET', '/interview/tags/array');
         
         $this->assertTrue($crawler->filter('html:contains("interview")')->count() > 0);
     }

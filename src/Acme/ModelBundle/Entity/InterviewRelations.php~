@@ -41,8 +41,6 @@ class InterviewRelations
      */
     private $question;
 
-
-
     /**
      * Get id
      *

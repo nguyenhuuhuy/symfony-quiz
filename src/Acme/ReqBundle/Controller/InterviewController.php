@@ -12,8 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class InterviewController
  *
- * @package Acme\ReqBundle\Controller
- *
  * @author Andrea Fiori
  * @since  22 October 2014
  */
@@ -40,56 +38,6 @@ class InterviewController extends Controller
         ));
     }
 
-    public function topicListAction(Request $request, $topic)
-    {
-        $em = $this->get('doctrine.orm.entity_manager');
-
-        $important      = $request->get('important');
-        $currentTopic   = $request->get('topic');
-        $currentTag     = $request->get('tag');
-
-        $wrapper = new InterviewGetterWrapper( new InterviewGetter($em) );
-        $wrapper->setInput( array(
-                'important' => $important,
-                'orderBy'   => 'q.position'
-            )
-        );
-        $wrapper->setupQueryBuilder();
-
-        $pagination = $this->get('knp_paginator')->paginate(
-            $wrapper->getObjectGetter()->getQuery(),
-            $this->get('request')->query->get('page', 1),
-            12
-        );
-
-        $records = array();
-        foreach($pagination as $paging) {
-
-            $wrapper = new InterviewTagsGetterWrapper( new InterviewTagsGetter($em) );
-            $wrapper->setInput(array(
-                'fields'        => 'DISTINCT(t.id) AS tagId, t.name, t.slug',
-                'questionId'    => $paging->getQuestion()->getId(),
-            ));
-            $wrapper->setupQueryBuilder();
-
-            $tagRecords = $wrapper->getRecords();
-            if (!empty($tagRecords)){
-                $paging->tags = $tagRecords;
-            }
-
-            $records[] = $paging;
-        }
-
-        return $this->render('::default/interviews/topic.html.twig', array(
-            'pagination'    => $pagination,
-            'records'       => $records,
-            'important'     => $important,
-            'topics'        => $this->findTopics(),
-            'currentTopic'  => $currentTopic,
-            'currentTag'    => $currentTag
-        ));
-    }
-
     /**
      * From a tag slug, select related interview questions
      *
@@ -112,6 +60,7 @@ class InterviewController extends Controller
         ));
         $wrapper->setupQueryBuilder();
 
+        /** @var \Knp\Component\Pager\Paginator $pagination */
         $pagination = $this->get('knp_paginator')->paginate(
             $wrapper->getObjectGetter()->getQuery(),
             $this->get('request')->query->get('page', 1),

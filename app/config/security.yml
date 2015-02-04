@@ -11,6 +11,7 @@ security:
             memory:
                 users:
                     admin: { password: adminpass, roles: ['ROLE_ADMIN'] }
+                    user: { password: userpass, roles: ['ROLE_USER'] }
 
     firewalls:
         dev:

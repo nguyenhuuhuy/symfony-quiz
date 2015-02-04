@@ -40,7 +40,7 @@ class QuizSetupQuestionGetterWrapper extends QuizSetupAbstract
         if (!empty($input)) {
             $this->getObjectWrapper()->setInput($input);
         } elseif ($this->getTag()) {
-            $this->getObjectWrapper()->setInput(array('tagName' => $this->getTag()));
+            $this->getObjectWrapper()->setInput(array('slug' => $this->getTag()));
         } else {
             $this->getObjectWrapper()->setInput(array(
                     'topicName' => $this->getTopic(),

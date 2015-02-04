@@ -7,8 +7,6 @@ use Acme\ModelBundle\Model\QueryBuilderHelperAbstract;
 /**
  * Class InterviewGetter
  *
- * @package Acme\ModelBundle\Model\Interview
- *
  * @author Andrea Fiori
  * @since  08 October 2014
  */

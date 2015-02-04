@@ -8,7 +8,7 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="answer" type="text" column="answer" length="65535" nullable="true"/>
-    <field name="correct" type="string" column="correct" nullable="true"/>
+    <field name="correct" type="string" column="correct" length="255" nullable="true"/>
     <many-to-one field="question" target-entity="QuizQuestions">
       <join-columns>
         <join-column name="question_id" referenced-column-name="id"/>

@@ -22,9 +22,9 @@ class QuizTagsRelations
     private $id;
 
     /**
-     * @var \Acme\ModelBundle\Entity\QuizTags
+     * @var \Acme\ModelBundle\Entity\Tags
      *
-     * @ORM\ManyToOne(targetEntity="Acme\ModelBundle\Entity\QuizTags")
+     * @ORM\ManyToOne(targetEntity="Acme\ModelBundle\Entity\Tags")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
      * })
@@ -41,7 +41,17 @@ class QuizTagsRelations
      */
     private $question;
 
+    /**
+     * Set id
+     *
+     * @return integer
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
 
+        return $this;
+    }
 
     /**
      * Get id
@@ -56,10 +66,10 @@ class QuizTagsRelations
     /**
      * Set tag
      *
-     * @param \Acme\ModelBundle\Entity\QuizTags $tag
+     * @param \Acme\ModelBundle\Entity\Tags $tag
      * @return QuizTagsRelations
      */
-    public function setTag(\Acme\ModelBundle\Entity\QuizTags $tag = null)
+    public function setTag(\Acme\ModelBundle\Entity\Tags $tag = null)
     {
         $this->tag = $tag;
 
@@ -69,7 +79,7 @@ class QuizTagsRelations
     /**
      * Get tag
      *
-     * @return \Acme\ModelBundle\Entity\QuizTags 
+     * @return \Acme\ModelBundle\Entity\Tags
      */
     public function getTag()
     {

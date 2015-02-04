@@ -1,18 +1,16 @@
 language: php
 
 php:
-  - 5.3
   - 5.4
   - 5.5
   #- hhvm
 
 before_install:
   - composer self-update
-  - composer update
 
 before_script:
   - cp app/config/parameters.yml.travis app/config/parameters.yml
-  - composer install --dev --no-interaction --prefer-source
+  - composer install -n
   - php app/console doctrine:database:create --env=test
   - php app/console doctrine:schema:create --env=test
   - php app/console doctrine:fixtures:load -n --env=test
