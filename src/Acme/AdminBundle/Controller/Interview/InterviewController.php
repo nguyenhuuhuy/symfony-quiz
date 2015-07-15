@@ -59,7 +59,7 @@ class InterviewController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Interview();
-        $form = $this->createCreateForm($entity);
+        $form = $this->createInterviewForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -76,24 +76,24 @@ class InterviewController extends Controller
         );
     }
 
-    /**
-     * Creates a form to create a Interview entity.
-     *
-     * @param Interview $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCreateForm(Interview $entity)
-    {
-        $form = $this->createForm(new InterviewType(), $entity, array(
-            'action' => $this->generateUrl('acme_admin_interview_interview_create'),
-            'method' => 'POST',
-        ));
+        /**
+         * Creates a form to create a Interview entity.
+         *
+         * @param Interview $entity The entity
+         *
+         * @return \Symfony\Component\Form\Form The form
+         */
+        private function createInterviewForm(Interview $entity)
+        {
+            $form = $this->createForm(new InterviewType(), $entity, array(
+                'action' => $this->generateUrl('acme_admin_interview_interview_create'),
+                'method' => 'POST',
+            ));
 
-        $form->add('submit', 'submit', array('attr' => array('class'=>'btn btn-primary'), 'label' => 'Create'));
+            $form->add('submit', 'submit', array('attr' => array('class'=>'btn btn-primary'), 'label' => 'Create'));
 
-        return $form;
-    }
+            return $form;
+        }
 
     /**
      * Displays a form to create a new Interview entity.
@@ -105,7 +105,7 @@ class InterviewController extends Controller
     public function newAction()
     {
         $entity = new Interview();
-        $form   = $this->createCreateForm($entity);
+        $form   = $this->createInterviewForm($entity);
 
         return array(
             'entity' => $entity,

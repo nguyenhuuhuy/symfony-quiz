@@ -2,15 +2,9 @@
 
 namespace Acme\ReqBundle\Tests\Model\Interview;
 
-use Acme\ModelBundle\Tests\Model\TestSuite;
 use Acme\ModelBundle\Model\Interview\InterviewGetter;
+use Acme\ModelBundle\Tests\Model\TestSuite;
 
-/**
- * Class InterviewGetterTest
- *
- * @author Andrea Fiori
- * @since  05 June 2014
- */
 class InterviewGetterTest extends TestSuite
 {
     private $objectGetter;

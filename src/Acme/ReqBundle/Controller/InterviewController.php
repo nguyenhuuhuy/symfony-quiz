@@ -10,10 +10,7 @@ use Acme\ModelBundle\Model\Interview\InterviewTagsGetterWrapper;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class InterviewController
- *
- * @author Andrea Fiori
- * @since  22 October 2014
+ * Interview Frontend Controller
  */
 class InterviewController extends Controller
 {

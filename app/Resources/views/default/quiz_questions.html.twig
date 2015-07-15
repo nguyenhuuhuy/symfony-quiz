@@ -37,7 +37,7 @@
             {% set quest = question.question %}
         <form action="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" method="post" id="frm_question_{{ quest.id }}">
             
-            <p class="pull-right"><strong>{{ quest.id }}</strong></p>
+            <p class="badge pull-right"><strong>{{ quest.id }}</strong></p>
             
             <p><strong>{{ quest.question }}</strong></p>
             
@@ -48,7 +48,6 @@
             {% set answer_number = 1 %}
             {% set q_answers = question.answers %}
             {% for answer in q_answers %}
-                
                 {% if quest.number_correct_answers > 1 %}
                 <div>
                     <label class="normalweight" for="answer_{{ answer.id }}">

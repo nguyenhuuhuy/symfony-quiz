@@ -4,9 +4,11 @@ Quiz and interview questions
 =====================================
 
 The database contains question about PHP (Zend certification exam) and other topics.
-
 The quizzes have the correct answer and you can solve all problems. 
-No score will be stored. This is only for studying and read informations.
+No score will be stored. When you will solve a quiz, sometimes there's an additional comment to explain more about the question and its solution.
+Question interview are about PHP, HTTP and web development. I will add more important questions.
+
+Demo: http://andreafiori.net/quiz
 
 Installation
 --------------------------------
@@ -44,6 +46,7 @@ Backend features
 - Twig custom class and functions to slugify string\s
 - The web directory was deleted so the application can be deployed on a shared hosting
 - Netbeans IDE was used for coding and design
+- The admin area is under construction. I've used and updated CRUD generated code but it's not enough to manage database tables with many to many relationships
 
 Frontend features
 --------------------------------
@@ -57,6 +60,7 @@ TODO
 
 - Fix and complete the Admin area
 - Functional testing
+- Write data fixtures
 - Select users from db
 - Always add new records on database
 

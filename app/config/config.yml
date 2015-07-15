@@ -65,7 +65,6 @@ doctrine:
         charset:  UTF8
         mapping_types:
             enum: string
-
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true

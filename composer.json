@@ -1,6 +1,6 @@
 {
-	"name" : "Symfony2 quiz with questions and answers",
-	"description" : "Symfony2 quiz with questions and answers",
+	"name" : "Symfony2 quizzes and questions interview",
+	"description" : "Symfony2 quizzes and questions interview",
 	"type" : "project",
 	"license" : [
 		"MIT"
@@ -55,7 +55,6 @@
 		"branch-alias" : {
 			"dev-master" : "2.4-dev"
 		},
-		"symfony-web-dir" : "web",
 		"symfony-app-dir" : "app",
 		"incenteev-parameters" : {
 			"file" : "app/config/parameters.yml"
