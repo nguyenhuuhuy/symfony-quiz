@@ -56,7 +56,8 @@ Ensure you have PHPUnit installed.
 
 ## TODO
 
-- Fix and complete the Admin area with FOSUserBundle login
+- User loginFOSUserBundle login
+- Fix the admin area
 - Add functional testing
-- Recover data fixtures
+- Recover and try [data fixture](http://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html)
 - Always add new records on database
