@@ -1,15 +1,15 @@
 -- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Versione server:              5.5.36 - MySQL Community Server (GPL)
--- S.O. server:                  Win32
--- HeidiSQL Versione:            9.1.0.4903
+-- Host:                         localhost
+-- Server version:               5.6.24-0ubuntu2 - (Ubuntu)
+-- Server OS:                    debian-linux-gnu
+-- HeidiSQL Version:             9.2.0.4947
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dump della struttura di tabella quiz.interview
+-- Dumping structure for table quiz.interview
 DROP TABLE IF EXISTS `interview`;
 CREATE TABLE IF NOT EXISTS `interview` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `interview` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.interview: ~78 rows (circa)
+-- Dumping data for table quiz.interview: ~78 rows (approximately)
 DELETE FROM `interview`;
 /*!40000 ALTER TABLE `interview` DISABLE KEYS */;
 INSERT INTO `interview` (`id`, `question`, `answer`, `position`, `important`, `topics_old`) VALUES
@@ -106,7 +106,7 @@ INSERT INTO `interview` (`id`, `question`, `answer`, `position`, `important`, `t
 /*!40000 ALTER TABLE `interview` ENABLE KEYS */;
 
 
--- Dump della struttura di tabella quiz.interview_relations
+-- Dumping structure for table quiz.interview_relations
 DROP TABLE IF EXISTS `interview_relations`;
 CREATE TABLE IF NOT EXISTS `interview_relations` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `interview_relations` (
   CONSTRAINT `fk_interview_topic_id` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.interview_relations: ~78 rows (circa)
+-- Dumping data for table quiz.interview_relations: ~78 rows (approximately)
 DELETE FROM `interview_relations`;
 /*!40000 ALTER TABLE `interview_relations` DISABLE KEYS */;
 INSERT INTO `interview_relations` (`id`, `topic_id`, `question_id`) VALUES
@@ -204,7 +204,7 @@ INSERT INTO `interview_relations` (`id`, `topic_id`, `question_id`) VALUES
 /*!40000 ALTER TABLE `interview_relations` ENABLE KEYS */;
 
 
--- Dump della struttura di tabella quiz.interview_tags_relations
+-- Dumping structure for table quiz.interview_tags_relations
 DROP TABLE IF EXISTS `interview_tags_relations`;
 CREATE TABLE IF NOT EXISTS `interview_tags_relations` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -217,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `interview_tags_relations` (
   CONSTRAINT `interview_tags_relations_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
--- Dump dei dati della tabella quiz.interview_tags_relations: ~55 rows (circa)
+-- Dumping data for table quiz.interview_tags_relations: ~55 rows (approximately)
 DELETE FROM `interview_tags_relations`;
 /*!40000 ALTER TABLE `interview_tags_relations` DISABLE KEYS */;
 INSERT INTO `interview_tags_relations` (`id`, `question_id`, `tag_id`) VALUES
@@ -279,7 +279,7 @@ INSERT INTO `interview_tags_relations` (`id`, `question_id`, `tag_id`) VALUES
 /*!40000 ALTER TABLE `interview_tags_relations` ENABLE KEYS */;
 
 
--- Dump della struttura di tabella quiz.quiz_answers
+-- Dumping structure for table quiz.quiz_answers
 DROP TABLE IF EXISTS `quiz_answers`;
 CREATE TABLE IF NOT EXISTS `quiz_answers` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -289,9 +289,9 @@ CREATE TABLE IF NOT EXISTS `quiz_answers` (
   PRIMARY KEY (`id`),
   KEY `question_id` (`question_id`),
   CONSTRAINT `fk_question_id` FOREIGN KEY (`question_id`) REFERENCES `quiz_questions` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=947 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1016 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.quiz_answers: ~946 rows (circa)
+-- Dumping data for table quiz.quiz_answers: ~974 rows (approximately)
 DELETE FROM `quiz_answers`;
 /*!40000 ALTER TABLE `quiz_answers` DISABLE KEYS */;
 INSERT INTO `quiz_answers` (`id`, `answer`, `correct`, `question_id`) VALUES
@@ -1240,11 +1240,80 @@ INSERT INTO `quiz_answers` (`id`, `answer`, `correct`, `question_id`) VALUES
   (943, 'Positive number, negative number', '0', 197),
   (944, 'Even number, string', '0', 197),
   (945, 'String, Boolean', '0', 197),
-  (946, 'Integer, string', '1', 197);
+  (946, 'Integer, string', '1', 197),
+  (947, 'strip_tags', '0', 198),
+  (948, 'nl2br', '1', 198),
+  (949, 'htmlspecialchars', '0', 198),
+  (950, 'wordwrap', '0', 198),
+  (951, 'a+b', '0', 199),
+  (952, 'b+a', '1', 199),
+  (953, 'at', '0', 199),
+  (954, 'w', '0', 199),
+  (955, 'x+', '0', 199),
+  (956, 'First', '1', 200),
+  (957, 'Second', '0', 200),
+  (958, 'Third', '0', 200),
+  (959, 'This piece of code will not run, but fail with a parse error.', '0', 200),
+  (960, 'Calculating the sum of all the values in a column', '0', 201),
+  (961, 'Determining the minimum value in a result set', '0', 201),
+  (962, 'Grouping the results of a query by one or more fields', '1', 201),
+  (963, 'Calculating the sum of all values in a column and retrieving all the values of another column that is not part of an aggregate function or GROUP BY clause', '1', 201),
+  (964, 'Determining the mean average of a column in a group of rows', '0', 201),
+  (965, 'ksort', '0', 202),
+  (966, 'array_multisort', '1', 202),
+  (967, 'sort', '0', 202),
+  (968, 'usort', '0', 202),
+  (969, 'PHP will delete the associated session file when session_destroy() is called from within a script', '0', 203),
+  (970, 'When the function session_cleanup() is called, PHP will iterate over all session files, and delete them if they exceeded the session timeout limit', '0', 203),
+  (971, 'When the function session_start() is called, PHP will iterate over all session files, and delete them if they exceeded the session timeout limit', '0', 203),
+  (972, 'When the function session_start() is called, PHP will sometimes iterate over all session files, and delete them if they exceeded the session timeout limit', '1', 203),
+  (973, 'Session files are never removed from the filesystem, you need to use an automated script (such as a cronjob) to do this', '0', 203),
+  (974, 'subject, to address, extra headers, body', '0', 204),
+  (975, 'to address, subject, extra headers, body', '0', 204),
+  (976, 'to address, subject, body, extra headers', '1', 204),
+  (977, 'subject, to address, body, extra headers', '0', 204),
+  (978, 'sprintf() does not output the generated string.', '0', 205),
+  (979, 'printf("%2s%1s","ab","c") outputs the string abc', '1', 205),
+  (980, 'vprintf() takes at least one parameter; the first parameter is the formatting string and the following parameters are the arguments for the \'%\' placeholders', '0', 205),
+  (981, 'printf("%c","64") will output @ and not 6', '1', 205),
+  (982, 'sprintf("%3.4f", $x) outputs more than 7 characters', '0', 205),
+  (983, 'number_format() inserts thousands of separators and decimal points different from (,) and (.) respectively, while printf() like functions always use (.) as decimal point', '1', 205),
+  (984, 'xml_parse_into_struct()', '0', 206),
+  (985, 'xml_parser_create_ns()', '0', 206),
+  (986, 'xml_set_object()', '0', 206),
+  (987, 'xml_set_element_handler()', '1', 206),
+  (988, 'mysql_real_escape_string()', '0', 207),
+  (989, 'escapeshellcmd()', '1', 207),
+  (990, 'regenerateid()', '0', 207),
+  (991, 'escapeshellarg()', '1', 207),
+  (992, 'When you want to restore a previously defined exception handler function', '0', 208),
+  (993, 'When the try/catch block is unable to catch an exception', '1', 208),
+  (994, 'When you want to set a user-defined function to handle errors', '0', 208),
+  (995, 'When you want to generate a user-level error/warning/notice message', '0', 208),
+  (996, 'Land attack', '0', 209),
+  (997, 'Replay attack', '0', 209),
+  (998, 'Dictionary attack', '0', 209),
+  (999, 'SQL injection attack', '1', 209),
+  (1000, 'The contents of the whole XML document', '0', 210),
+  (1001, 'The XML of every tasks and details nodes', '0', 210),
+  (1002, 'The contents of every tasks and details nodes', '1', 210),
+  (1003, 'The XML of whole XML document', '0', 210),
+  (1004, 'It can be used as a countermeasure against a SQL injection attack', '1', 211),
+  (1005, 'It escapes all special characters from strings $_POST["name"] and $_POST["password"] except \' and "', '0', 211),
+  (1006, 'It escapes all special characters from strings $_POST["name"] and $_POST["password"]', '1', 211),
+  (1007, 'It can be used to mitigate a cross site scripting attack', '0', 211),
+  (1008, 'asXML()', '0', 212),
+  (1009, 'attributes()', '0', 212),
+  (1010, 'getName()', '0', 212),
+  (1011, 'children()', '1', 212),
+  (1012, 'md5()', '1', 213),
+  (1013, 'fingerprint()', '0', 213),
+  (1014, 'crypt()', '0', 213),
+  (1015, 'hash()', '0', 213);
 /*!40000 ALTER TABLE `quiz_answers` ENABLE KEYS */;
 
 
--- Dump della struttura di tabella quiz.quiz_questions
+-- Dumping structure for table quiz.quiz_questions
 DROP TABLE IF EXISTS `quiz_questions`;
 CREATE TABLE IF NOT EXISTS `quiz_questions` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -1253,9 +1322,9 @@ CREATE TABLE IF NOT EXISTS `quiz_questions` (
   `comment` text,
   `number_correct_answers` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=198 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=214 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.quiz_questions: ~197 rows (circa)
+-- Dumping data for table quiz.quiz_questions: ~203 rows (approximately)
 DELETE FROM `quiz_questions`;
 /*!40000 ALTER TABLE `quiz_questions` DISABLE KEYS */;
 INSERT INTO `quiz_questions` (`id`, `question`, `question_code`, `comment`, `number_correct_answers`) VALUES
@@ -1273,7 +1342,7 @@ INSERT INTO `quiz_questions` (`id`, `question`, `question_code`, `comment`, `num
   (12, 'What is the output of the following?', '<?php\r\n\r\n$a = 010;\r\n$b = 0xA;\r\n$c = 2;\r\n\r\nprint $a + $b + $c;\r\n\r\n?>', NULL, 1),
   (13, 'What is the output of the following?', '<?php\r\n\r\n$a = 20;\r\n\r\nfunction myfunction($b) {\r\n	$a = 30;\r\n	\r\n	global $a, $c;\r\n	return $c = ($b + $a);\r\n}\r\n\r\nprint myfunction(40) + $c;\r\n\r\n?>', NULL, 1),
   (14, 'What would you replace ??????? with, below, to make the string Hello, World! be displayed?', '<?php\r\n\r\nfunction myfunction() {\r\n        ???????\r\n	print $string;\r\n}\r\n\r\nmyfunction("Hello, World!");\r\n\r\n?>', NULL, 1),
-  (15, 'What is the output of the following function?', '<?php\r\n\r\nfunction &find_variable(&$one, &$two, &$three) {\r\n	\r\n	if($one > 10 && $one < 20) return $one;\r\n	if($two > 10 && $two < 20) return $two;\r\n	if($three > 10 && $three < 20) return $three;\r\n}\r\n\r\n$one = 2;\r\n$two = 20;\r\n$three = 15;\r\n\r\n$var = &find_variable($one, $two, $three);\r\n\r\n$var++;\r\n\r\nprint "1: $one, 2: $two, 3: $three";\r\n\r\n?>', NULL, 1),
+  (15, 'What is the output of the following function?', '<?php\r\n\r\nfunction &find_variable(&$one, &$two, &$three) {\r\n	\r\n	if($one > 10 && $one < 20) return $one;\r\n	if($two > 10 && $two < 20) return $two;\r\n	if($three > 10 && $three < 20) return $three;\r\n}\r\n\r\n$one = 2;\r\n$two = 20;\r\n$three = 15;\r\n\r\n$var = &find_variable($one, $two, $three);\r\n\r\n$var++;\r\n\r\nprint "1: $one, 2: $two, 3: $three";\r\n\r\n?>', 'Assinging $var with &, the $three variable returned by the function will be incremented with $var', 1),
   (16, 'For an arbitrary string $mystring, which of the following checks will correctly determine if the string PHP exists within it?', NULL, NULL, 1),
   (17, 'What are the values of $a in $obj_one and $obj_two when this script is executed?', '<?php\r\nclass myClass {\r\n  private $a;\r\n\r\n  public function __construct() {\r\n    $this->a = 10;\r\n  }\r\n\r\n  public function printValue() {\r\n    print "The Value is: {$this->a}\\n";\r\n  }\r\n\r\n  public function changeValue($val, $obj = null) {\r\n    if(is_null($obj)) {\r\n      $this->a = $val;\r\n    } else {\r\n      $obj->a = $val;\r\n    }\r\n  }\r\n\r\n  public function getValue() {\r\n    return $this->a;\r\n  }\r\n}\r\n\r\n$obj_one = new myClass();\r\n$obj_two = new myClass();\r\n\r\n$obj_one->changeValue(20, $obj_two);\r\n$obj_two->changeValue($obj_two->getValue(), $obj_one);\r\n\r\n$obj_two->printValue();\r\n$obj_one->printValue();\r\n\r\n?>', NULL, 1),
   (18, 'What are the three access modifiers that you can use in PHP objects?', NULL, 'Static is used for variables and methods but it\'s not considered an access method. A final class is a class that cannot be extended.', 3),
@@ -1455,11 +1524,27 @@ INSERT INTO `quiz_questions` (`id`, `question`, `question_code`, `comment`, `num
   (194, 'By default, PHP stores session data in ________________.', NULL, 'The filesystem (Answer 1). By default, PHP stores all session information in the /tmp folder; users of operating systems where this folder doesn’t exist (such as Windows) must change the default value of the session.save_path php.ini setting to a directory appropriate for their \r\nsetup (e.g.: C:\\Temp).', 1),
   (195, 'When you write a cookie with an expiration date in the future to a particular machine, the cookie never seem to be set. The technique usually works with other computers, and you have checked that the time on the machine corresponds to the time on the server within a\r\nreasonable margin by verifying the date reported by the operating system on the client computer’s desktop. The browser on the client machine seems to otherwise work fine on most other websites. What could be likely causes of this problem?', NULL, 'Answers 1 and 5 both describe likely causes of this type of problem and warrant further investigation on your part. Since the browser seems to work fine, it’s unlikely that its binaries have suffered corruption such that only your site has stopped working, and virusscanning programs do not normally stop secure cookies selectively (although some block all\r\ncookies). On the other hand, the browser might have been explicitly set to refuse all cookies, which is probably the first source of trouble you should check for. By the same token, the computer’s time zone might have been set incorrectly and, since cookie expiration dates are\r\ncoordinated through GMT, cause the cookie to expire as soon as it was set and never be returned to your scripts', 2),
   (196, 'Assuming that the client browser is never restarted, how long after the last access will a session “expire” and be subject to garbage collection?', NULL, 'The <b>session.gc_maxlifetime</b> INI setting regulates the amount of time since the last access after\r\nwhich the session handler considers a session data file “garbage” and marks it for deletion\r\nby the garbage handler. Once this has happened, any subsequent access to the session will be\r\nconsidered invalid, even if the data file still exists. Coincidentally, the session.gc_maxlifetime\r\nis set to 1,440 seconds, but you can’t rely on that number as it might have been changed\r\nwithout your knowledge by the system administrator. Answer 2 is, therefore, correct.', 1),
-  (197, 'Array values are keyed by ______ values (called indexed arrays) or using ______ values (called associative arrays). Of course, these key methods can be combined as well.', NULL, NULL, 1);
+  (197, 'Array values are keyed by ______ values (called indexed arrays) or using ______ values (called associative arrays). Of course, these key methods can be combined as well.', NULL, NULL, 1),
+  (198, 'The ___________ function automatically transforms newline characters into HTML tags', NULL, 'This identifies the nl2br function, which can be used precisely for this purpose.', 1),
+  (199, 'Which of the following strings are not valid modes for the fopen() function? ', NULL, NULL, 1),
+  (200, 'Consider the following piece of code; After running it, the value of $result would be:', '<?php\r\n$arr = array(3 => "First", 2=> "Second", 1=> "Third");\r\nlist (, $result) = $arr;\r\n?>', NULL, 1),
+  (201, 'In standard SQL-92, which of these situations do not require or cannot be handled through the use of an aggregate SQL function?', NULL, NULL, 2),
+  (202, 'Multidimensional arrays can be sorted using the ______ function.', NULL, NULL, 1),
+  (203, 'When using the default session handler files for using sessions, PHP stores session information on the harddrive of the webserver. When are those session files cleaned up? ', NULL, NULL, 1),
+  (204, 'What is the order of parameters in the mail() function?', NULL, NULL, 1),
+  (205, 'Which of the following statements are correct?', NULL, NULL, 3),
+  (206, 'Which of the following functions sets up start and end element handlers?', NULL, NULL, 1),
+  (207, 'Which of the following functions can be used as a countermeasure to a Shell Injection attack?', NULL, NULL, 2),
+  (208, 'In which of the following situations will you use the set_exception_handler() function?', NULL, NULL, 1),
+  (209, 'John works as a professional Ethical Hacker. He has been assigned a project to test the security of www.we-are-secure.com. On the We-are-secure login page, he enters =\'or\'\'=\' as a username and successfully logs in to the user page of the Web site. The We-are-secure login page is vulnerable to a __________.', NULL, NULL, 1),
+  (210, 'You have given the following XML data in the tasks.XML file. What should be displayed when this script is executed?', '<?xml version="1.0" encoding="ISO-8859-1"?>\r\n<tasklist>\r\n	<note>\r\n		<tasks>Validate data</tasks>\r\n		<details>String Validation</details>\r\n	</note>\r\n	<note>\r\n		<tasks>Secure data</tasks>\r\n		<details>Encryption</details>\r\n	</note>\r\n</tasklist>\r\n\r\nNow, you run the following PHP script:\r\n\r\n<?php\r\n$objDOM = new DOMDocument();\r\n$objDOM->load("tasks.xml");\r\n$note = $objDOM->getElementsByTagName("note");\r\nforeach($note as $value)\r\n{\r\n	$tasks = $value->getElementsByTagName("tasks");\r\n	$task = $tasks->item(0)->nodeValue;\r\n	$details = $value->getElementsByTagName("details");\r\n	$detail = $details->item(0)->nodeValue;\r\n\r\n	echo "$task :: $detail <br>";\r\n}\r\n?>', NULL, 2),
+  (211, 'You run the following PHP script. What is the use of the mysql_real_escape_string() function in the above script', '<?php\r\n$name = mysql_real_escape_string($_POST["name"]);\r\n$password = mysql_real_escape_string($_POST["password"]);\r\n?>', NULL, 2),
+  (212, 'Which of the following functions in SimpleXML can be used to return an iterator containing a list of all subnodes of the current node?', NULL, NULL, 1),
+  (213, 'Which of the following functions is the best choice to retrieve the fingerprint of a string?', NULL, NULL, 1);
 /*!40000 ALTER TABLE `quiz_questions` ENABLE KEYS */;
 
 
--- Dump della struttura di tabella quiz.quiz_questions_relations
+-- Dumping structure for table quiz.quiz_questions_relations
 DROP TABLE IF EXISTS `quiz_questions_relations`;
 CREATE TABLE IF NOT EXISTS `quiz_questions_relations` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -1468,11 +1553,11 @@ CREATE TABLE IF NOT EXISTS `quiz_questions_relations` (
   PRIMARY KEY (`id`),
   KEY `question_id` (`topic_id`),
   KEY `topic_id` (`question_id`),
-  CONSTRAINT `qstopicrel_topics_question_id` FOREIGN KEY (`question_id`) REFERENCES `quiz_questions` (`id`),
-  CONSTRAINT `qstopicrel_topic_id` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=latin1;
+  CONSTRAINT `qstopicrel_topic_id` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`),
+  CONSTRAINT `qstopicrel_topics_question_id` FOREIGN KEY (`question_id`) REFERENCES `quiz_questions` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=215 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.quiz_questions_relations: ~198 rows (circa)
+-- Dumping data for table quiz.quiz_questions_relations: ~202 rows (approximately)
 DELETE FROM `quiz_questions_relations`;
 /*!40000 ALTER TABLE `quiz_questions_relations` DISABLE KEYS */;
 INSERT INTO `quiz_questions_relations` (`id`, `topic_id`, `question_id`) VALUES
@@ -1673,11 +1758,27 @@ INSERT INTO `quiz_questions_relations` (`id`, `topic_id`, `question_id`) VALUES
   (195, 8, 195),
   (196, 8, 196),
   (197, 8, 197),
-  (198, 3, 1);
+  (198, 3, 1),
+  (199, 8, 198),
+  (200, 8, 199),
+  (201, 8, 200),
+  (202, 8, 201),
+  (203, 8, 202),
+  (204, 8, 203),
+  (205, 8, 204),
+  (206, 8, 205),
+  (207, 8, 206),
+  (208, 8, 207),
+  (209, 8, 208),
+  (210, 8, 209),
+  (211, 8, 210),
+  (212, 8, 211),
+  (213, 8, 212),
+  (214, 8, 213);
 /*!40000 ALTER TABLE `quiz_questions_relations` ENABLE KEYS */;
 
 
--- Dump della struttura di tabella quiz.quiz_tags_relations
+-- Dumping structure for table quiz.quiz_tags_relations
 DROP TABLE IF EXISTS `quiz_tags_relations`;
 CREATE TABLE IF NOT EXISTS `quiz_tags_relations` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -1688,9 +1789,9 @@ CREATE TABLE IF NOT EXISTS `quiz_tags_relations` (
   KEY `tag_id` (`tag_id`),
   CONSTRAINT `qstrel_tags_question_id` FOREIGN KEY (`question_id`) REFERENCES `quiz_questions` (`id`),
   CONSTRAINT `qstrel_tags_tags_id` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=246 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=289 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
--- Dump dei dati della tabella quiz.quiz_tags_relations: ~245 rows (circa)
+-- Dumping data for table quiz.quiz_tags_relations: ~270 rows (approximately)
 DELETE FROM `quiz_tags_relations`;
 /*!40000 ALTER TABLE `quiz_tags_relations` DISABLE KEYS */;
 INSERT INTO `quiz_tags_relations` (`id`, `question_id`, `tag_id`) VALUES
@@ -1961,11 +2062,31 @@ INSERT INTO `quiz_tags_relations` (`id`, `question_id`, `tag_id`) VALUES
   (265, 195, 31),
   (266, 196, 28),
   (267, 197, 4),
-  (268, 197, 86);
+  (268, 197, 86),
+  (269, 137, 35),
+  (270, 199, 64),
+  (271, 200, 86),
+  (272, 201, 80),
+  (273, 202, 86),
+  (274, 203, 28),
+  (275, 204, 102),
+  (276, 205, 2),
+  (277, 206, 19),
+  (278, 207, 49),
+  (279, 207, 94),
+  (280, 208, 39),
+  (281, 209, 49),
+  (282, 209, 54),
+  (283, 210, 19),
+  (284, 211, 54),
+  (285, 211, 49),
+  (286, 212, 19),
+  (287, 212, 20),
+  (288, 213, 103);
 /*!40000 ALTER TABLE `quiz_tags_relations` ENABLE KEYS */;
 
 
--- Dump della struttura di tabella quiz.tags
+-- Dumping structure for table quiz.tags
 DROP TABLE IF EXISTS `tags`;
 CREATE TABLE IF NOT EXISTS `tags` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -1974,9 +2095,9 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `parent_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
--- Dump dei dati della tabella quiz.tags: ~100 rows (circa)
+-- Dumping data for table quiz.tags: ~101 rows (approximately)
 DELETE FROM `tags`;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
 INSERT INTO `tags` (`id`, `name`, `slug`, `parent_id`) VALUES
@@ -2080,11 +2201,13 @@ INSERT INTO `tags` (`id`, `name`, `slug`, `parent_id`) VALUES
   (98, 'MVC', 'mvc', 18),
   (99, 'SQLite', 'sqlite', 18),
   (100, 'SAX', 'sax', 18),
-  (101, 'Design Patterns', 'design-patterns', 0);
+  (101, 'Design Patterns', 'design-patterns', 0),
+  (102, 'Email', 'email', 0),
+  (103, 'Cryptography', 'cryptography', 0);
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 
 
--- Dump della struttura di tabella quiz.topics
+-- Dumping structure for table quiz.topics
 DROP TABLE IF EXISTS `topics`;
 CREATE TABLE IF NOT EXISTS `topics` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -2097,7 +2220,7 @@ CREATE TABLE IF NOT EXISTS `topics` (
   KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella quiz.topics: ~14 rows (circa)
+-- Dumping data for table quiz.topics: ~14 rows (approximately)
 DELETE FROM `topics`;
 /*!40000 ALTER TABLE `topics` DISABLE KEYS */;
 INSERT INTO `topics` (`id`, `name`, `parent_id`, `status`, `position`, `slug`) VALUES
@@ -2118,7 +2241,7 @@ INSERT INTO `topics` (`id`, `name`, `parent_id`, `status`, `position`, `slug`) V
 /*!40000 ALTER TABLE `topics` ENABLE KEYS */;
 
 
--- Dump della struttura di tabella quiz.users
+-- Dumping structure for table quiz.users
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -2131,7 +2254,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dump dei dati della tabella quiz.users: ~1 rows (circa)
+-- Dumping data for table quiz.users: ~0 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `surname`, `email`, `username`, `password`) VALUES

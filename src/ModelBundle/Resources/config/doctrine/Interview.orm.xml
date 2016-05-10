@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModelBundle\Entity\Interview" table="interview">
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="question" type="text" column="question" length="65535" nullable="true"/>
+    <field name="answer" type="text" column="answer" length="65535" nullable="true"/>
+    <field name="position" type="bigint" column="position" nullable="true"/>
+    <field name="important" type="integer" column="important" nullable="true"/>
+    <field name="topicsOld" type="string" column="topics_old" length="150" nullable="true"/>
+  </entity>
+</doctrine-mapping>

@@ -1,18 +1,9 @@
-model:
-    resource: "@ModelBundle/Controller/"
+app:
+    resource: "@AppBundle/Controller/"
     type:     annotation
     prefix:   /
 
 admin:
     resource: "@AdminBundle/Controller/"
     type:     annotation
-    prefix:   /
-
-acme_quiz:
-    resource: "@AcmeReqBundle/Resources/config/routing.yml"
-    prefix:   /
-
-acme_rest:
-    type: rest
-    prefix: /api/v1
-    resource: "@AcmeRESTBundle/Resources/config/routing.yml"
+    prefix:   /admin/

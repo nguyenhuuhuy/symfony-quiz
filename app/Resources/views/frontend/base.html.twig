@@ -1,0 +1,58 @@
+{% set currentRoute = app.request.attributes.get('_route') %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Quiz system{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    {% block stylesheets %}
+        <link href="{{ asset('assets/libs/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/libs/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+        <style>
+            .normalweight {
+                font-weight: normal;
+            }
+            .panel-title:hover {
+                cursor: pointer;
+            }
+            .gridcellpadding {
+                padding: 0.5em;
+            }
+        </style>
+    {% endblock %}
+
+    {% block javascripts_head %}
+        <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.min.js') }}"></script>
+    {% endblock %}
+</head>
+<body>
+
+{% block navbar %}
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url('homepage') }}" title="Quiz and interview questions">Quiz and interview questions</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li{% if currentRoute == 'homepage' %} class="active"{% endif %}><a href="{{ url('homepage') }}" title="Home page"><i class="fa fa-home"></i> Home</a></li>
+                    <li{% if currentRoute == 'quiz' %} class="active"{% endif %}><a href="{{ url('quiz') }}" title="Quiz"><i class="fa fa-pencil-square-o"></i> Quiz</a></li>
+                    <li{% if currentRoute == 'interview' %} class="active"{% endif %}><a href="{{ url('interview') }}" title="Interview questions"><i class="fa fa-microphone"></i> Interview questions</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+
+</body>
+</html>

@@ -1,5 +1,0 @@
-acme_rest_questions:
-    type: rest
-    prefix: /questions
-    resource: Acme\RESTBundle\Controller\DefaultController
-    name_prefix:  api_1_ # naming collision

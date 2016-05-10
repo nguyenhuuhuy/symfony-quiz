@@ -1,14 +1,12 @@
 # This file is auto-generated during the composer install
 parameters:
-    database_driver: pdo_mysql
     database_host: 127.0.0.1
     database_port: null
     database_name: quiz
     database_user: root
-    database_password: null
+    database_password: root
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
-    locale: en
-    secret: 53dbd6e5c6cbfc23f95a2ae759bea7ec
+    secret: d5bb035e7c664bf6f878bf63b549bf1908aafb79

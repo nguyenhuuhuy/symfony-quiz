@@ -1,0 +1,30 @@
+
+
+quiz_topic_tags:
+    pattern:  /quiz/topic/{topic}/{tag}
+    defaults: { _controller: AppBundle:Quiz:index }
+    requirements:
+        topic: "[a-zA-Z0-9-_/]+"
+        _method: GET
+
+interview:
+    pattern: /interview/
+    defaults:
+        _controller: AppBundle:Interview:index
+        permanent: true
+    requirements:
+            _method: GET
+
+interview_topic:
+    pattern:  /interview/topic/{topic}
+    defaults: { _controller: AppBundle:InterviewTopics:topicList }
+    requirements:
+        topic: "[a-zA-Z0-9-_/]+"
+        _method: GET
+
+interview_tags:
+    pattern:  /interview/tags/{tag}
+    defaults: { _controller: AppBundle:Interview:tagList }
+    requirements:
+        tag: "[a-zA-Z0-9-_/]+"
+        _method: GET
