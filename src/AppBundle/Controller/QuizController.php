@@ -21,7 +21,7 @@ use ModelBundle\Model\Quiz\QuizPaginationRecordHelper;
  */
 class QuizController extends Controller
 {
-    const perPage = 5;
+    const perPage = 50;
     
     /**
      * @Route("/quiz", name="quiz")
