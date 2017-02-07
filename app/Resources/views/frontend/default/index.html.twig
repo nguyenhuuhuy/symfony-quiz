@@ -1,5 +1,5 @@
 {% extends 'frontend/base.html.twig' %}
-
+{% import _self as macros %}
 {% block body %}
     <div class="container">
 
@@ -64,10 +64,11 @@
 
         {% macro recursiveTree(parentId, treeData) %}
             {% if treeData.parents[parentId] is defined %}
+                {% import _self as macros %}
                 <ul>
                     {% for topicId in treeData.parents[parentId] %}
                         <li>{{ treeData.items[topicId].name }}
-                            {{ _self.recursiveTree(topicId, treeData) }}
+                            {{ macros.recursiveTree(topicId, treeData) }}
                         </li>
                     {% endfor %}
                 </ul>
@@ -77,7 +78,7 @@
         <div>
             <h2>All topics</h2>
 
-            {{ _self.recursiveTree(0, topicsTree) }}
+            {{ macros.recursiveTree(0, topicsTree) }}
         </div>
 
         {% include 'frontend/_footer.html.twig' %}
