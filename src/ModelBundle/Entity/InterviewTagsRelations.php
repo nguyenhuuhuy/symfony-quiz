@@ -22,7 +22,7 @@ class InterviewTagsRelations
     private $id;
 
     /**
-     * @var \ModelBundle\Entity\QuizTags
+     * @var \ModelBundle\Entity\Tags
      *
      * @ORM\ManyToOne(targetEntity="ModelBundle\Entity\QuizTags")
      * @ORM\JoinColumns({
@@ -56,10 +56,10 @@ class InterviewTagsRelations
     /**
      * Set tag
      *
-     * @param \ModelBundle\Entity\QuizTags $tag
+     * @param \ModelBundle\Entity\Tags $tag
      * @return InterviewTagsRelations
      */
-    public function setTag(\ModelBundle\Entity\QuizTags $tag = null)
+    public function setTag(\ModelBundle\Entity\Tags $tag = null)
     {
         $this->tag = $tag;
 
@@ -69,7 +69,7 @@ class InterviewTagsRelations
     /**
      * Get tag
      *
-     * @return \ModelBundle\Entity\QuizTags 
+     * @return \ModelBundle\Entity\Tags
      */
     public function getTag()
     {
